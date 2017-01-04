@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 
   s.source = {
     :git => 'https://github.com/MrLiuYS/LYSCalendar.git',
-    :tag => '0.0.1'
+    :tag => "v#{s.version}"
   }
   s.platform = :ios, '7.0'
 #   s.source_files = 'Pod/Classes/**/*'
