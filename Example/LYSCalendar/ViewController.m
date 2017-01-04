@@ -8,7 +8,10 @@
 
 #import "ViewController.h"
 
-#import "LYSCalendar.h"
+#import "LYSCalendarView.h"
+
+
+
 
 @interface ViewController ()
 
@@ -21,7 +24,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     
-    LYSCalendar * calendar = [[LYSCalendar alloc]initWithFrame:CGRectMake(0, 0, 300, 500)];
+    LYSCalendarView * calendar = [[LYSCalendarView alloc]initWithFrame:CGRectMake(0, 0, 300, 500)];
     
     calendar.backgroundColor = [UIColor redColor];
     

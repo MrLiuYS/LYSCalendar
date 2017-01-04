@@ -14,6 +14,7 @@
 		0DB2B2FE1E1CA0E700AD6B75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DB2B2FC1E1CA0E700AD6B75 /* Main.storyboard */; };
 		0DB2B3001E1CA0E700AD6B75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DB2B2FF1E1CA0E700AD6B75 /* Assets.xcassets */; };
 		0DB2B3031E1CA0E700AD6B75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DB2B3011E1CA0E700AD6B75 /* LaunchScreen.storyboard */; };
+		22072BEFA2BD60105E67217F /* libPods-LYSCalendar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD01218A3944642B1B7A56C9 /* libPods-LYSCalendar.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,9 @@
 		0DB2B2FF1E1CA0E700AD6B75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0DB2B3021E1CA0E700AD6B75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0DB2B3041E1CA0E700AD6B75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3666FA5256DC72718AC53524 /* Pods-LYSCalendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LYSCalendar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LYSCalendar/Pods-LYSCalendar.debug.xcconfig"; sourceTree = "<group>"; };
+		7D2B2D6610DBB0E872628DC5 /* Pods-LYSCalendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LYSCalendar.release.xcconfig"; path = "Pods/Target Support Files/Pods-LYSCalendar/Pods-LYSCalendar.release.xcconfig"; sourceTree = "<group>"; };
+		CD01218A3944642B1B7A56C9 /* libPods-LYSCalendar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LYSCalendar.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22072BEFA2BD60105E67217F /* libPods-LYSCalendar.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +62,8 @@
 			children = (
 				0DB2B2F21E1CA0E700AD6B75 /* LYSCalendar */,
 				0DB2B2F11E1CA0E700AD6B75 /* Products */,
+				2966B9F7CB82FB20C2EBEDB0 /* Pods */,
+				A0F46BAC9CB06439FE1CC005 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -93,6 +100,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		2966B9F7CB82FB20C2EBEDB0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3666FA5256DC72718AC53524 /* Pods-LYSCalendar.debug.xcconfig */,
+				7D2B2D6610DBB0E872628DC5 /* Pods-LYSCalendar.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A0F46BAC9CB06439FE1CC005 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CD01218A3944642B1B7A56C9 /* libPods-LYSCalendar.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -100,9 +124,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0DB2B3071E1CA0E700AD6B75 /* Build configuration list for PBXNativeTarget "LYSCalendar" */;
 			buildPhases = (
+				7A34A2F6E60AA52023F0ED27 /* [CP] Check Pods Manifest.lock */,
 				0DB2B2EC1E1CA0E700AD6B75 /* Sources */,
 				0DB2B2ED1E1CA0E700AD6B75 /* Frameworks */,
 				0DB2B2EE1E1CA0E700AD6B75 /* Resources */,
+				49749E07EBB19282EDD8C8DC /* [CP] Embed Pods Frameworks */,
+				BC883F57C5C3456D79F36682 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -158,6 +185,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		49749E07EBB19282EDD8C8DC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LYSCalendar/Pods-LYSCalendar-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7A34A2F6E60AA52023F0ED27 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BC883F57C5C3456D79F36682 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LYSCalendar/Pods-LYSCalendar-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0DB2B2EC1E1CA0E700AD6B75 /* Sources */ = {
@@ -285,6 +360,7 @@
 		};
 		0DB2B3081E1CA0E700AD6B75 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3666FA5256DC72718AC53524 /* Pods-LYSCalendar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LYSCalendar/Info.plist;
@@ -296,6 +372,7 @@
 		};
 		0DB2B3091E1CA0E700AD6B75 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D2B2D6610DBB0E872628DC5 /* Pods-LYSCalendar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LYSCalendar/Info.plist;
