@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name = 'LYSCalendar'
-  s.version = '0.0.1'
+  s.version = '0.0.2'
   s.license = 'MIT'
   s.summary = '日历控件'
 
