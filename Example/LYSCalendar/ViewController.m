@@ -10,7 +10,7 @@
 
 #import "LYSCalendarView.h"
 
-
+#import <Masonry.h>
 
 
 @interface ViewController ()
@@ -24,11 +24,17 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     
-    LYSCalendarView * calendar = [[LYSCalendarView alloc]initWithFrame:CGRectMake(0, 0, 300, 500)];
+    LYSCalendarView * calendar = [[LYSCalendarView alloc]init];
     
     calendar.backgroundColor = [UIColor redColor];
     
     [self.view addSubview:calendar];
+    
+    [calendar mas_makeConstraints:^(MASConstraintMaker *make){
+        
+        make.left.top.right.bottom.mas_equalTo(0);
+        
+    }];
     
 }
 
