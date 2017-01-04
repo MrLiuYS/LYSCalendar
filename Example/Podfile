@@ -1,0 +1,15 @@
+platform :ios, "7.0"
+
+
+targetsArray = ['LYSCalendar']
+
+targetsArray.each do |t|
+    target t do
+        
+        pod 'Masonry', '~> 1.0.1'
+        
+    end
+end
+
+
+

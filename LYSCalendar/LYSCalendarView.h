@@ -1,5 +1,5 @@
 //
-//  LYSCalendar.h
+//  LYSCalendarView.h
 //  LYSCalendar
 //
 //  Created by 刘永生 on 2017/1/4.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LYSCalendar : UIView
+@interface LYSCalendarView : UIView
 
 @end
