@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name = 'LYSCalendar'
-  s.version = '0.0.2'
+  s.version = '0.0.3.1'
   s.license = 'MIT'
   s.summary = '日历控件-测试'
 
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 
   s.source = {
     :git => 'https://github.com/MrLiuYS/LYSCalendar.git',
-    :tag => "v#{s.version}"
+    :tag => "#{s.version}"
   }
   s.platform = :ios, '7.0'
 #   s.source_files = 'Pod/Classes/**/*'
