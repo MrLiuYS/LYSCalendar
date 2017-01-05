@@ -10,4 +10,9 @@
 
 @interface LYSCalendarHeaderWeekView : UIView
 
+
+
+
+- (void)updateWeekTitleArray:(NSArray *)weekTitles;
+
 @end

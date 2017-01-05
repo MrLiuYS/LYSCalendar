@@ -20,13 +20,30 @@
 }
 
 - (void)initData {
+ 
     
-    self.headerYearViewHeight = 44;
-    self.headerWeekViewHeight = 30;
-    self.bodyCellHeight = 60;
-    self.lastViewHeight = 800;
-    
+    self.calendarType = LYSCalendarTypeFixedSixRows;
 }
+
+
+
+//- (void)setCalendarType:(LYSCalendarType)calendarType {
+//    
+//    _calendarType = calendarType;
+//    
+//    switch (calendarType) {
+//        case LYSCalendarTypeFixedSixRows:
+//        {
+//            self.bodyCellRowInt = 6;
+//            break;
+//        }
+//        default:
+//            //TODO<MrLYS>:
+//            
+//            break;
+//    }
+//    
+//}
 
 
 

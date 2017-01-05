@@ -8,15 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-#import "LYSCalendarHeaderView.h"
 
-#import "LYSCalendarBodyView.h"
+#import "LYSCalendarHeader.h"
 
-#import "LYSCalendarLastView.h"
-
-
-#import "LYSCalendarDeploy.h"
-
+@class LYSCalendarHeaderView,LYSCalendarBodyView,LYSCalendarLastView,LYSCalendarDeploy;
 
 @interface LYSCalendarView : UIView
 

@@ -13,18 +13,18 @@
 //  ----------------------------
 
 
-#import <UIKit/UIKit.h>
+#import "LYSCalendarHeader.h"
 
-
-#import "LYSCalendarHeaderYearView.h"
-
-#import "LYSCalendarHeaderWeekView.h"
+@class LYSCalendarHeaderYearView,LYSCalendarHeaderWeekView,LYSCalendarView;
 
 @interface LYSCalendarHeaderView : UIView
 
 
 @property (nonatomic, strong) LYSCalendarHeaderYearView *yearView; /**< 年份 */
 @property (nonatomic, strong) LYSCalendarHeaderWeekView *weekView; /**< 周标题 */
+
+@property (nonatomic, strong) LYSCalendarView * calendar;
+
 
 
 

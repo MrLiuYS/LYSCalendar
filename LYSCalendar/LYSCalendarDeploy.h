@@ -10,14 +10,31 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum
+{
+    /**< 固定6行 */
+    LYSCalendarTypeFixedSixRows = 0,
+}
+LYSCalendarType;
+
 @interface LYSCalendarDeploy : NSObject
 
-@property (nonatomic, assign) CGFloat headerYearViewHeight; /**< headerYearView的高度 */
-@property (nonatomic, assign) CGFloat headerWeekViewHeight; /**< headerWeekView的高度 */
+//@property (nonatomic, assign) CGFloat headerViewHeight; /**< headerWeekView的高度 */
+//@property (nonatomic, assign) CGFloat headerYearViewHeight; /**< headerYearView的高度 */
+//@property (nonatomic, assign) CGFloat headerWeekViewHeight; /**< headerWeekView的高度 */
+//
+//
+//@property (nonatomic, assign) CGFloat bodyCellHeight; /**< bodyView的高度 */
+//@property (nonatomic, assign) int bodyCellRowInt; /**< body cell 的行数 */
+//
+//@property (nonatomic, assign) CGFloat bodyViewHeight; /**< bodyView的高度 */
+//
+//@property (nonatomic, assign) CGFloat lastViewHeight; /**< <#explain#> */
 
-@property (nonatomic, assign) CGFloat bodyCellHeight; /**< bodyView的高度 */
+@property (nonatomic, assign) LYSCalendarType calendarType; /**< 展示方式 */
 
-@property (nonatomic, assign) CGFloat lastViewHeight; /**< <#explain#> */
+
+@property (nonatomic, strong) NSDate *today; /**< 当前 */
 
 
 @end

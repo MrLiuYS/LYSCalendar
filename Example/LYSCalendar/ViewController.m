@@ -32,8 +32,8 @@
     
     [calendar mas_makeConstraints:^(MASConstraintMaker *make){
         
-        make.left.top.right.bottom.mas_equalTo(0);
-        
+        make.left.top.mas_equalTo(10);
+        make.right.bottom.mas_equalTo(-10);
     }];
     
 }
