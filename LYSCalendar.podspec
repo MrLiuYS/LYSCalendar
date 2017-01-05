@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   }
   s.platform = :ios, '7.0'
 #   s.source_files = 'Pod/Classes/**/*'
-  s.source_files = 'LYSCalendar/**/*.{h,m}'
+  s.source_files = 'LYSCalendar/**/*'
 
   s.requires_arc = true
   

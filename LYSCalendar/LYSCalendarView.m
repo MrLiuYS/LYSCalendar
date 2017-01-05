@@ -8,7 +8,7 @@
 
 #import "LYSCalendarView.h"
 
-#import <Masonry.h>
+#import <Masonry/Masonry.h>
 
 @implementation LYSCalendarView
 
@@ -32,11 +32,13 @@
 
 - (void)makeConstraints {
         //TODO<MrLYS>: 布局
-//    [self.headerView mas_makeConstraints:^(MASConstraintMaker *make){
-//        
-//        make.left.top.right.mas_equalTo(0);
-//        make.height.mas_equalTo
-//    }];
+    [self.headerView mas_makeConstraints:^(MASConstraintMaker *make){
+        
+        make.left.top.right.mas_equalTo(0);
+        make.height.mas_equalTo(self.calendarDeploy.headerWeekViewHeight+self.calendarDeploy.headerYearViewHeight);
+    }];
+    
+    
     
 }
 
