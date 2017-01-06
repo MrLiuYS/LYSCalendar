@@ -84,14 +84,4 @@
 }
 
 
-
-- (void)resetLastView {
-    
-    self.topOffset = 0;
-    [self mas_updateConstraints:^(MASConstraintMaker *make){
-        make.top.mas_equalTo(self.calendar.bodyView.mas_bottom).offset(self.topOffset);
-    }];
-    
-}
-
 @end

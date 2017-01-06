@@ -22,6 +22,4 @@
 - (void)panGestureRecognizer:(UIPanGestureRecognizer *)gesture;
 
 
-- (void)resetLastView;
-
 @end

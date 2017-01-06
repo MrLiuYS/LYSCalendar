@@ -13,7 +13,7 @@
 
 @class LYSCalendarHeaderView,LYSCalendarBodyView,LYSCalendarLastView,LYSCalendarDeploy;
 
-@interface LYSCalendarView : UIView
+@interface LYSCalendarView : UIView <UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) LYSCalendarHeaderView *headerView; /**< 头部显示年份 */
 

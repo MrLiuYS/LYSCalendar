@@ -23,9 +23,10 @@
 
 - (void)initUI {
     
+    
+    [self addSubview:self.lastView];
     [self addSubview:self.headerView];
     [self addSubview:self.bodyView];
-    [self addSubview:self.lastView];
     
     [self makeConstraints];
     
@@ -33,27 +34,41 @@
     UIPanGestureRecognizer * panGest = [[UIPanGestureRecognizer alloc]initWithTarget:self
                                                                               action:@selector(panGestureRecognizer:)];
     
+    panGest.delegate = self;
     [self addGestureRecognizer:panGest];
+    
+    
     
 }
 
 - (void)makeConstraints {
-        //TODO<MrLYS>: 布局
+    //TODO<MrLYS>: 布局
     [self.headerView mas_makeConstraints:^(MASConstraintMaker *make){
         make.left.top.right.mas_equalTo(0);
         make.height.mas_equalTo(kLYSCalendarHeaderWeekHeight + kLYSCalendarHeaderYearHeight);
     }];
+    
+    
+//TODO<MrLYS>: 测试
+//    [self.bodyView mas_makeConstraints:^(MASConstraintMaker *make){
+//        make.width.mas_equalTo (100);
+//        make.centerX.mas_equalTo(self.headerView.mas_centerX);
+//        make.top.mas_equalTo(self.headerView.mas_bottom);
+//        make.height.mas_equalTo(self.bodyView.heightMax);
+//    }];
+
     [self.bodyView mas_makeConstraints:^(MASConstraintMaker *make){
         make.left.right.mas_equalTo(0);
         make.top.mas_equalTo(self.headerView.mas_bottom);
         make.height.mas_equalTo(self.bodyView.heightMax);
     }];
+    
     [self.lastView mas_makeConstraints:^(MASConstraintMaker *make){
         make.left.right.mas_equalTo(0);
         make.top.mas_equalTo(self.bodyView.mas_bottom);
         make.height.mas_equalTo(kLYSCalendarLastHeight);
     }];
-
+    
 }
 
 - (void)initData {
@@ -77,11 +92,26 @@
     
     [self.bodyView panGestureRecognizer:gesture];
     
-//    [self.lastView panGestureRecognizer:gesture];
-    
-    
     [gesture setTranslation:CGPointMake(0, 0) inView:self];
 }
+
+//- (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer{
+//    
+//    CGPoint translation = [gestureRecognizer translationInView:self];
+//    
+//    CGFloat absX = fabs(translation.x);
+//    CGFloat absY = fabs(translation.y);
+//    
+//    if (absX > absY ) {
+//        
+//        return NO;
+//        
+//    }
+//    
+//    
+//    return YES;
+//}
+
 
 
 #pragma mark - proprety
@@ -108,7 +138,6 @@
     
     if(!_lastView) {
         _lastView = [[LYSCalendarLastView alloc] init];
-        _lastView.backgroundColor = [UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.5];
         _lastView.calendar = self;
     }
     return _lastView;
