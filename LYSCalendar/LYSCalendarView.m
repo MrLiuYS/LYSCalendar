@@ -53,10 +53,7 @@
         make.top.mas_equalTo(self.bodyView.mas_bottom);
         make.height.mas_equalTo(kLYSCalendarLastHeight);
     }];
-    
-    
-    
-    
+
 }
 
 - (void)initData {
@@ -78,10 +75,9 @@
 
 - (void)panGestureRecognizer:(UIPanGestureRecognizer *)gesture {
     
-    
     [self.bodyView panGestureRecognizer:gesture];
     
-    
+    [self.lastView panGestureRecognizer:gesture];
     
     
     [gesture setTranslation:CGPointMake(0, 0) inView:self];
@@ -113,6 +109,7 @@
     if(!_lastView) {
         _lastView = [[LYSCalendarLastView alloc] init];
         _lastView.backgroundColor = [UIColor blueColor];
+        _lastView.calendar = self;
     }
     return _lastView;
 }

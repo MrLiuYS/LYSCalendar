@@ -34,7 +34,7 @@
 #define kLYSCalendarHeaderYearHeight 40
 #define kLYSCalendarHeaderWeekHeight 30
 #define kLYSCalendarBodyCellHeight 50
-#define kLYSCalendarLastHeight 100
+#define kLYSCalendarLastHeight 500
 
 #define kLYSCalendarCellRows 6
 

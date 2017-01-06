@@ -6,7 +6,12 @@
 //  Copyright © 2017年 刘永生. All rights reserved.
 //
 
-#import "LYSCalendarBodyView.h"
+#import "LYSCalendarHeader.h"
+
+@interface LYSCalendarBodyView ()
+
+@end
+
 
 @implementation LYSCalendarBodyView
 
@@ -29,11 +34,14 @@
     
     self.currentHeight = self.heightMax;
     
+    
     [self makeConstraints];
     
 }
 
 - (void)makeConstraints {
+    
+
     
 }
 
@@ -44,28 +52,54 @@
     return kLYSCalendarBodyCellHeight;
 }
 
+- (BOOL)isCanPanGesture {
+    
+    
+    
+    return YES;
+}
+
 
 - (void)panGestureRecognizer:(UIPanGestureRecognizer *)gesture {
     
     CGFloat offset = [gesture translationInView:self].y;
     
-    CGPoint velocity = [gesture velocityInView:self];
-    
-    NSLog(@"%f",offset);
+    CGFloat velocityY = [gesture velocityInView:self].y;
     
     CGFloat tempHeight = self.currentHeight + offset;
     
+//    if (velocityY > 0) {
+//        //        向下
+//        if (tempHeight > self.heightMax) {
+//            return;
+//        }
+//        
+//    }else {
+//        //        向上
+//        if (tempHeight < self.heightMin) {
+//            return;
+//        }
+//    }
+    
     if (tempHeight > self.heightMax) {
+        
         tempHeight = self.heightMax;
         
+        self.calendarStatu = LYSCalendarStatu_Month;
     }
-    if (tempHeight < self.heightMin) {
+    else if (tempHeight < self.heightMin) {
+        
         tempHeight = self.heightMin;
+        self.calendarStatu = LYSCalendarStatu_Week;
+        
+    }else {
+        
+        self.calendarStatu = LYSCalendarStatu_Apply;
     }
     
     if (gesture.state == UIGestureRecognizerStateEnded) {
         
-        if (velocity.y > 0) {
+        if (velocityY > 0) {
             
             [self updateHeight:self.heightMax animated:YES];
             
@@ -89,11 +123,6 @@
     
     if (animated) {
         
-//        if (self.calendarStatu != LYSCalendarStatu_Month) {
-//            self.calendarStatu = LYSCalendarStatu_Month;
-//        }
-        
-        
         self.userInteractionEnabled = NO;
         
         [UIView animateWithDuration:kLYSCalendarAnimateWithDuration
@@ -104,6 +133,9 @@
                                  make.height.mas_equalTo(self.currentHeight);
                                  
                              }];
+                             
+                             [self.calendar.lastView resetLastView];
+                             
                              
                              [self layoutIfNeeded];
                              
@@ -123,6 +155,9 @@
         
     }
     
+
+    
 }
+
 
 @end

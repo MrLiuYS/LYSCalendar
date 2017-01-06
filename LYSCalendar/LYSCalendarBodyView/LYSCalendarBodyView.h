@@ -13,12 +13,17 @@
 typedef enum
 {
     LYSCalendarStatu_Month = 0,
-    LYSCalendarStatu_Week
+    LYSCalendarStatu_Week,
+    LYSCalendarStatu_Apply,/**< 滑动中 */
 }
 LYSCalendarStatu;
 
 
 @interface LYSCalendarBodyView : UIView
+
+
+
+
 
 @property (nonatomic, strong) LYSCalendarView * calendar;
 
@@ -31,6 +36,8 @@ LYSCalendarStatu;
 
 
 - (void)panGestureRecognizer:(UIPanGestureRecognizer *)gesture;
+
+- (BOOL)isCanPanGesture;
 
 
 @end
