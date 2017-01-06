@@ -22,9 +22,19 @@
 }
 
 - (void)initData {
+    
+    
+    
+    
     self.topOffset = 0;
 }
 - (void)initUI {
+    
+    //TODO<MrLYS>: 临时数据
+    self.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
+    UILabel * templabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 300, 40)];
+    templabel.text = @"LYSCalendarLastView";
+    [self addSubview:templabel];
     
     
     [self makeConstraints];
