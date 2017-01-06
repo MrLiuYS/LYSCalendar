@@ -14,6 +14,9 @@
 
 @property (nonatomic, strong) LYSCalendarView * calendar;
 
+@property (nonatomic, assign) CGFloat topOffsetMax; /**< <#explain#> */
+@property (nonatomic, assign) CGFloat topOffsetMin; /**< <#explain#> */
+
 
 
 - (void)panGestureRecognizer:(UIPanGestureRecognizer *)gesture;

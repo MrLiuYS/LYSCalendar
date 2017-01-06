@@ -41,7 +41,7 @@
 
 - (void)makeConstraints {
     
-
+    
     
 }
 
@@ -52,74 +52,63 @@
     return kLYSCalendarBodyCellHeight;
 }
 
-- (BOOL)isCanPanGesture {
-    
-    
-    
-    return YES;
-}
 
 
 - (void)panGestureRecognizer:(UIPanGestureRecognizer *)gesture {
     
     CGFloat offset = [gesture translationInView:self].y;
     
-    CGFloat velocityY = [gesture velocityInView:self].y;
     
     CGFloat tempHeight = self.currentHeight + offset;
-    
-//    if (velocityY > 0) {
-//        //        向下
-//        if (tempHeight > self.heightMax) {
-//            return;
-//        }
-//        
-//    }else {
-//        //        向上
-//        if (tempHeight < self.heightMin) {
-//            return;
-//        }
-//    }
     
     if (tempHeight > self.heightMax) {
         
         tempHeight = self.heightMax;
+        [self updateHeight:tempHeight];
+        [self.calendar.lastView panGestureRecognizer:gesture];
         
-        self.calendarStatu = LYSCalendarStatu_Month;
     }
     else if (tempHeight < self.heightMin) {
         
         tempHeight = self.heightMin;
-        self.calendarStatu = LYSCalendarStatu_Week;
+        [self updateHeight:tempHeight];
+        
+        [self.calendar.lastView panGestureRecognizer:gesture];
         
     }else {
         
-        self.calendarStatu = LYSCalendarStatu_Apply;
-    }
-    
-    if (gesture.state == UIGestureRecognizerStateEnded) {
-        
-        if (velocityY > 0) {
+        if (self.calendar.lastView.topOffset == 0) {
             
-            [self updateHeight:self.heightMax animated:YES];
-            
+            if (gesture.state == UIGestureRecognizerStateEnded) {
+                
+                if (self.calendar.lastView.topOffset == 0) {
+                    
+                    CGFloat velocityY = [gesture velocityInView:self].y;
+                    
+                    if (velocityY < 0) {
+                        [self updateHeight:self.heightMin animated:YES];
+                    }else{
+                        [self updateHeight:self.heightMax animated:YES];
+                    }
+                    
+                }
+                
+            }else {
+                
+                [self updateHeight:tempHeight];
+            }
+
         }else {
             
-            [self updateHeight:self.heightMin animated:YES];
-            
+            [self.calendar.lastView panGestureRecognizer:gesture];
         }
         
-    }else {
-        
-        [self updateHeight:tempHeight animated:NO];
-        
     }
-    
+
 }
 
 - (void)updateHeight:(CGFloat)height animated:(BOOL)animated {
     
-    self.currentHeight = height;
     
     if (animated) {
         
@@ -128,16 +117,9 @@
         [UIView animateWithDuration:kLYSCalendarAnimateWithDuration
                          animations:^{
                              
-                             [self mas_updateConstraints:^(MASConstraintMaker *make){
-                                 
-                                 make.height.mas_equalTo(self.currentHeight);
-                                 
-                             }];
+                             [self updateHeight:height];
                              
-                             [self.calendar.lastView resetLastView];
-                             
-                             
-                             [self layoutIfNeeded];
+                             [self.superview layoutIfNeeded];
                              
                          } completion:^(BOOL finished) {
                              
@@ -147,17 +129,25 @@
         
     }else {
         
-        [self mas_updateConstraints:^(MASConstraintMaker *make){
-            
-            make.height.mas_equalTo(self.currentHeight);
-            
-        }];
+        [self updateHeight:height];
         
     }
     
-
+    
     
 }
 
+
+- (void)updateHeight:(CGFloat)height {
+    
+    self.currentHeight = height;
+    
+    [self mas_updateConstraints:^(MASConstraintMaker *make){
+        
+        make.height.mas_equalTo(self.currentHeight);
+        
+    }];
+    
+}
 
 @end

@@ -77,7 +77,7 @@
     
     [self.bodyView panGestureRecognizer:gesture];
     
-    [self.lastView panGestureRecognizer:gesture];
+//    [self.lastView panGestureRecognizer:gesture];
     
     
     [gesture setTranslation:CGPointMake(0, 0) inView:self];
@@ -108,7 +108,7 @@
     
     if(!_lastView) {
         _lastView = [[LYSCalendarLastView alloc] init];
-        _lastView.backgroundColor = [UIColor blueColor];
+        _lastView.backgroundColor = [UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.5];
         _lastView.calendar = self;
     }
     return _lastView;

@@ -12,8 +12,6 @@
 
 #import <UIKit/UIKit.h>
 
-
-
 #import <Masonry/Masonry.h>
 
 #import "LYSCalendarView.h"
@@ -39,7 +37,7 @@
 #define kLYSCalendarCellRows 6
 
 
-#define kLYSCalendarAnimateWithDuration .3
+#define kLYSCalendarAnimateWithDuration 0.1
 
 
 

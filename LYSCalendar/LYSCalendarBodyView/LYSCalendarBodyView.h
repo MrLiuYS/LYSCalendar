@@ -21,10 +21,6 @@ LYSCalendarStatu;
 
 @interface LYSCalendarBodyView : UIView
 
-
-
-
-
 @property (nonatomic, strong) LYSCalendarView * calendar;
 
 @property (nonatomic, assign) CGFloat currentHeight; /**< 当前高度 */
@@ -36,8 +32,6 @@ LYSCalendarStatu;
 
 
 - (void)panGestureRecognizer:(UIPanGestureRecognizer *)gesture;
-
-- (BOOL)isCanPanGesture;
 
 
 @end
