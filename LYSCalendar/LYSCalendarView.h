@@ -6,14 +6,14 @@
 //  Copyright © 2017年 刘永生. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "LYSCalendarBase.h"
 
 
 #import "LYSCalendarHeader.h"
 
 @class LYSCalendarHeaderView,LYSCalendarBodyView,LYSCalendarLastView,LYSCalendarDeploy;
 
-@interface LYSCalendarView : UIView <UIGestureRecognizerDelegate>
+@interface LYSCalendarView : LYSCalendarBase <UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) LYSCalendarHeaderView *headerView; /**< 头部显示年份 */
 
@@ -23,8 +23,10 @@
 
 @property (nonatomic, strong) LYSCalendarDeploy *calendarDeploy; /**< <#explain#> */
 
-//更新配置表信息
-- (void)updateCalendarDeploy;
+
+@property (nonatomic, strong) NSDate *currentMonth; /**< 设置当前月份 */
+
+
 
 
 @end

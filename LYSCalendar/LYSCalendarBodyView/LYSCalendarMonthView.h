@@ -6,12 +6,24 @@
 //  Copyright © 2017年 刘永生. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
-@interface LYSCalendarMonthView : UIView
+#import "LYSCalendarBase.h"
 
 
+@class LYSCalendarDayView;
 
 
+@interface LYSCalendarMonthView : LYSCalendarBase
+
+
+@property (nonatomic, strong) NSDate *monthDate; /**< <#explain#> */
+
+@property (nonatomic, strong) NSMutableArray *weekViews; /**< <#explain#> */
+
+
+
+- (void)adjustmentView;
+
+
+- (void)updateMonth;
 
 @end

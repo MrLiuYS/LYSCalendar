@@ -15,12 +15,46 @@
 {
     self = [super init];
     if (self) {
-        
+        [self initData];
         [self initUI];
     }
     return self;
 }
 
+- (void)initData {
+    
+    [self.yearView.preMonthBtn addTarget:self
+                                  action:@selector(clickPreMonthBtn:)
+                        forControlEvents:UIControlEventTouchUpInside];
+
+    [self.yearView.nextMonthBtn addTarget:self
+                                   action:@selector(clickNextMonthBtn:)
+                         forControlEvents:UIControlEventTouchUpInside];
+    
+}
+
+- (void)clickPreMonthBtn:(id)sender {
+    
+    
+    if (self.calendar && [self.calendar.bodyView respondsToSelector:@selector(clickPreMonthBtn:)]) {
+        NSLog(@"上个月");
+        [self.calendar.bodyView clickPreMonthBtn:sender];
+        
+        self.yearView.yearLabel.text = [NSString stringWithFormat:@"%@",self.calendar.currentMonth];
+        
+    }
+    
+}
+
+- (void)clickNextMonthBtn:(id)sender {
+    
+    if (self.calendar && [self.calendar.bodyView respondsToSelector:@selector(clickNextMonthBtn:)]) {
+        NSLog(@"下个月");
+        [self.calendar.bodyView clickNextMonthBtn:sender];
+        
+        self.yearView.yearLabel.text = [NSString stringWithFormat:@"%@",self.calendar.currentMonth];
+    }
+}
 
 
 
@@ -55,7 +89,7 @@
     
     if(!_yearView) {
         _yearView = [[LYSCalendarHeaderYearView alloc] init];
-        _yearView.backgroundColor = [UIColor orangeColor];
+        
     }
     return _yearView;
 }
@@ -63,7 +97,7 @@
     
     if(!_weekView) {
         _weekView = [[LYSCalendarHeaderWeekView alloc] init];
-        _weekView.backgroundColor = [UIColor purpleColor];
+
     }
     return _weekView;
 }

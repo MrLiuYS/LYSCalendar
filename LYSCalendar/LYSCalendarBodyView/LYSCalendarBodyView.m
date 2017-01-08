@@ -22,6 +22,20 @@
 
 @implementation LYSCalendarBodyView
 
+
+- (void)updateMonth:(NSDate *)month {
+    
+    
+    self.currentView.monthDate = month;
+    
+//    [self.currentView updateMonth];
+    
+//    self.preView.monthDate = [self.currentView.monthDate offsetMonth:-1];
+//    
+//    self.nextView.monthDate = [self.currentView.monthDate offsetMonth:3];
+    
+}
+
 - (instancetype)init
 {
     self = [super init];
@@ -38,65 +52,84 @@
     self.calendarStatu = LYSCalendarStatu_Month;
     
     self.currentHeight = self.heightMax;
-    
-    
-    
-    
+
 }
 
 - (void)initUI {
     
-    [self addSubview:self.calendarScrollView];
-    
-    [self.calendarScrollView addSubview:self.containerView];
-    
-    [self.containerView addSubview:self.preView];
-    [self.containerView addSubview:self.nextView];
-    [self.containerView addSubview:self.currentView];
+//    [self addSubview:self.calendarScrollView];
+//    
+//    [self.calendarScrollView addSubview:self.containerView];
+//    
+//    [self.containerView addSubview:self.preView];
+//    [self.containerView addSubview:self.nextView];
+//    [self.containerView addSubview:self.currentView];
+
+    [self addSubview:self.currentView];
     
     
     [self makeConstraints];
     
     
-//    NSLog(@"calendarScrollView:%@",NSStringFromCGRect(self.calendarScrollView.frame));
-//    
-//    self.calendarScrollView.contentOffset = CGPointMake(self.calendarScrollView.frame.size.width,
-//                                                        self.calendarScrollView.contentOffset.y);
+    
+}
+
+
+
+- (void)clickPreMonthBtn:(UIButton *)sender {
+    
+    self.calendar.currentMonth = [self.calendar.currentMonth offsetMonth:-1];
+    
+    [self updateMonth:self.calendar.currentMonth];
+    
+}
+- (void)clickNextMonthBtn:(UIButton *)sender {
+    
+    self.calendar.currentMonth = [self.calendar.currentMonth offsetMonth:1];
+    
+    [self updateMonth:self.calendar.currentMonth];
     
 }
 
 - (void)makeConstraints {
     
-    [self.calendarScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.currentView mas_makeConstraints:^(MASConstraintMaker *make){
+        
         make.left.top.right.mas_equalTo(0);
         make.height.mas_equalTo(self.heightMax);
     }];
     
-    [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.calendarScrollView);
-        make.height.equalTo(self.calendarScrollView);
-    }];
     
-    [self.preView mas_makeConstraints:^(MASConstraintMaker *make){
-        
-        make.left.top.bottom.mas_equalTo(0);
-        
-        make.width.mas_equalTo(self.calendarScrollView.mas_width);
-    }];
-    
-    [self.currentView mas_makeConstraints:^(MASConstraintMaker *make){
-        
-        make.top.bottom.mas_equalTo(0);
-        make.left.mas_equalTo(self.preView.mas_right);
-        make.width.mas_equalTo(self.preView.mas_width);
-    }];
-    
-    [self.nextView mas_makeConstraints:^(MASConstraintMaker *make){
-        
-        make.top.bottom.mas_equalTo(0);
-        make.left.mas_equalTo(self.currentView.mas_right);
-        make.width.mas_equalTo(self.preView.mas_width);
-    }];
+//    [self.calendarScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.top.right.mas_equalTo(0);
+//        make.height.mas_equalTo(self.heightMax);
+//    }];
+//    
+//    [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.equalTo(self.calendarScrollView);
+//        make.height.equalTo(self.calendarScrollView);
+//    }];
+//    
+//    [self.preView mas_makeConstraints:^(MASConstraintMaker *make){
+//        
+//        make.left.top.bottom.mas_equalTo(0);
+//        
+//        make.width.mas_equalTo(self.calendarScrollView.mas_width);
+//    }];
+//    
+//    [self.currentView mas_makeConstraints:^(MASConstraintMaker *make){
+//        
+//        make.top.bottom.mas_equalTo(0);
+//        make.left.mas_equalTo(self.preView.mas_right);
+//        make.width.mas_equalTo(self.preView.mas_width);
+//    }];
+//    
+//    [self.nextView mas_makeConstraints:^(MASConstraintMaker *make){
+//        
+//        make.top.bottom.mas_equalTo(0);
+//        make.left.mas_equalTo(self.currentView.mas_right);
+//        make.width.mas_equalTo(self.preView.mas_width);
+//    }];
     
 }
 

@@ -6,10 +6,14 @@
 //  Copyright © 2017年 刘永生. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "LYSCalendarBase.h"
 
-@interface LYSCalendarHeaderYearView : UIView
+@interface LYSCalendarHeaderYearView : LYSCalendarBase
 
 @property (nonatomic, strong) UILabel *yearLabel; /**< 年份 */
+
+@property (nonatomic, strong) UIButton *preMonthBtn; /**< <#explain#> */
+@property (nonatomic, strong) UIButton *nextMonthBtn; /**< <#explain#> */
+
 
 @end

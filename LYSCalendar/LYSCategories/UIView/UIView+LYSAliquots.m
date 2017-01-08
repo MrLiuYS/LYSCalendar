@@ -29,7 +29,11 @@
 {
     UIView *lastView;
     for (UIView *view in views) {
-        [self addSubview:view];
+        
+        if (!view.superview){
+            [self addSubview:view];
+        }
+        
         if (lastView) {
             [view mas_makeConstraints:^(MASConstraintMaker *make) {
                 if (direction == LYSViewAliquots_Horizontal) {
@@ -78,7 +82,11 @@
     
     UIView *lastView;
     for (UIView *view in views) {
-        [contentView addSubview:view];
+        
+        if (!view.superview){
+            [contentView addSubview:view];
+        }
+        
         if (lastView) {
             [view mas_updateConstraints:^(MASConstraintMaker *make) {
                 

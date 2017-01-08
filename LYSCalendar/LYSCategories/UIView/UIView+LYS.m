@@ -10,24 +10,21 @@
 
 @implementation UIView (LYS)
 
-+ (UIView *)lys_View{
+
+- (void)lys_RandomBackgroundColor {
     
-    UIView * view = [[UIView alloc]init];
+    self.backgroundColor = [self lys_RandomColor];
     
-    return view;
 }
 
-+ (UIView *)lys_ViewRandomBackgroundColor {
-    
-    UIView * view = [self lys_View];
+
+- (UIColor *)lys_RandomColor{
     
     CGFloat red = (CGFloat)arc4random() / 0x100000000;
     CGFloat green = (CGFloat)arc4random() / 0x100000000;
     CGFloat blue = (CGFloat)arc4random() / 0x100000000;
     
-    view.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:0.5f];
-
-    return view;
+    return [UIColor colorWithRed:red green:green blue:blue alpha:.5f];
 }
 
 

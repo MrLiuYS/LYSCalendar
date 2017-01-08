@@ -10,8 +10,9 @@
 
 @interface UIView (LYS)
 
-+ (UIView *)lys_View;
 
-+ (UIView *)lys_ViewRandomBackgroundColor;
+- (void)lys_RandomBackgroundColor;
+
+- (UIColor *)lys_RandomColor;
 
 @end

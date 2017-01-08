@@ -23,6 +23,10 @@
 - (void)initUI {
     
     [self addSubview:self.yearLabel];
+    
+    [self addSubview:self.preMonthBtn];
+    [self addSubview:self.nextMonthBtn];
+    
     [self makeConstraints];
     
 }
@@ -32,6 +36,19 @@
         make.top.bottom.mas_equalTo(0);
         make.centerX.mas_equalTo(self.mas_centerX);
     }];
+    
+    [self.preMonthBtn mas_makeConstraints:^(MASConstraintMaker *make){
+        
+        make.left.top.bottom.mas_equalTo(0);
+        make.width.mas_equalTo(self.mas_height);
+    }];
+    
+    [self.nextMonthBtn mas_makeConstraints:^(MASConstraintMaker *make){
+        
+        make.right.top.bottom.mas_equalTo(0);
+        make.width.mas_equalTo(self.mas_height);
+    }];
+    
 }
 
 - (void)initData {
@@ -54,5 +71,26 @@
     }
     return _yearLabel;
 }
+
+
+- (UIButton *)preMonthBtn {
+    
+    if(!_preMonthBtn) {
+        _preMonthBtn = [[UIButton alloc] init];
+        [_preMonthBtn lys_RandomBackgroundColor];
+        [_preMonthBtn setTitle:@"<" forState:UIControlStateNormal];
+    }
+    return _preMonthBtn;
+}
+- (UIButton *)nextMonthBtn {
+    
+    if(!_nextMonthBtn) {
+        _nextMonthBtn = [[UIButton alloc] init];
+        [_nextMonthBtn lys_RandomBackgroundColor];
+        [_nextMonthBtn setTitle:@">" forState:UIControlStateNormal];
+    }
+    return _nextMonthBtn;
+}
+
 
 @end

@@ -80,12 +80,6 @@
 
 
 
-- (void)updateCalendarDeploy {
-    
-    
-    
-    
-}
 
 
 - (void)panGestureRecognizer:(UIPanGestureRecognizer *)gesture {
@@ -95,24 +89,6 @@
     [gesture setTranslation:CGPointMake(0, 0) inView:self];
 }
 
-//- (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer{
-//    
-//    CGPoint translation = [gestureRecognizer translationInView:self];
-//    
-//    CGFloat absX = fabs(translation.x);
-//    CGFloat absY = fabs(translation.y);
-//    
-//    if (absX > absY ) {
-//        
-//        return NO;
-//        
-//    }
-//    
-//    
-//    return YES;
-//}
-
-
 
 #pragma mark - proprety
 
@@ -121,7 +97,7 @@
     if(!_headerView) {
         _headerView = [[LYSCalendarHeaderView alloc] init];
         _headerView.calendar = self;
-        _headerView.backgroundColor = [UIColor greenColor];
+        
     }
     return _headerView;
 }
@@ -130,7 +106,7 @@
     if(!_bodyView) {
         _bodyView = [[LYSCalendarBodyView alloc] init];
         _bodyView.calendar = self;
-        _bodyView.backgroundColor = [UIColor yellowColor];
+        
     }
     return _bodyView;
 }
@@ -139,6 +115,7 @@
     if(!_lastView) {
         _lastView = [[LYSCalendarLastView alloc] init];
         _lastView.calendar = self;
+        
     }
     return _lastView;
 }

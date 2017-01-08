@@ -6,7 +6,7 @@
 //  Copyright © 2017年 刘永生. All rights reserved.
 //
 
-#import "LYSCalendarHeader.h"
+#import "LYSCalendarBase.h"
 
 @class LYSCalendarView;
 
@@ -19,7 +19,7 @@ typedef enum
 LYSCalendarStatu;
 
 
-@interface LYSCalendarBodyView : UIView
+@interface LYSCalendarBodyView : LYSCalendarBase
 
 @property (nonatomic, strong) LYSCalendarView * calendar;
 
@@ -30,6 +30,11 @@ LYSCalendarStatu;
 
 @property (nonatomic, assign) LYSCalendarStatu calendarStatu; /**< <#explain#> */
 
+
+- (void)clickPreMonthBtn:(UIButton *)sender;
+- (void)clickNextMonthBtn:(UIButton *)sender;
+
+- (void)updateMonth:(NSDate *)month;
 
 - (void)panGestureRecognizer:(UIPanGestureRecognizer *)gesture;
 

@@ -6,9 +6,9 @@
 //  Copyright © 2017年 刘永生. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "LYSCalendarBase.h"
 
-@interface LYSCalendarDayView : UIView
+@interface LYSCalendarDayView : LYSCalendarBase
 
 @property (nonatomic, strong) UILabel *dayLabel; /**< <#explain#> */
 

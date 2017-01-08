@@ -13,11 +13,11 @@
 //  ----------------------------
 
 
-#import "LYSCalendarHeader.h"
+#import "LYSCalendarBase.h"
 
 @class LYSCalendarHeaderYearView,LYSCalendarHeaderWeekView,LYSCalendarView;
 
-@interface LYSCalendarHeaderView : UIView
+@interface LYSCalendarHeaderView : LYSCalendarBase
 
 
 @property (nonatomic, strong) LYSCalendarHeaderYearView *yearView; /**< 年份 */

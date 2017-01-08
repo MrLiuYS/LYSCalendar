@@ -17,13 +17,6 @@
         [self initData];
         [self initUI];
         
-        
-        CGFloat red = (CGFloat)arc4random() / 0x100000000;
-        CGFloat green = (CGFloat)arc4random() / 0x100000000;
-        CGFloat blue = (CGFloat)arc4random() / 0x100000000;
-        
-        self.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:0.5f];
-        
     }
     return self;
 }
@@ -40,20 +33,24 @@
 }
 - (void)makeConstraints {
     
+//    self.dayLabel.frame = CGRectMake(0, 0, 50, 50);
+    
     [self.dayLabel mas_makeConstraints:^(MASConstraintMaker *make){
         
-        make.left.top.right.bottom.mas_equalTo(0);
+//        make.left.top.right.bottom.mas_equalTo(0);
+        make.centerX.mas_equalTo(self.mas_centerX);
+        make.centerY.mas_equalTo(self.mas_centerY);
         
     }];
     
 }
 
-
-
 - (UILabel *)dayLabel {
     
     if(!_dayLabel) {
         _dayLabel = [[UILabel alloc] init];
+        _dayLabel.textAlignment = NSTextAlignmentCenter;
+        
     }
     return _dayLabel;
 }

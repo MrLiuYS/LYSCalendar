@@ -26,6 +26,8 @@
     
     LYSCalendarView * calendar = [[LYSCalendarView alloc]init];
     
+    calendar.currentMonth = [NSDate date];
+    
     calendar.backgroundColor = [UIColor redColor];
     
     [self.view addSubview:calendar];

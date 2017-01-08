@@ -22,6 +22,7 @@
 
 #import "LYSCalendarBodyView.h"
 #import "LYSCalendarMonthView.h"
+#import "LYSCalendarWeekView.h"
 #import "LYSCalendarDayView.h"
 
 
@@ -33,10 +34,15 @@
 #import "UIView+LYSAliquots.h"
 
 
+#import "NSDate+LYS.h"
+
+#import "LYSCalendarBase.h"
+
+
 
 #define kLYSCalendarHeaderYearHeight 40
-#define kLYSCalendarHeaderWeekHeight 30
-#define kLYSCalendarBodyCellHeight 50
+#define kLYSCalendarHeaderWeekHeight 20
+#define kLYSCalendarBodyCellHeight 30
 #define kLYSCalendarLastHeight 50
 
 #define kLYSCalendarCellRows 6

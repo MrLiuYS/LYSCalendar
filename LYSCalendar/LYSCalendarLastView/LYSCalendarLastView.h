@@ -6,9 +6,9 @@
 //  Copyright © 2017年 刘永生. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "LYSCalendarBase.h"
 
-@interface LYSCalendarLastView : UIView
+@interface LYSCalendarLastView : LYSCalendarBase
 
 @property (nonatomic, assign) CGFloat topOffset; /**< 顶部偏移量 */
 
