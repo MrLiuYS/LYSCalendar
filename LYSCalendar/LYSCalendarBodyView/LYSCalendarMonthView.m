@@ -9,8 +9,6 @@
 #import "LYSCalendarHeader.h"
 
 
-#define kLYSCalendarBaseTag 5000
-
 @interface LYSCalendarMonthView ()
 
 
@@ -36,7 +34,7 @@
     _monthDate = monthDate;
     
     [self updateMonth];
-
+    
 }
 
 -(int)numRows {
@@ -121,23 +119,23 @@
 
 - (void)initUI {
     
+    
+    
     for (int section = 0; section < kLYSCalendarCellRows; section++) {
         
         LYSCalendarWeekView * weekView = [[LYSCalendarWeekView alloc]init];
+        
         
         for (int row = 1; row <= 7; row++) {
             
             LYSCalendarDayView * rowView = [[LYSCalendarDayView alloc]init];
             
-            rowView.tag = kLYSCalendarBaseTag + (section * 7 + row);
-            
-            //TODO<MrLYS>: 显示日期
-            
-            rowView.dayLabel.text =@"eee";[NSString stringWithFormat:@"%d",section * 7 + row];
-            
             [weekView.dayViews addObject:rowView];
             
         }
+        
+        
+        
         
         [weekView adjustmentView];
         
@@ -145,17 +143,21 @@
         
     }
     
+    
+    
+    
+    
     [self adjustmentView];
     
     
-
+    
     
     [self makeConstraints];
     
 }
 - (void)makeConstraints {
     
-
+    
     
 }
 

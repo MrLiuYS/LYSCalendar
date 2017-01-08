@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D02FEBD1E21BCAA0077B067 /* PanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D02FEBC1E21BCAA0077B067 /* PanViewController.m */; };
+		0D02FEC21E21BDF10077B067 /* LYSBaseCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D02FEC11E21BDF10077B067 /* LYSBaseCtrl.m */; };
+		0D02FEC51E21C1360077B067 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D02FEC41E21C1360077B067 /* TestViewController.m */; };
 		0D14209E1E1F820200EDA7CC /* LYSCalendarMonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D14209D1E1F820200EDA7CC /* LYSCalendarMonthView.m */; };
 		0D1420A11E1F82C700EDA7CC /* UIView+LYS.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1420A01E1F82C700EDA7CC /* UIView+LYS.m */; };
 		0D1420A41E1F869C00EDA7CC /* LYSCalendarDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1420A31E1F869C00EDA7CC /* LYSCalendarDayView.m */; };
@@ -31,6 +34,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D02FEBB1E21BCAA0077B067 /* PanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanViewController.h; sourceTree = "<group>"; };
+		0D02FEBC1E21BCAA0077B067 /* PanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanViewController.m; sourceTree = "<group>"; };
+		0D02FEC01E21BDF10077B067 /* LYSBaseCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSBaseCtrl.h; sourceTree = "<group>"; };
+		0D02FEC11E21BDF10077B067 /* LYSBaseCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSBaseCtrl.m; sourceTree = "<group>"; };
+		0D02FEC31E21C1360077B067 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		0D02FEC41E21C1360077B067 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		0D14209C1E1F820200EDA7CC /* LYSCalendarMonthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSCalendarMonthView.h; sourceTree = "<group>"; };
 		0D14209D1E1F820200EDA7CC /* LYSCalendarMonthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSCalendarMonthView.m; sourceTree = "<group>"; };
 		0D14209F1E1F82C700EDA7CC /* UIView+LYS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LYS.h"; sourceTree = "<group>"; };
@@ -87,6 +96,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D02FEBE1E21BD7A0077B067 /* Pan */ = {
+			isa = PBXGroup;
+			children = (
+				0D02FEBB1E21BCAA0077B067 /* PanViewController.h */,
+				0D02FEBC1E21BCAA0077B067 /* PanViewController.m */,
+			);
+			name = Pan;
+			sourceTree = "<group>";
+		};
+		0D02FEBF1E21BDDC0077B067 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				0D02FEC01E21BDF10077B067 /* LYSBaseCtrl.h */,
+				0D02FEC11E21BDF10077B067 /* LYSBaseCtrl.m */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
 		0D2C8D871E1CC9FE00CA51D9 /* LYSCalendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +166,10 @@
 				0DB2B2F71E1CA0E700AD6B75 /* AppDelegate.m */,
 				0DB2B2F91E1CA0E700AD6B75 /* ViewController.h */,
 				0DB2B2FA1E1CA0E700AD6B75 /* ViewController.m */,
+				0D02FEC31E21C1360077B067 /* TestViewController.h */,
+				0D02FEC41E21C1360077B067 /* TestViewController.m */,
+				0D02FEBF1E21BDDC0077B067 /* Base */,
+				0D02FEBE1E21BD7A0077B067 /* Pan */,
 				0DB2B2FC1E1CA0E700AD6B75 /* Main.storyboard */,
 				0DB2B2FF1E1CA0E700AD6B75 /* Assets.xcassets */,
 				0DB2B3011E1CA0E700AD6B75 /* LaunchScreen.storyboard */,
@@ -361,12 +392,15 @@
 				0DBB0B101E1E23210073E607 /* LYSCalendarHeaderYearView.m in Sources */,
 				0D2C8D8A1E1CCA1A00CA51D9 /* LYSCalendarView.m in Sources */,
 				0D14209E1E1F820200EDA7CC /* LYSCalendarMonthView.m in Sources */,
+				0D02FEBD1E21BCAA0077B067 /* PanViewController.m in Sources */,
 				0DB2B2F81E1CA0E700AD6B75 /* AppDelegate.m in Sources */,
 				0DBB0B0D1E1E23210073E607 /* LYSCalendarBodyView.m in Sources */,
+				0D02FEC21E21BDF10077B067 /* LYSBaseCtrl.m in Sources */,
 				0DBB0B0E1E1E23210073E607 /* LYSCalendarHeaderView.m in Sources */,
 				0DA00B1A1E20D9CE00D1247B /* LYSCalendarWeekView.m in Sources */,
 				0DA00B171E20B9DE00D1247B /* LYSCalendarBase.m in Sources */,
 				0D1420A11E1F82C700EDA7CC /* UIView+LYS.m in Sources */,
+				0D02FEC51E21C1360077B067 /* TestViewController.m in Sources */,
 				0DA00B141E1FD23300D1247B /* NSDate+LYS.m in Sources */,
 				0DBB0B0B1E1E23210073E607 /* UIView+LYSAliquots.m in Sources */,
 				0DB2B2F51E1CA0E700AD6B75 /* main.m in Sources */,

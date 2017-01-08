@@ -80,7 +80,12 @@
 
 
 
-
+- (void)setCurrentMonth:(NSDate *)currentMonth {
+    
+    _currentMonth = currentMonth;
+    
+    [self.bodyView updateMonth:currentMonth];
+}
 
 - (void)panGestureRecognizer:(UIPanGestureRecognizer *)gesture {
     

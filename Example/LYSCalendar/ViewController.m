@@ -8,9 +8,10 @@
 
 #import "ViewController.h"
 
-#import "LYSCalendarView.h"
 
-#import <Masonry/Masonry.h>
+#import "TestViewController.h"
+
+#import "PanViewController.h"
 
 
 @interface ViewController ()
@@ -24,22 +25,18 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     
-    LYSCalendarView * calendar = [[LYSCalendarView alloc]init];
+
+}
+- (IBAction)touchPushPanCtrl:(id)sender {
+    [PanViewController pushInViewController:self];
     
-    calendar.currentMonth = [NSDate date];
-    
-    calendar.backgroundColor = [UIColor redColor];
-    
-    [self.view addSubview:calendar];
-    
-    [calendar mas_makeConstraints:^(MASConstraintMaker *make){
-        
-        make.left.top.mas_equalTo(10);
-        make.right.bottom.mas_equalTo(-10);
-    }];
     
 }
 
+- (IBAction)touchPushTestcTRL:(id)sender {
+    
+    [TestViewController pushInViewController:self];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
