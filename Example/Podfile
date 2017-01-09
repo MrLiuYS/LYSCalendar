@@ -9,6 +9,9 @@ targetsArray.each do |t|
         pod 'Masonry', '~> 1.0.1'
         
         
+        pod 'PLeakSniffer', :git => 'https://github.com/music4kid/PLeakSniffer.git', :tag => '0.1.0'
+        
+        
     end
 end
 
