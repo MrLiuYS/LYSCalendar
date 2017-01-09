@@ -10,12 +10,20 @@
 
 @interface LYSCalendarBodyView ()
 
-@property (nonatomic, strong) UIScrollView *calendarScrollView; /**< <#explain#> */
-@property (nonatomic, strong) UIView *containerView; /**< <#explain#> */
+//@property (nonatomic, strong) UIScrollView *calendarScrollView; /**< <#explain#> */
+
+@property (nonatomic, strong) LYSCalendarBase *containerView; /**< <#explain#> */
 
 @property (nonatomic, strong) LYSCalendarMonthView *preView; /**< <#explain#> */
 @property (nonatomic, strong) LYSCalendarMonthView *currentView; /**< <#explain#> */
 @property (nonatomic, strong) LYSCalendarMonthView *nextView; /**< <#explain#> */
+
+@property (nonatomic, assign) BOOL isPanVertical; /**< 竖直滚动 */
+
+@property (nonatomic, assign) CGFloat currentLeftOffset; /**< 当前月份偏移距离 */
+
+
+
 
 @end
 
@@ -30,9 +38,9 @@
     
 //    [self.currentView updateMonth];
     
-//    self.preView.monthDate = [self.currentView.monthDate offsetMonth:-1];
-//    
-//    self.nextView.monthDate = [self.currentView.monthDate offsetMonth:3];
+    self.preView.monthDate = [self.currentView.monthDate offsetMonth:-1];
+    
+    self.nextView.monthDate = [self.currentView.monthDate offsetMonth:1];
     
 }
 
@@ -46,6 +54,15 @@
     return self;
 }
 - (void)initData {
+    
+    
+//    [self addObserver:self
+//           forKeyPath:@"currentLeftOffset"
+//              options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld)
+//              context:@"currentLeftOffset"];
+    
+    
+    self.currentLeftOffset  = 0;
 
     self.clipsToBounds = YES;
     
@@ -65,12 +82,14 @@
 //    [self.containerView addSubview:self.nextView];
 //    [self.containerView addSubview:self.currentView];
 
-    [self addSubview:self.currentView];
+    [self addSubview:self.containerView];
     
+    [self.containerView addSubview:self.preView];
+    [self.containerView addSubview:self.nextView];
+    
+    [self.containerView addSubview:self.currentView];
     
     [self makeConstraints];
-    
-    
     
 }
 
@@ -93,46 +112,35 @@
 
 - (void)makeConstraints {
     
-    [self.currentView mas_makeConstraints:^(MASConstraintMaker *make){
-        
-        make.left.top.right.mas_equalTo(0);
-        make.height.mas_equalTo(self.heightMax);
+    [self.containerView mas_makeConstraints:^(MASConstraintMaker *make){
+        make.left.top.right.bottom.mas_equalTo(0);
     }];
     
+    [self resetContainerView];
     
-//    [self.calendarScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.top.right.mas_equalTo(0);
-//        make.height.mas_equalTo(self.heightMax);
-//    }];
-//    
-//    [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.equalTo(self.calendarScrollView);
-//        make.height.equalTo(self.calendarScrollView);
-//    }];
-//    
-//    [self.preView mas_makeConstraints:^(MASConstraintMaker *make){
-//        
-//        make.left.top.bottom.mas_equalTo(0);
-//        
-//        make.width.mas_equalTo(self.calendarScrollView.mas_width);
-//    }];
-//    
-//    [self.currentView mas_makeConstraints:^(MASConstraintMaker *make){
-//        
-//        make.top.bottom.mas_equalTo(0);
-//        make.left.mas_equalTo(self.preView.mas_right);
-//        make.width.mas_equalTo(self.preView.mas_width);
-//    }];
-//    
-//    [self.nextView mas_makeConstraints:^(MASConstraintMaker *make){
-//        
-//        make.top.bottom.mas_equalTo(0);
-//        make.left.mas_equalTo(self.currentView.mas_right);
-//        make.width.mas_equalTo(self.preView.mas_width);
-//    }];
+
+}
+- (void)resetContainerView {
+    
+    [self.currentView mas_remakeConstraints:^(MASConstraintMaker *make){
+        
+        make.left.top.mas_equalTo(0);
+        make.height.mas_equalTo(self.heightMax);
+        make.width.mas_equalTo(self.containerView.mas_width);
+    }];
+    
+    [self.preView mas_remakeConstraints:^(MASConstraintMaker *make){
+        
+        make.centerY.width.height.mas_equalTo(self.currentView);
+        make.right.mas_equalTo(self.currentView.mas_left);
+    }];
+    
+    [self.nextView mas_remakeConstraints:^(MASConstraintMaker *make){
+        make.centerY.width.height.mas_equalTo(self.currentView);
+        make.left.mas_equalTo(self.currentView.mas_right);
+    }];
     
 }
-
 
 
 - (void)setCalendarStatu:(LYSCalendarStatu)calendarStatu {
@@ -172,20 +180,29 @@
 }
 - (void)panGestureRecognizer:(UIPanGestureRecognizer *)gesture {
     
-//    CGPoint translation = [gesture translationInView:self];
-//    
-//    CGFloat absX = fabs(translation.x);
-//    CGFloat absY = fabs(translation.y);
-//
-//    if (absX > absY ) {
-//        
-//        [self slideHorizont:gesture];
-//        
-//    } else if (absY > absX) {
+    CGPoint translation = [gesture translationInView:self];
     
+    CGFloat absX = fabs(translation.x);
+    CGFloat absY = fabs(translation.y);
+    
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        
+        if (absX > absY ) {
+            self.isPanVertical = NO;
+        }else {
+            self.isPanVertical = YES;
+        }
+        
+    }
+    
+    if (self.isPanVertical) {
+        
         [self slideVertical:gesture];
-//    }
-    
+        
+    }else {
+        [self slideHorizont:gesture];
+        
+    }
     
 }
 
@@ -198,11 +215,124 @@
 - (void)slideHorizont:(UIPanGestureRecognizer *)gesture{
     
     
-//    CGFloat offset = [gesture translationInView:self].x;
-//    
-//    [self.calendarScrollView setContentOffset:CGPointMake(self.calendarScrollView.contentOffset.x - offset,
-//                                                          self.calendarScrollView.contentOffset.y)];
+    CGFloat offset = [gesture translationInView:self].x;
     
+    self.currentLeftOffset += offset;
+    
+    if (gesture.state == UIGestureRecognizerStateEnded) {
+        
+        CGFloat velocityX = [gesture velocityInView:self].x;
+        
+        if (velocityX > 0) {
+            [self slidePreMonth];
+        }else{
+            [self slideNextMonth];
+        }
+        
+    }else {
+        [self.currentView mas_updateConstraints:^(MASConstraintMaker *make){
+            
+            make.left.mas_equalTo(self.containerView.mas_left).offset(self.currentLeftOffset);
+            
+        }];
+    }
+    
+}
+
+- (void)slidePreMonth {
+    
+    
+    //TODO<MrLYS>: 即将滑动到上一个月份
+
+    [UIView animateWithDuration:kLYSCalendarAnimateWithDuration
+                     animations:^{
+                         
+                         
+                         [self.currentView mas_updateConstraints:^(MASConstraintMaker *make){
+                             
+                             make.left.mas_equalTo(self.containerView.mas_left).offset(self.containerView.frame.size.width);
+                             
+                         }];
+                         
+                         [self.currentView.superview layoutIfNeeded];
+                         
+                         
+                     } completion:^(BOOL finished) {
+                        
+                         if (finished) {
+                             
+                             self.currentLeftOffset = 0;
+                             
+                             LYSCalendarMonthView * tempCurrent = self.currentView;
+                             
+                             self.currentView = self.preView;
+                             
+                             self.preView = self.nextView;
+                             
+                             self.nextView = tempCurrent;
+                             
+                             [self resetContainerView];
+                             
+                             
+                             self.preView.monthDate = [self.currentView.monthDate offsetMonth:-1];
+                             
+                             self.nextView.monthDate = [self.currentView.monthDate offsetMonth:1];
+                             
+                             //TODO<MrLYS>: 已经滑动到上一个月份
+                         }
+                         
+                     }];
+    
+    
+    
+    
+}
+
+
+- (void)slideNextMonth {
+    
+    //TODO<MrLYS>: 即将滑动到下一个月份
+    
+    [UIView animateWithDuration:kLYSCalendarAnimateWithDuration
+                     animations:^{
+                         
+                         [self.currentView mas_updateConstraints:^(MASConstraintMaker *make){
+                             
+                             make.left.mas_equalTo(self.containerView.mas_left).offset(-self.containerView.frame.size.width);
+                             
+                         }];
+                         
+                         [self.currentView.superview layoutIfNeeded];
+                         
+                         
+                     } completion:^(BOOL finished) {
+                         
+                         if (finished) {
+                             
+                             self.currentLeftOffset = 0;
+                             
+                             LYSCalendarMonthView * tempCurrent = self.currentView;
+                             
+                             self.currentView = self.nextView;
+                             
+                             self.nextView = self.preView;
+                             
+                             self.preView = tempCurrent;
+                             
+                             [self resetContainerView];
+                             
+                             
+                             self.preView.monthDate = [self.currentView.monthDate offsetMonth:-1];
+                             
+                             self.nextView.monthDate = [self.currentView.monthDate offsetMonth:1];
+                             
+                             //TODO<MrLYS>: 已经滑动到下一个月份
+                         }
+                         
+                     }];
+    
+    
+
     
 }
 
@@ -319,21 +449,20 @@
 
 #pragma mark - proprety
 
-- (UIScrollView *)calendarScrollView {
-    
-    if(!_calendarScrollView) {
-        _calendarScrollView = [[UIScrollView alloc] init];
-        
-//        _calendarScrollView.pagingEnabled = YES;
-    }
-    return _calendarScrollView;
-}
-- (UIView *)containerView {
+//- (UIScrollView *)calendarScrollView {
+//    
+//    if(!_calendarScrollView) {
+//        _calendarScrollView = [[UIScrollView alloc] init];
+//        
+////        _calendarScrollView.pagingEnabled = YES;
+//    }
+//    return _calendarScrollView;
+//}
+- (LYSCalendarBase *)containerView {
     
     if(!_containerView) {
-        _containerView = [[UIView alloc] init];
+        _containerView = [[LYSCalendarBase alloc] init];
         
-        _containerView.backgroundColor = [UIColor colorWithRed:.1 green:.2 blue:.3 alpha:.4];
     }
     return _containerView;
 }

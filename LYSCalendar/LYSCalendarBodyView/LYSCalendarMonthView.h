@@ -20,6 +20,9 @@
 @property (nonatomic, strong) NSMutableArray *weekViews; /**< <#explain#> */
 
 
+//TODO<MrLYS>: 时间
+@property (nonatomic, strong) UILabel *simuLabel; /**< <#explain#> */
+
 
 - (void)adjustmentView;
 

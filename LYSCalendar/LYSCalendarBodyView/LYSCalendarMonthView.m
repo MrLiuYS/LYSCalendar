@@ -35,6 +35,9 @@
     
     [self updateMonth];
     
+    
+    self.simuLabel.text = [NSString stringWithFormat:@"%@",monthDate];
+    
 }
 
 -(int)numRows {
@@ -150,14 +153,19 @@
     [self adjustmentView];
     
     
-    
+    [self addSubview:self.simuLabel];
     
     [self makeConstraints];
     
 }
 - (void)makeConstraints {
     
-    
+    [self.simuLabel mas_makeConstraints:^(MASConstraintMaker *make){
+        
+        make.centerX.mas_equalTo(self.mas_centerX);
+        make.centerY.mas_equalTo(self.mas_centerY);
+        
+    }];
     
 }
 
@@ -172,6 +180,13 @@
 }
 
 
+- (UILabel *)simuLabel {
+    
+    if(!_simuLabel) {
+        _simuLabel = [[UILabel alloc] init];
+    }
+    return _simuLabel;
+}
 
 
 @end

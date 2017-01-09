@@ -15,10 +15,27 @@
 {
     self = [super init];
     if (self) {
-        [self initUI];
         [self initData];
+        [self initUI];
     }
     return self;
+}
+
+- (void)initData {
+    
+    [self addObserver:self
+           forKeyPath:@"currentMonth"
+              options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld)
+              context:@"currentMonth"];
+    
+    
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    NSLog(@"old: %@", [change objectForKey:NSKeyValueChangeOldKey]);
+    NSLog(@"new: %@", [change objectForKey:NSKeyValueChangeNewKey]);
+    NSLog(@"context: %@", context);
 }
 
 - (void)initUI {
@@ -71,12 +88,7 @@
     
 }
 
-- (void)initData {
-    
-    
-    
-    
-}
+
 
 
 
