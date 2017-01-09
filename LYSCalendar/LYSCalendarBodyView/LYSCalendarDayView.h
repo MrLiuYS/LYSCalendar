@@ -13,4 +13,10 @@
 @property (nonatomic, strong) UILabel *dayLabel; /**< <#explain#> */
 
 
+
+@property (nonatomic, strong) NSDate *dayDate; /**< 当前日期 */
+
+
+
+
 @end

@@ -9,11 +9,22 @@
 #import "LYSCalendarBase.h"
 
 
-@class LYSCalendarDayView;
+@class LYSCalendarDayView,LYSCalendarMonthView,LYSCalendarWeekView;
+
+
+@protocol LYSCalendarMonthViewDelegate <NSObject>
+
+- (void)lysCalendarMonthView:(LYSCalendarMonthView *)monthView
+                    weekView:(LYSCalendarWeekView *)weekView
+                     dayView:(LYSCalendarDayView *)dayView
+                     dayDate:(NSDate *)dayDate;
+
+@end
 
 
 @interface LYSCalendarMonthView : LYSCalendarBase
 
+@property (nonatomic, unsafe_unretained) id<LYSCalendarMonthViewDelegate> delegate; /**< <#explain#> */
 
 @property (nonatomic, strong) NSDate *monthDate; /**< <#explain#> */
 

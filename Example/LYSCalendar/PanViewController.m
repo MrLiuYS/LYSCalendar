@@ -19,10 +19,10 @@
 + (PanViewController *)pushInViewController:(UIViewController *)viewController {
     
     PanViewController * ctrl  = [[PanViewController alloc]init];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{    
+    ctrl.view.backgroundColor = [UIColor whiteColor];
+//    dispatch_async(dispatch_get_main_queue(), ^{    
         [viewController.navigationController pushViewController:ctrl animated:YES];
-    });
+//    });
     
     
     return ctrl;

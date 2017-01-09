@@ -19,12 +19,14 @@
 
 
 - (UIColor *)lys_RandomColor{
+
+    return [self backgroundColor];
     
-    CGFloat red = (CGFloat)arc4random() / 0x100000000;
-    CGFloat green = (CGFloat)arc4random() / 0x100000000;
-    CGFloat blue = (CGFloat)arc4random() / 0x100000000;
-    
-    return [UIColor colorWithRed:red green:green blue:blue alpha:.5f];
+//    CGFloat red = (CGFloat)arc4random() / 0x100000000;
+//    CGFloat green = (CGFloat)arc4random() / 0x100000000;
+//    CGFloat blue = (CGFloat)arc4random() / 0x100000000;
+//    
+//    return [UIColor colorWithRed:red green:green blue:blue alpha:.5f];
 }
 
 

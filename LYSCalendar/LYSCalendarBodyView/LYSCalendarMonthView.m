@@ -41,10 +41,13 @@
 }
 
 -(int)numRows {
+
+    //TODO<MrLYS>: 自动调整行数
+    return 6;
     
-    float lastBlock = [self.monthDate numDaysInMonth]+([self.monthDate firstWeekDayInMonth]);
-    
-    return ceilf(lastBlock/7);
+//    float lastBlock = [self.monthDate numDaysInMonth]+([self.monthDate firstWeekDayInMonth]);
+//    
+//    return ceilf(lastBlock/7);
     
 }
 
@@ -58,20 +61,27 @@
     
     int numBlocks = numRows * 7;
     
-    NSDate *previousMonth = [self.monthDate offsetMonth:-1];
+    NSDate *preMonth = [self.monthDate offsetMonth:-1];
     
-    int prevMonthNumDays = [previousMonth numDaysInMonth];
+    NSDate *nextMonth = [self.monthDate offsetMonth:1];
+    
+    int prevMonthNumDays = [preMonth numDaysInMonth];
     
     
     for (int i=0; i<numBlocks; i++) {
         
+        LYSCalendarWeekView * weekView = (LYSCalendarWeekView*)self.weekViews[i/7];
+        
+        LYSCalendarDayView * dayView = (LYSCalendarDayView*)weekView.dayViews[i%7];
+        
         int targetDate = i;
         
-        // BOOL isCurrentMonth = NO;
         if (i<firstWeekDay) {
             
             //上个月份
             targetDate = (prevMonthNumDays-firstWeekDay)+(i+1);
+            
+            dayView.dayDate = [preMonth lys_DateResetDayInt:targetDate];
             
             
         } else if (i>=(firstWeekDay+currentMonthNumDays)) { //next month
@@ -79,24 +89,41 @@
             //下个月份
             targetDate = (i+1) - (firstWeekDay+currentMonthNumDays);
             
-        } else { //current month
+            dayView.dayDate = [nextMonth lys_DateResetDayInt:targetDate];
+            
+        } else {
             
             //当前月份
-            // isCurrentMonth = YES;
             targetDate = (i-firstWeekDay)+1;
+            
+            dayView.dayDate = [self.monthDate lys_DateResetDayInt:targetDate];
             
         }
         
-        NSString *date = [NSString stringWithFormat:@"%i",targetDate];
+        [self lysCalendarMonthView:self
+                          weekView:weekView
+                           dayView:dayView
+                           dayDate:dayView.dayDate];
         
-        LYSCalendarWeekView * weekView = (LYSCalendarWeekView*)self.weekViews[i/7];
+    }
+    
+    
+}
+
+- (void)lysCalendarMonthView:(LYSCalendarMonthView *)monthView
+                    weekView:(LYSCalendarWeekView *)weekView
+                     dayView:(LYSCalendarDayView *)dayView
+                     dayDate:(NSDate *)dayDate {
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lysCalendarMonthView:weekView:dayView:dayDate:)]) {
         
-        LYSCalendarDayView * dayView = (LYSCalendarDayView*)weekView.dayViews[i%7];
+        [self.delegate lysCalendarMonthView:self
+                                   weekView:weekView
+                                    dayView:dayView
+                                    dayDate:dayDate];
+    }else {
         
-        
-        dayView.dayLabel.text = date;
-        
-        
+        dayView.dayLabel.text = [NSString stringWithFormat:@"%ld",(long)[dayDate lys_day]];
         
     }
     
