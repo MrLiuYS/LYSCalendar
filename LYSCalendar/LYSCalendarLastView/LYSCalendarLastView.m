@@ -11,10 +11,12 @@
 @implementation LYSCalendarLastView
 
 
-- (instancetype)init
+- (instancetype)initCalendar:(LYSCalendar *)calendar
 {
     self = [super init];
     if (self) {
+        
+        self.calendar = calendar;
         
         [self initData];
         [self initUI];
@@ -48,7 +50,7 @@
     
     CGFloat bodyHeight = CGRectGetMaxY(self.calendar.bodyView.frame);
     
-    CGFloat height = kLYSCalendarLastHeight;
+    CGFloat height = [self.calendar lys_CalendarLastViewHeight];
     
     CGFloat offset = (calHeight - bodyHeight) - height ;
 

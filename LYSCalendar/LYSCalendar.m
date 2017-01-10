@@ -15,6 +15,8 @@
     
     [self.headerView lys_reloadHeaderView];
     
+    [self.bodyView updateMonth:self.currentMonth];
+    
 }
 
 /**
@@ -150,10 +152,11 @@
 }
 
 
-- (instancetype)init
+- (instancetype)initDelegate:(id)delegate
 {
     self = [super init];
     if (self) {
+        self.delegate = delegate;
         [self initData];
         [self initUI];
     }
@@ -176,7 +179,12 @@
     NSLog(@"new: %@", [change objectForKey:NSKeyValueChangeNewKey]);
     NSLog(@"context: %@", context);
     
-    [self lys_reloadCalendar];
+    if ([change objectForKey:NSKeyValueChangeOldKey] != [change objectForKey:NSKeyValueChangeNewKey]) {
+        
+        [self lys_reloadCalendar];
+    }
+    
+    
     
 }
 
@@ -231,12 +239,12 @@
     
 }
 
-- (void)setCurrentMonth:(NSDate *)currentMonth {
-    
-    _currentMonth = currentMonth;
-    
-    [self.bodyView updateMonth:currentMonth];
-}
+//- (void)setCurrentMonth:(NSDate *)currentMonth {
+//    
+//    _currentMonth = currentMonth;
+//    
+//    [self.bodyView updateMonth:currentMonth];
+//}
 
 - (void)panGestureRecognizer:(UIPanGestureRecognizer *)gesture {
     

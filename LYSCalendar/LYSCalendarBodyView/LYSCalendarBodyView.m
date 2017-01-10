@@ -32,6 +32,8 @@
 
 - (void)updateMonth:(NSDate *)month {
     
+    self.calendar.currentMonth = month;
+    
     self.currentView.monthDate = month;
     
     self.preView.monthDate = [self.currentView.monthDate offsetMonth:-1];
@@ -271,11 +273,15 @@
                              [self resetContainerView];
                              
                              
-                             self.preView.monthDate = [self.currentView.monthDate offsetMonth:-1];
                              
-                             self.nextView.monthDate = [self.currentView.monthDate offsetMonth:1];
+                             [self updateMonth:self.currentView.monthDate];
                              
-                             //TODO<MrLYS>: 已经滑动到上一个月份
+//                             self.preView.monthDate = [self.currentView.monthDate offsetMonth:-1];
+//                             
+//                             self.nextView.monthDate = [self.currentView.monthDate offsetMonth:1];
+//                             
+//                             //TODO<MrLYS>: 已经滑动到上一个月份
+                             
                          }
                          
                      }];
@@ -318,12 +324,7 @@
                              
                              [self resetContainerView];
                              
-                             
-                             self.preView.monthDate = [self.currentView.monthDate offsetMonth:-1];
-                             
-                             self.nextView.monthDate = [self.currentView.monthDate offsetMonth:1];
-                             
-                             //TODO<MrLYS>: 已经滑动到下一个月份
+                             [self updateMonth:self.currentView.monthDate];
                          }
                          
                      }];
@@ -467,24 +468,21 @@
 - (LYSCalendarMonthView *)preView {
     
     if(!_preView) {
-        _preView = [[LYSCalendarMonthView alloc] init];
-        _preView.backgroundColor = [UIColor greenColor];
+        _preView = [[LYSCalendarMonthView alloc] initCalendar:self.calendar];
     }
     return _preView;
 }
 - (LYSCalendarMonthView *)currentView {
     
     if(!_currentView) {
-        _currentView = [[LYSCalendarMonthView alloc] init];
-        _currentView.backgroundColor = [UIColor yellowColor];
+        _currentView = [[LYSCalendarMonthView alloc] initCalendar:self.calendar];
     }
     return _currentView;
 }
 - (LYSCalendarMonthView *)nextView {
     
     if(!_nextView) {
-        _nextView = [[LYSCalendarMonthView alloc] init];
-        _nextView.backgroundColor = [UIColor redColor];
+        _nextView = [[LYSCalendarMonthView alloc] initCalendar:self.calendar];
     }
     return _nextView;
 }

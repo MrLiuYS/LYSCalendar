@@ -12,11 +12,13 @@
 
 @property (nonatomic, assign) CGFloat topOffset; /**< 顶部偏移量 */
 
-@property (nonatomic, strong) LYSCalendar * calendar;
+@property (nonatomic, assign) LYSCalendar * calendar;
 
 @property (nonatomic, assign) CGFloat topOffsetMax; /**< <#explain#> */
 @property (nonatomic, assign) CGFloat topOffsetMin; /**< <#explain#> */
 
+
+- (instancetype)initCalendar:(LYSCalendar *)calendar;
 
 
 - (void)panGestureRecognizer:(UIPanGestureRecognizer *)gesture;

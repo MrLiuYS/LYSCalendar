@@ -43,9 +43,6 @@
     
     [self updateMonth];
     
-    
-    self.simuLabel.text = [NSString stringWithFormat:@"%@",monthDate];
-    
 }
 
 -(int)numRows {
@@ -141,7 +138,7 @@
 
 
 
-- (instancetype)init
+- (instancetype)initCalendar:(LYSCalendar *)calendar
 {
     self = [super init];
     if (self) {
@@ -188,19 +185,13 @@
     [self adjustmentView];
     
     
-    [self addSubview:self.simuLabel];
     
     [self makeConstraints];
     
 }
 - (void)makeConstraints {
     
-    [self.simuLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        
-        make.centerX.mas_equalTo(self.mas_centerX);
-        make.centerY.mas_equalTo(self.mas_centerY);
-        
-    }];
+
     
 }
 
@@ -212,15 +203,6 @@
         _weekViews = [[NSMutableArray alloc] init];
     }
     return _weekViews;
-}
-
-
-- (UILabel *)simuLabel {
-    
-    if(!_simuLabel) {
-        _simuLabel = [[UILabel alloc] init];
-    }
-    return _simuLabel;
 }
 
 

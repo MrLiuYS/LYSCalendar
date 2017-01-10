@@ -113,6 +113,9 @@
 @property (nonatomic, strong) NSDate *selectDayDate; /**< 选中的日期 */
 
 
+- (instancetype)initDelegate:(id)delegate;
+
+
 - (BOOL)lys_CalendarPanGesture;
 
 - (void)lys_CalendarHeaderView:(LYSCalendarHeaderView *)headerView;

@@ -36,9 +36,8 @@
     // Do any additional setup after loading the view.
     
     
-    LYSCalendar * calendar = [[LYSCalendar alloc]init];
+    LYSCalendar * calendar = [[LYSCalendar alloc]initDelegate:self];
     
-    calendar.delegate = self;
     
     calendar.currentMonth = [NSDate date];
     
@@ -54,6 +53,12 @@
     
 }
 
+
+
+- (CGFloat)lys_CalendarLastViewHeight:(LYSCalendar *)calendar{
+    
+    return 500;
+}
 
 
 - (UILabel *)yearTitleLabel {
