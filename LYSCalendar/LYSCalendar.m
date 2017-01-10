@@ -9,7 +9,7 @@
 
 #import "LYSCalendarHeader.h"
 
-@implementation LYSCalendarView
+@implementation LYSCalendar
 
 - (instancetype)init
 {

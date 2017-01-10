@@ -15,7 +15,7 @@
 
 #import "LYSCalendarBase.h"
 
-@class LYSCalendarHeaderYearView,LYSCalendarHeaderWeekView,LYSCalendarView;
+@class LYSCalendarHeaderYearView,LYSCalendarHeaderWeekView,LYSCalendar;
 
 @interface LYSCalendarHeaderView : LYSCalendarBase
 
@@ -23,7 +23,7 @@
 @property (nonatomic, strong) LYSCalendarHeaderYearView *yearView; /**< 年份 */
 @property (nonatomic, strong) LYSCalendarHeaderWeekView *weekView; /**< 周标题 */
 
-@property (nonatomic, strong) LYSCalendarView * calendar;
+@property (nonatomic, strong) LYSCalendar * calendar;
 
 
 

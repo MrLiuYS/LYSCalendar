@@ -13,7 +13,15 @@
 
 @class LYSCalendarHeaderView,LYSCalendarBodyView,LYSCalendarLastView,LYSCalendarDeploy;
 
-@interface LYSCalendarView : LYSCalendarBase <UIGestureRecognizerDelegate>
+
+//@protocol LYSCalendar <NSObject>
+//
+//
+//
+//@end
+
+
+@interface LYSCalendar : LYSCalendarBase <UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) LYSCalendarHeaderView *headerView; /**< 头部显示年份 */
 
@@ -26,7 +34,7 @@
 
 @property (nonatomic, strong) NSDate *currentMonth; /**< 设置当前月份 */
 
-
+@property (nonatomic, strong) NSDate *selectDayDate; /**< 选中的日期 */
 
 
 @end

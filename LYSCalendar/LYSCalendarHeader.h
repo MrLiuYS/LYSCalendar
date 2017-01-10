@@ -14,7 +14,7 @@
 
 #import <Masonry/Masonry.h>
 
-#import "LYSCalendarView.h"
+#import "LYSCalendar.h"
 
 #import "LYSCalendarHeaderView.h"
 #import "LYSCalendarHeaderYearView.h"

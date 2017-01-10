@@ -34,7 +34,7 @@
     // Do any additional setup after loading the view.
     
     
-    LYSCalendarView * calendar = [[LYSCalendarView alloc]init];
+    LYSCalendar * calendar = [[LYSCalendar alloc]init];
     
     calendar.currentMonth = [NSDate date];
     

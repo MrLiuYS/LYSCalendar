@@ -13,7 +13,7 @@
 		0D14209E1E1F820200EDA7CC /* LYSCalendarMonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D14209D1E1F820200EDA7CC /* LYSCalendarMonthView.m */; };
 		0D1420A11E1F82C700EDA7CC /* UIView+LYS.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1420A01E1F82C700EDA7CC /* UIView+LYS.m */; };
 		0D1420A41E1F869C00EDA7CC /* LYSCalendarDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1420A31E1F869C00EDA7CC /* LYSCalendarDayView.m */; };
-		0D2C8D8A1E1CCA1A00CA51D9 /* LYSCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C8D891E1CCA1A00CA51D9 /* LYSCalendarView.m */; };
+		0D2C8D8A1E1CCA1A00CA51D9 /* LYSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C8D891E1CCA1A00CA51D9 /* LYSCalendar.m */; };
 		0D5DF1941E1CF59C003026A1 /* LYSCalendarDeploy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5DF1931E1CF59C003026A1 /* LYSCalendarDeploy.m */; };
 		0DA00B141E1FD23300D1247B /* NSDate+LYS.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA00B131E1FD23300D1247B /* NSDate+LYS.m */; };
 		0DA00B171E20B9DE00D1247B /* LYSCalendarBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA00B161E20B9DE00D1247B /* LYSCalendarBase.m */; };
@@ -46,8 +46,8 @@
 		0D1420A01E1F82C700EDA7CC /* UIView+LYS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LYS.m"; sourceTree = "<group>"; };
 		0D1420A21E1F869C00EDA7CC /* LYSCalendarDayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSCalendarDayView.h; sourceTree = "<group>"; };
 		0D1420A31E1F869C00EDA7CC /* LYSCalendarDayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSCalendarDayView.m; sourceTree = "<group>"; };
-		0D2C8D881E1CCA1A00CA51D9 /* LYSCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSCalendarView.h; sourceTree = "<group>"; };
-		0D2C8D891E1CCA1A00CA51D9 /* LYSCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSCalendarView.m; sourceTree = "<group>"; };
+		0D2C8D881E1CCA1A00CA51D9 /* LYSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSCalendar.h; sourceTree = "<group>"; };
+		0D2C8D891E1CCA1A00CA51D9 /* LYSCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSCalendar.m; sourceTree = "<group>"; };
 		0D5DF1921E1CF59C003026A1 /* LYSCalendarDeploy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSCalendarDeploy.h; sourceTree = "<group>"; };
 		0D5DF1931E1CF59C003026A1 /* LYSCalendarDeploy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSCalendarDeploy.m; sourceTree = "<group>"; };
 		0DA00B121E1FD23300D1247B /* NSDate+LYS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+LYS.h"; sourceTree = "<group>"; };
@@ -117,8 +117,8 @@
 		0D2C8D871E1CC9FE00CA51D9 /* LYSCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				0D2C8D881E1CCA1A00CA51D9 /* LYSCalendarView.h */,
-				0D2C8D891E1CCA1A00CA51D9 /* LYSCalendarView.m */,
+				0D2C8D881E1CCA1A00CA51D9 /* LYSCalendar.h */,
+				0D2C8D891E1CCA1A00CA51D9 /* LYSCalendar.m */,
 				0D5DF1921E1CF59C003026A1 /* LYSCalendarDeploy.h */,
 				0D5DF1931E1CF59C003026A1 /* LYSCalendarDeploy.m */,
 				0DBB0AF61E1E12850073E607 /* LYSCalendarHeader.h */,
@@ -404,7 +404,7 @@
 				0DB2B2FB1E1CA0E700AD6B75 /* ViewController.m in Sources */,
 				0D1420A41E1F869C00EDA7CC /* LYSCalendarDayView.m in Sources */,
 				0DBB0B101E1E23210073E607 /* LYSCalendarHeaderYearView.m in Sources */,
-				0D2C8D8A1E1CCA1A00CA51D9 /* LYSCalendarView.m in Sources */,
+				0D2C8D8A1E1CCA1A00CA51D9 /* LYSCalendar.m in Sources */,
 				0D14209E1E1F820200EDA7CC /* LYSCalendarMonthView.m in Sources */,
 				0D02FEBD1E21BCAA0077B067 /* PanViewController.m in Sources */,
 				0DB2B2F81E1CA0E700AD6B75 /* AppDelegate.m in Sources */,

@@ -8,7 +8,7 @@
 
 #import "LYSCalendarBase.h"
 
-@class LYSCalendarView;
+@class LYSCalendar;
 
 typedef enum
 {
@@ -24,7 +24,7 @@ LYSCalendarStatu;
 
 @interface LYSCalendarBodyView : LYSCalendarBase
 
-@property (nonatomic, strong) LYSCalendarView * calendar;
+@property (nonatomic, strong) LYSCalendar * calendar;
 
 @property (nonatomic, assign) CGFloat currentHeight; /**< 当前高度 */
 
