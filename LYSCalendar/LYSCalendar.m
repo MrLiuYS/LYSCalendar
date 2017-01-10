@@ -28,7 +28,7 @@
         return [self.delegate lys_CalendarIsAutoRows:self];
     }
     
-    return YES;
+    return NO;
     
 }
 
@@ -120,11 +120,10 @@
 /**
  遍历日历控件的 月 , 周, 天
  */
-- (void)lys_Calendar:(LYSCalendar *)calendar
-          monthView:(LYSCalendarMonthView *)monthView
+- (void)lys_CalendarMonthView:(LYSCalendarMonthView *)monthView
            weekView:(LYSCalendarWeekView *)weekView
             dayView:(LYSCalendarDayView *)dayView
-            dayDate:(LYSCalendarDayView *)dayDate{
+            dayDate:(NSDate *)dayDate{
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(lys_Calendar:monthView:weekView:dayView:dayDate:)]) {
         return [self.delegate lys_Calendar:self
@@ -134,6 +133,8 @@
                                   dayDate:dayDate];
     }
     //TODO<MrLYS>:  遍历日历控件的 月 , 周, 天
+    
+    dayView.dayLabel.text = [NSString stringWithFormat:@"%ld",(long)[dayDate lys_day]];
 }
 
 

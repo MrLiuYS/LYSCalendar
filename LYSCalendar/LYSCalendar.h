@@ -79,7 +79,7 @@
           monthView:(LYSCalendarMonthView *)monthView
            weekView:(LYSCalendarWeekView *)weekView
             dayView:(LYSCalendarDayView *)dayView
-            dayDate:(LYSCalendarDayView *)dayDate;
+            dayDate:(NSDate *)dayDate;
 
 
 #pragma mark - lastView
@@ -140,11 +140,10 @@
 
 - (CGFloat)lys_CalendarBodyDayViewHeight;
 
-- (void)lys_Calendar:(LYSCalendar *)calendar
-          monthView:(LYSCalendarMonthView *)monthView
+- (void)lys_CalendarMonthView:(LYSCalendarMonthView *)monthView
            weekView:(LYSCalendarWeekView *)weekView
             dayView:(LYSCalendarDayView *)dayView
-            dayDate:(LYSCalendarDayView *)dayDate;
+            dayDate:(NSDate *)dayDate;
 
 - (CGFloat)lys_CalendarLastViewHeight;
 

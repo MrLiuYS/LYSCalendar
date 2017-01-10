@@ -52,7 +52,6 @@
     
 }
 
-
 - (instancetype)initCalendar:(LYSCalendar *)calendar;
 {
     self = [super init];
@@ -63,6 +62,7 @@
     }
     return self;
 }
+
 - (void)initData {
     
     

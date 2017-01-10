@@ -47,12 +47,7 @@
 
 -(int)numRows {
 
-    //TODO<MrLYS>: 自动调整行数
     return 6;
-    
-//    float lastBlock = [self.monthDate numDaysInMonth]+([self.monthDate firstWeekDayInMonth]);
-//    
-//    return ceilf(lastBlock/7);
     
 }
 
@@ -105,36 +100,26 @@
             
         }
         
-        [self lysCalendarMonthView:self
-                          weekView:weekView
-                           dayView:dayView
-                           dayDate:dayView.dayDate];
+        [self.calendar lys_CalendarMonthView:self
+                                    weekView:weekView
+                                     dayView:dayView
+                                     dayDate:dayView.dayDate];
+        
         
     }
     
     
 }
 
-- (void)lysCalendarMonthView:(LYSCalendarMonthView *)monthView
-                    weekView:(LYSCalendarWeekView *)weekView
-                     dayView:(LYSCalendarDayView *)dayView
-                     dayDate:(NSDate *)dayDate {
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    CGPoint touchPoint = [touch locationInView:self];
     
-    if (self.delegate && [self.delegate respondsToSelector:@selector(lysCalendarMonthView:weekView:dayView:dayDate:)]) {
-        
-        [self.delegate lysCalendarMonthView:self
-                                   weekView:weekView
-                                    dayView:dayView
-                                    dayDate:dayDate];
-    }else {
-        
-        dayView.dayLabel.text = [NSString stringWithFormat:@"%ld",(long)[dayDate lys_day]];
-        
-    }
+    //TODO<MrLYS>: 判断点在哪个dayview 里面
     
-    
-}
 
+}
 
 
 
