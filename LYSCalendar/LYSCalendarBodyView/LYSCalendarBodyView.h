@@ -19,9 +19,6 @@ typedef enum
 LYSCalendarStatu;
 
 
-
-
-
 @interface LYSCalendarBodyView : LYSCalendarBase
 
 @property (nonatomic, strong) LYSCalendar * calendar;
@@ -34,7 +31,7 @@ LYSCalendarStatu;
 @property (nonatomic, assign) LYSCalendarStatu calendarStatu; /**< <#explain#> */
 
 
-
+- (instancetype)initCalendar:(LYSCalendar *)calendar;
 
 
 

@@ -18,6 +18,14 @@
 
 @implementation LYSCalendarMonthView
 
+- (void)lys_reloadCalendar {
+    
+    
+    
+}
+
+
+
 - (void)adjustmentView {
     
     [self lys_AddAndAliquotsViews:self.weekViews

@@ -10,9 +10,10 @@
 
 @interface LYSCalendarHeaderWeekView : LYSCalendarBase
 
-
+- (instancetype)initCalendar:(LYSCalendar *)calendar;
 
 
 - (void)updateWeekTitleArray:(NSArray *)weekTitles;
+
 
 @end

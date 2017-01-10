@@ -10,7 +10,7 @@
 
 @implementation LYSCalendarHeaderYearView
 
-- (instancetype)init
+- (instancetype)initCalendar:(LYSCalendar *)calendar
 {
     self = [super init];
     if (self) {

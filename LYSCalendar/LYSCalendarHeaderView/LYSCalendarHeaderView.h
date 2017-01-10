@@ -19,12 +19,16 @@
 
 @interface LYSCalendarHeaderView : LYSCalendarBase
 
-
 @property (nonatomic, strong) LYSCalendarHeaderYearView *yearView; /**< 年份 */
 @property (nonatomic, strong) LYSCalendarHeaderWeekView *weekView; /**< 周标题 */
 
 @property (nonatomic, strong) LYSCalendar * calendar;
 
+
+- (instancetype)initCalendar:(LYSCalendar *)calendar;
+
+
+- (void)lys_reloadHeaderView;
 
 
 

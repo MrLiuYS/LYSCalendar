@@ -15,5 +15,6 @@
 @property (nonatomic, strong) UIButton *preMonthBtn; /**< <#explain#> */
 @property (nonatomic, strong) UIButton *nextMonthBtn; /**< <#explain#> */
 
+- (instancetype)initCalendar:(LYSCalendar *)calendar;
 
 @end

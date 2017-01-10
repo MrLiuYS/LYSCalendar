@@ -44,10 +44,11 @@
     
 }
 
-- (instancetype)init
+- (instancetype)initCalendar:(LYSCalendar *)calendar;
 {
     self = [super init];
     if (self) {
+        self.calendar = calendar;
         [self initData];
         [self initUI];
     }
@@ -173,10 +174,10 @@
 #pragma mark - Private method
 
 - (CGFloat)heightMax {
-    return kLYSCalendarBodyCellHeight * kLYSCalendarCellRows;
+    return [self heightMin] * kLYSCalendarCellRows;
 }
 - (CGFloat)heightMin {
-    return kLYSCalendarBodyCellHeight;
+    return [self.calendar lys_CalendarBodyDayViewHeight];
 }
 - (void)panGestureRecognizer:(UIPanGestureRecognizer *)gesture {
     

@@ -238,10 +238,10 @@
 			children = (
 				0DBB0B051E1E23210073E607 /* LYSCalendarHeaderView.h */,
 				0DBB0B061E1E23210073E607 /* LYSCalendarHeaderView.m */,
-				0DBB0B071E1E23210073E607 /* LYSCalendarHeaderWeekView.h */,
-				0DBB0B081E1E23210073E607 /* LYSCalendarHeaderWeekView.m */,
 				0DBB0B091E1E23210073E607 /* LYSCalendarHeaderYearView.h */,
 				0DBB0B0A1E1E23210073E607 /* LYSCalendarHeaderYearView.m */,
+				0DBB0B071E1E23210073E607 /* LYSCalendarHeaderWeekView.h */,
+				0DBB0B081E1E23210073E607 /* LYSCalendarHeaderWeekView.m */,
 			);
 			path = LYSCalendarHeaderView;
 			sourceTree = "<group>";

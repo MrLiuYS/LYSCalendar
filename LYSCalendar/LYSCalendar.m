@@ -11,6 +11,139 @@
 
 @implementation LYSCalendar
 
+- (void)lys_reloadCalendar {
+    
+    
+    
+    
+}
+
+
+/**
+ 当前月份是否可以滑动切换
+ */
+- (BOOL)lys_CalendarPanGesture {
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarPanGesture:)]) {
+        return [self.delegate lys_CalendarPanGesture:self];
+    }
+    
+    return YES;
+}
+
+#pragma mark - headerView
+/**
+ 自定义修改头部视图
+ */
+- (void)lys_CalendarHeaderView:(LYSCalendarHeaderView *)headerView{
+    
+}
+/**
+ 获取header的年份的高度:默认40
+ */
+- (CGFloat)lys_CalendarHeaderYearViewHeight{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarHeaderYearViewHeight)]) {
+        return [self.delegate lys_CalendarHeaderYearViewHeight];
+    }
+    
+    return 40;
+}
+
+/**
+ 自定义头部年份数据
+ */
+- (void)lys_CalendarHeaderYearView:(LYSCalendarHeaderYearView *)yearView{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarHeaderYearView:)]) {
+        return [self.delegate lys_CalendarHeaderYearView:yearView];
+    }
+    //TODO<MrLYS>: 自定义头部年份数据
+}
+
+/**
+ 获取header的周标题的高度:默认:20;
+ */
+- (CGFloat)lys_CalendarHeaderWeekViewHeight{
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarHeaderWeekViewHeight)]) {
+        return [self.delegate lys_CalendarHeaderWeekViewHeight];
+    }
+    
+    return 20;
+}
+
+/**
+ 自定义头部周的视图
+ */
+- (void)lys_CalendarHeaderWeekView:(LYSCalendarHeaderWeekView *)weekView{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarHeaderWeekView:)]) {
+        return [self.delegate lys_CalendarHeaderWeekView:weekView];
+    }
+    //TODO<MrLYS>: 自定义头部周的视图
+    [weekView updateWeekTitleArray:@[@"日",@"一",@"二",@"三",@"四",@"五",@"六"]];
+}
+
+
+#pragma mark - bodyView
+
+/**
+ "天" 高度:默认:50
+ */
+- (CGFloat)lys_CalendarBodyDayViewHeight{
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarBodyDayViewHeight)]) {
+        return [self.delegate lys_CalendarBodyDayViewHeight];
+    }
+    return 50;
+}
+
+/**
+ 遍历日历控件的 月 , 周, 天
+ */
+- (void)lys_Calendar:(LYSCalendar *)calendar
+          monthView:(LYSCalendarMonthView *)monthView
+           weekView:(LYSCalendarWeekView *)weekView
+            dayView:(LYSCalendarDayView *)dayView
+            dayDate:(LYSCalendarDayView *)dayDate{
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_Calendar:monthView:weekView:dayView:dayDate:)]) {
+        return [self.delegate lys_Calendar:self
+                                monthView:monthView
+                                 weekView:weekView
+                                  dayView:dayView
+                                  dayDate:dayDate];
+    }
+    //TODO<MrLYS>:  遍历日历控件的 月 , 周, 天
+}
+
+
+#pragma mark - lastView
+
+
+/**
+ 底部视图的高度:没有配置.默认0;
+ */
+- (CGFloat)lys_CalendarLastViewHeight{
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarLastViewHeight)]) {
+        return [self.delegate lys_CalendarLastViewHeight];
+    }
+    return 0;
+    
+}
+
+
+/**
+ 自定义底部视图
+ */
+- (void)lys_CalendarLastView:(LYSCalendarLastView *)lastView{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarLastView:)]) {
+        return [self.delegate lys_CalendarLastView:lastView];
+    }
+    //TODO<MrLYS>: 自定义底部视图
+    
+}
+
+
 - (instancetype)init
 {
     self = [super init];
@@ -62,7 +195,8 @@
     //TODO<MrLYS>: 布局
     [self.headerView mas_makeConstraints:^(MASConstraintMaker *make){
         make.left.top.right.mas_equalTo(0);
-        make.height.mas_equalTo(kLYSCalendarHeaderWeekHeight + kLYSCalendarHeaderYearHeight);
+        make.height.mas_equalTo([self lys_CalendarHeaderYearViewHeight] +
+                                [self lys_CalendarHeaderWeekViewHeight]);
     }];
     
     
@@ -83,14 +217,10 @@
     [self.lastView mas_makeConstraints:^(MASConstraintMaker *make){
         make.left.right.mas_equalTo(0);
         make.top.mas_equalTo(self.bodyView.mas_bottom);
-        make.height.mas_equalTo(kLYSCalendarLastHeight);
+        make.height.mas_equalTo([self lys_CalendarLastViewHeight]);
     }];
     
 }
-
-
-
-
 
 - (void)setCurrentMonth:(NSDate *)currentMonth {
     
@@ -112,8 +242,7 @@
 - (LYSCalendarHeaderView *)headerView {
     
     if(!_headerView) {
-        _headerView = [[LYSCalendarHeaderView alloc] init];
-        _headerView.calendar = self;
+        _headerView = [[LYSCalendarHeaderView alloc] initCalendar:self];
         
     }
     return _headerView;
@@ -121,7 +250,7 @@
 - (LYSCalendarBodyView *)bodyView {
     
     if(!_bodyView) {
-        _bodyView = [[LYSCalendarBodyView alloc] init];
+        _bodyView = [[LYSCalendarBodyView alloc] initCalendar:self];
         _bodyView.calendar = self;
         
     }

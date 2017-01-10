@@ -40,4 +40,8 @@
 
 - (void)updateMonth;
 
+
+- (void)lys_reloadCalendar;
+
+
 @end

@@ -10,21 +10,21 @@
 
 @implementation LYSCalendarHeaderWeekView
 
-- (instancetype)init
+- (instancetype)initCalendar:(LYSCalendar *)calendar
 {
     self = [super init];
     if (self) {
         
-        [self initData];
+        [self initUICalendar:calendar];
     }
     return self;
 }
-
-- (void)initData {
+- (void)initUICalendar:(LYSCalendar *)calendar {
     
-    [self updateWeekTitleArray:@[@"日",@"一",@"二",@"三",@"四",@"五",@"六"]];
+    [calendar lys_CalendarHeaderWeekView:self];
     
 }
+
 
 - (void)updateWeekTitleArray:(NSArray *)weekTitles {
     
