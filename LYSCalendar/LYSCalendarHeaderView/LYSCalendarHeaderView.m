@@ -103,7 +103,7 @@
 - (LYSCalendarHeaderYearView *)yearView {
     
     if(!_yearView) {
-        _yearView = [[LYSCalendarHeaderYearView alloc] init];
+        _yearView = [[LYSCalendarHeaderYearView alloc] initCalendar:self.calendar];
         
     }
     return _yearView;

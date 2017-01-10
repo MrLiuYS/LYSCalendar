@@ -13,11 +13,9 @@
 
 - (void)lys_reloadCalendar {
     
-    
-    
+    [self.headerView lys_reloadHeaderView];
     
 }
-
 
 /**
  当前月份是否可以滑动切换
@@ -37,13 +35,17 @@
  */
 - (void)lys_CalendarHeaderView:(LYSCalendarHeaderView *)headerView{
     
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_Calendar:headerView:)]) {
+        return [self.delegate lys_Calendar:self headerView:headerView];
+    }
+    
 }
 /**
  获取header的年份的高度:默认40
  */
 - (CGFloat)lys_CalendarHeaderYearViewHeight{
-    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarHeaderYearViewHeight)]) {
-        return [self.delegate lys_CalendarHeaderYearViewHeight];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarHeaderYearViewHeight:)]) {
+        return [self.delegate lys_CalendarHeaderYearViewHeight:self];
     }
     
     return 40;
@@ -53,10 +55,14 @@
  自定义头部年份数据
  */
 - (void)lys_CalendarHeaderYearView:(LYSCalendarHeaderYearView *)yearView{
-    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarHeaderYearView:)]) {
-        return [self.delegate lys_CalendarHeaderYearView:yearView];
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_Calendar:headerYearView:date:)]) {
+        return [self.delegate lys_Calendar:self headerYearView:yearView date:self.currentMonth];
     }
     //TODO<MrLYS>: 自定义头部年份数据
+    
+    [yearView lys_CalendarHeaderYearView:yearView date:self.currentMonth];
+    
 }
 
 /**
@@ -64,8 +70,8 @@
  */
 - (CGFloat)lys_CalendarHeaderWeekViewHeight{
     
-    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarHeaderWeekViewHeight)]) {
-        return [self.delegate lys_CalendarHeaderWeekViewHeight];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarHeaderWeekViewHeight:)]) {
+        return [self.delegate lys_CalendarHeaderWeekViewHeight:self];
     }
     
     return 20;
@@ -75,8 +81,8 @@
  自定义头部周的视图
  */
 - (void)lys_CalendarHeaderWeekView:(LYSCalendarHeaderWeekView *)weekView{
-    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarHeaderWeekView:)]) {
-        return [self.delegate lys_CalendarHeaderWeekView:weekView];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_Calendar:headerWeekView:date:)]) {
+        return [self.delegate lys_Calendar:self headerWeekView:weekView date:self.currentMonth];
     }
     //TODO<MrLYS>: 自定义头部周的视图
     [weekView updateWeekTitleArray:@[@"日",@"一",@"二",@"三",@"四",@"五",@"六"]];
@@ -90,8 +96,8 @@
  */
 - (CGFloat)lys_CalendarBodyDayViewHeight{
     
-    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarBodyDayViewHeight)]) {
-        return [self.delegate lys_CalendarBodyDayViewHeight];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarBodyDayViewHeight:)]) {
+        return [self.delegate lys_CalendarBodyDayViewHeight:self];
     }
     return 50;
 }
@@ -124,8 +130,8 @@
  */
 - (CGFloat)lys_CalendarLastViewHeight{
     
-    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarLastViewHeight)]) {
-        return [self.delegate lys_CalendarLastViewHeight];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarLastViewHeight:)]) {
+        return [self.delegate lys_CalendarLastViewHeight:self];
     }
     return 0;
     
@@ -136,8 +142,8 @@
  自定义底部视图
  */
 - (void)lys_CalendarLastView:(LYSCalendarLastView *)lastView{
-    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarLastView:)]) {
-        return [self.delegate lys_CalendarLastView:lastView];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_Calendar:lastView:)]) {
+        return [self.delegate lys_Calendar:self lastView:lastView];
     }
     //TODO<MrLYS>: 自定义底部视图
     
@@ -169,6 +175,9 @@
     NSLog(@"old: %@", [change objectForKey:NSKeyValueChangeOldKey]);
     NSLog(@"new: %@", [change objectForKey:NSKeyValueChangeNewKey]);
     NSLog(@"context: %@", context);
+    
+    [self lys_reloadCalendar];
+    
 }
 
 - (void)initUI {

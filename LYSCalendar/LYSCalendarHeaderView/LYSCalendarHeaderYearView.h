@@ -10,11 +10,11 @@
 
 @interface LYSCalendarHeaderYearView : LYSCalendarBase
 
-@property (nonatomic, strong) UILabel *yearLabel; /**< 年份 */
-
-@property (nonatomic, strong) UIButton *preMonthBtn; /**< <#explain#> */
-@property (nonatomic, strong) UIButton *nextMonthBtn; /**< <#explain#> */
 
 - (instancetype)initCalendar:(LYSCalendar *)calendar;
+
+
+- (void)lys_CalendarHeaderYearView:(LYSCalendarHeaderYearView *)yearView date:(NSDate *)date;
+
 
 @end

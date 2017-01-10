@@ -10,7 +10,9 @@
 
 #import "LYSCalendarHeader.h"
 
-@interface PanViewController ()
+@interface PanViewController ()<LYSCalendarDelegate>
+
+@property (nonatomic, strong) UILabel *yearTitleLabel; /**< <#explain#> */
 
 @end
 
@@ -36,6 +38,8 @@
     
     LYSCalendar * calendar = [[LYSCalendar alloc]init];
     
+    calendar.delegate = self;
+    
     calendar.currentMonth = [NSDate date];
     
     calendar.backgroundColor = [UIColor redColor];
@@ -50,19 +54,14 @@
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (UILabel *)yearTitleLabel {
+    
+    if(!_yearTitleLabel) {
+        _yearTitleLabel = [[UILabel alloc] init];
+    }
+    return _yearTitleLabel;
 }
-*/
 
 @end

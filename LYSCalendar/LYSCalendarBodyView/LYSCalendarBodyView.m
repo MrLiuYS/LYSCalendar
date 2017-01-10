@@ -30,13 +30,9 @@
 
 @implementation LYSCalendarBodyView
 
-
 - (void)updateMonth:(NSDate *)month {
     
-    
     self.currentView.monthDate = month;
-    
-//    [self.currentView updateMonth];
     
     self.preView.monthDate = [self.currentView.monthDate offsetMonth:-1];
     

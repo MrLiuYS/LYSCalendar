@@ -32,26 +32,30 @@
 /**
  自定义修改头部视图
  */
-- (void)lys_CalendarHeaderView:(LYSCalendarHeaderView *)headerView;
+- (void)lys_Calendar:(LYSCalendar *)calendar headerView:(LYSCalendarHeaderView *)headerView;
 /**
  获取header的年份的高度:默认40
  */
-- (CGFloat)lys_CalendarHeaderYearViewHeight;
+- (CGFloat)lys_CalendarHeaderYearViewHeight:(LYSCalendar *)calendar;
 
 /**
  自定义头部年份数据
  */
-- (void)lys_CalendarHeaderYearView:(LYSCalendarHeaderYearView *)yearView;
+- (void)lys_Calendar:(LYSCalendar *)calendar
+      headerYearView:(LYSCalendarHeaderYearView *)yearView
+                date:(NSDate *)date;
 
 /**
  获取header的周标题的高度:默认:20;
  */
-- (CGFloat)lys_CalendarHeaderWeekViewHeight;
+- (CGFloat)lys_CalendarHeaderWeekViewHeight:(LYSCalendar *)calendar;
 
 /**
  自定义头部周的视图
  */
-- (void)lys_CalendarHeaderWeekView:(LYSCalendarHeaderWeekView *)weekView;
+- (void)lys_Calendar:(LYSCalendar *)calendar
+      headerWeekView:(LYSCalendarHeaderWeekView *)weekView
+                date:(NSDate *)date;
 
 
 #pragma mark - bodyView
@@ -59,7 +63,7 @@
 /**
  "天" 高度:默认:50
  */
-- (CGFloat)lys_CalendarBodyDayViewHeight;
+- (CGFloat)lys_CalendarBodyDayViewHeight:(LYSCalendar *)calendar;
 
 /**
  遍历日历控件的 月 , 周, 天
@@ -77,13 +81,13 @@
 /**
  底部视图的高度:没有配置.默认0;
  */
-- (CGFloat)lys_CalendarLastViewHeight;
+- (CGFloat)lys_CalendarLastViewHeight:(LYSCalendar *)calendar;
 
 
 /**
  自定义底部视图
  */
-- (void)lys_CalendarLastView:(LYSCalendarLastView *)lastView;
+- (void)lys_Calendar:(LYSCalendar *)calendar lastView:(LYSCalendarLastView *)lastView;
 
 
 
