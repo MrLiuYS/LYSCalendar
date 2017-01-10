@@ -142,6 +142,7 @@
 {
     self = [super init];
     if (self) {
+        self.calendar = calendar;
         [self initData];
         [self initUI];
     }
@@ -169,23 +170,14 @@
             
         }
         
-        
-        
-        
         [weekView adjustmentView];
         
         [self.weekViews addObject:weekView];
         
     }
     
-    
-    
-    
-    
     [self adjustmentView];
-    
-    
-    
+
     [self makeConstraints];
     
 }

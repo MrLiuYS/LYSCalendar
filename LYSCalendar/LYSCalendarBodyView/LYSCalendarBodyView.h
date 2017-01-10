@@ -33,6 +33,8 @@ LYSCalendarStatu;
 
 - (instancetype)initCalendar:(LYSCalendar *)calendar;
 
+- (void)lys_reloadBodyView;
+
 
 
 - (void)clickPreMonthBtn:(UIButton *)sender;

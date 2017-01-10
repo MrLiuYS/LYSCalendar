@@ -28,6 +28,13 @@
  */
 - (BOOL)lys_CalendarPanGesture:(LYSCalendar *)calendar;
 
+
+/**
+ 是否开启动态行数.默认:NO
+ */
+- (BOOL)lys_CalendarIsAutoRows:(LYSCalendar *)calendar;
+
+
 #pragma mark - headerView
 /**
  自定义修改头部视图
@@ -115,6 +122,9 @@
 
 - (instancetype)initDelegate:(id)delegate;
 
+
+
+- (BOOL)lys_CalendarIsAutoRows;
 
 - (BOOL)lys_CalendarPanGesture;
 

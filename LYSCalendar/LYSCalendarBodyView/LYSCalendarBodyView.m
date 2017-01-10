@@ -32,6 +32,8 @@
 
 - (void)updateMonth:(NSDate *)month {
     
+    NSLog(@"%s",__func__);
+    
     self.calendar.currentMonth = month;
     
     self.currentView.monthDate = month;
@@ -40,7 +42,16 @@
     
     self.nextView.monthDate = [self.currentView.monthDate offsetMonth:1];
     
+    [self updateHeight:self.heightMax];
+    
 }
+
+- (void)lys_reloadBodyView{
+    
+    
+    
+}
+
 
 - (instancetype)initCalendar:(LYSCalendar *)calendar;
 {
@@ -55,12 +66,6 @@
 - (void)initData {
     
     
-//    [self addObserver:self
-//           forKeyPath:@"currentLeftOffset"
-//              options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld)
-//              context:@"currentLeftOffset"];
-    
-    
     self.currentLeftOffset  = 0;
 
     self.clipsToBounds = YES;
@@ -73,13 +78,6 @@
 
 - (void)initUI {
     
-//    [self addSubview:self.calendarScrollView];
-//    
-//    [self.calendarScrollView addSubview:self.containerView];
-//    
-//    [self.containerView addSubview:self.preView];
-//    [self.containerView addSubview:self.nextView];
-//    [self.containerView addSubview:self.currentView];
 
     [self addSubview:self.containerView];
     
@@ -124,7 +122,8 @@
     [self.currentView mas_remakeConstraints:^(MASConstraintMaker *make){
         
         make.left.top.mas_equalTo(0);
-        make.height.mas_equalTo(self.heightMax);
+        //TODO<MrLYS>: 月份的高度
+        make.height.mas_equalTo([self heightMin] * 6);
         make.width.mas_equalTo(self.containerView.mas_width);
     }];
     
@@ -171,8 +170,19 @@
 
 #pragma mark - Private method
 
+-(int)numRows {
+
+    if ([self.calendar lys_CalendarIsAutoRows]) {
+        float lastBlock = [self.calendar.currentMonth numDaysInMonth]+([self.calendar.currentMonth firstWeekDayInMonth]);
+        return ceilf(lastBlock/7);
+    }
+    //TODO<MrLYS>: 自动调整行数
+    return 6;
+    
+}
+
 - (CGFloat)heightMax {
-    return [self heightMin] * kLYSCalendarCellRows;
+    return [self heightMin] * [self numRows];
 }
 - (CGFloat)heightMin {
     return [self.calendar lys_CalendarBodyDayViewHeight];

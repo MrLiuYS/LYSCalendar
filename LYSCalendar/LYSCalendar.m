@@ -20,6 +20,19 @@
 }
 
 /**
+ 是否开启动态行数.默认:YES
+ */
+- (BOOL)lys_CalendarIsAutoRows {
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarIsAutoRows:)]) {
+        return [self.delegate lys_CalendarIsAutoRows:self];
+    }
+    
+    return YES;
+    
+}
+
+/**
  当前月份是否可以滑动切换
  */
 - (BOOL)lys_CalendarPanGesture {
