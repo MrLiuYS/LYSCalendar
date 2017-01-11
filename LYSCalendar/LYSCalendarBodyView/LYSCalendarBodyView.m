@@ -21,8 +21,9 @@
 @property (nonatomic, assign) BOOL isPanVertical; /**< 竖直滚动 */
 
 @property (nonatomic, assign) CGFloat currentLeftOffset; /**< 当前月份偏移距离 */
+@property (nonatomic, assign) CGFloat currentTopOffset; /**< <#explain#> */
 
-
+@property (nonatomic, assign) LYSCalendarWeekView * selectWeekView; /**< 选中的weekView */
 
 
 @end
@@ -31,8 +32,6 @@
 @implementation LYSCalendarBodyView
 
 - (void)updateMonth:(NSDate *)month {
-    
-    NSLog(@"%s",__func__);
     
     self.calendar.currentMonth = month;
     
@@ -67,6 +66,7 @@
     
     
     self.currentLeftOffset  = 0;
+    self.currentTopOffset = 0;
 
     self.clipsToBounds = YES;
     
@@ -117,13 +117,19 @@
     
 
 }
+
+
+
+
 - (void)resetContainerView {
     
     [self.currentView mas_remakeConstraints:^(MASConstraintMaker *make){
         
-        make.left.top.mas_equalTo(0);
+        make.left.mas_equalTo(0);
+        make.bottom.mas_lessThanOrEqualTo(0).priorityMedium();
+//        make.centerY.mas_equalTo(self.containerView.mas_centerY);
         //TODO<MrLYS>: 月份的高度
-        make.height.mas_equalTo([self heightMin] * 6);
+        make.height.mas_equalTo([self heightMin] * 6).priorityHigh();
         make.width.mas_equalTo(self.containerView.mas_width);
     }];
     
@@ -187,6 +193,14 @@
 - (CGFloat)heightMin {
     return [self.calendar lys_CalendarBodyDayViewHeight];
 }
+
+- (CGFloat)selectTopMin {
+    
+    return -100;
+    
+}
+
+
 - (void)panGestureRecognizer:(UIPanGestureRecognizer *)gesture {
     
     CGPoint translation = [gesture translationInView:self];
@@ -377,6 +391,8 @@
             
             if (gesture.state == UIGestureRecognizerStateEnded) {
                 
+                self.currentTopOffset = 0;
+                
                 if (self.calendar.lastView.topOffset == 0) {
                     
                     CGFloat velocityY = [gesture velocityInView:self].y;
@@ -390,6 +406,25 @@
                 }
                 
             }else {
+                
+                if (gesture.state == UIGestureRecognizerStateBegan) {
+                    DLog(@"UIGestureRecognizerStateBegan");
+                    
+                    self.selectWeekView = [self.currentView searchWeekViewFromDate:self.calendar.selectDate];
+                    
+                    
+                    if (self.selectWeekView) {
+                        
+                        [self.currentView mas_updateConstraints:^(MASConstraintMaker *make){
+                            
+                            make.top.mas_greaterThanOrEqualTo(-self.selectWeekView.frame.origin.y);
+                            
+                        }];
+                        
+                    }
+                    
+                    
+                }
                 
                 [self updateHeight:tempHeight];
             }
@@ -451,7 +486,6 @@
         make.height.mas_equalTo(self.currentHeight);
         
     }];
-    
 }
 
 

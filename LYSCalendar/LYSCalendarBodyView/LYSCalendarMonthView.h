@@ -45,4 +45,7 @@
 - (void)lys_reloadCalendar;
 
 
+- (LYSCalendarWeekView *)searchWeekViewFromDate:(NSDate *)date;
+
+
 @end

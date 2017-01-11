@@ -121,20 +121,43 @@
  遍历日历控件的 月 , 周, 天
  */
 - (void)lys_CalendarMonthView:(LYSCalendarMonthView *)monthView
-           weekView:(LYSCalendarWeekView *)weekView
-            dayView:(LYSCalendarDayView *)dayView
-            dayDate:(NSDate *)dayDate{
+                     weekView:(LYSCalendarWeekView *)weekView
+                      dayView:(LYSCalendarDayView *)dayView
+                      dayDate:(NSDate *)dayDate{
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(lys_Calendar:monthView:weekView:dayView:dayDate:)]) {
         return [self.delegate lys_Calendar:self
-                                monthView:monthView
-                                 weekView:weekView
-                                  dayView:dayView
-                                  dayDate:dayDate];
+                                 monthView:monthView
+                                  weekView:weekView
+                                   dayView:dayView
+                                   dayDate:dayDate];
     }
     //TODO<MrLYS>:  遍历日历控件的 月 , 周, 天
     
     dayView.dayLabel.text = [NSString stringWithFormat:@"%ld",(long)[dayDate lys_day]];
+}
+
+- (void)lys_CalendarDidSelectMonthView:(LYSCalendarMonthView *)monthView
+            weekView:(LYSCalendarWeekView *)weekView
+             dayView:(LYSCalendarDayView *)dayView
+             dayDate:(NSDate *)dayDate {
+    
+    self.selectDate = dayDate;
+    
+    
+    [monthView searchWeekViewFromDate:dayDate];
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_Calendar:didSelectMonthView:weekView:dayView:dayDate:)]) {
+        return [self.delegate lys_Calendar:self
+                        didSelectMonthView:monthView
+                                  weekView:weekView
+                                   dayView:dayView
+                                   dayDate:dayDate];
+    }
+    //TODO<MrLYS>:  选中的天数
+    
+    
+    
 }
 
 
@@ -189,9 +212,9 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    NSLog(@"old: %@", [change objectForKey:NSKeyValueChangeOldKey]);
-    NSLog(@"new: %@", [change objectForKey:NSKeyValueChangeNewKey]);
-    NSLog(@"context: %@", context);
+    DLog(@"old: %@", [change objectForKey:NSKeyValueChangeOldKey]);
+    DLog(@"new: %@", [change objectForKey:NSKeyValueChangeNewKey]);
+    DLog(@"context: %@", context);
     
     if ([change objectForKey:NSKeyValueChangeOldKey] != [change objectForKey:NSKeyValueChangeNewKey]) {
         
@@ -231,14 +254,14 @@
     }];
     
     
-//TODO<MrLYS>: 测试
-//    [self.bodyView mas_makeConstraints:^(MASConstraintMaker *make){
-//        make.width.mas_equalTo (100);
-//        make.centerX.mas_equalTo(self.headerView.mas_centerX);
-//        make.top.mas_equalTo(self.headerView.mas_bottom);
-//        make.height.mas_equalTo(self.bodyView.heightMax);
-//    }];
-
+    //TODO<MrLYS>: 测试
+    //    [self.bodyView mas_makeConstraints:^(MASConstraintMaker *make){
+    //        make.width.mas_equalTo (100);
+    //        make.centerX.mas_equalTo(self.headerView.mas_centerX);
+    //        make.top.mas_equalTo(self.headerView.mas_bottom);
+    //        make.height.mas_equalTo(self.bodyView.heightMax);
+    //    }];
+    
     [self.bodyView mas_makeConstraints:^(MASConstraintMaker *make){
         make.left.right.mas_equalTo(0);
         make.top.mas_equalTo(self.headerView.mas_bottom);
@@ -254,9 +277,9 @@
 }
 
 //- (void)setCurrentMonth:(NSDate *)currentMonth {
-//    
+//
 //    _currentMonth = currentMonth;
-//    
+//
 //    [self.bodyView updateMonth:currentMonth];
 //}
 

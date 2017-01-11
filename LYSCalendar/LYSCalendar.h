@@ -23,7 +23,7 @@
 
 /**
  当前月份是否可以滑动切换
-
+ 
  @param calendar 日期控件
  */
 - (BOOL)lys_CalendarPanGesture:(LYSCalendar *)calendar;
@@ -76,10 +76,20 @@
  遍历日历控件的 月 , 周, 天
  */
 - (void)lys_Calendar:(LYSCalendar *)calendar
-          monthView:(LYSCalendarMonthView *)monthView
-           weekView:(LYSCalendarWeekView *)weekView
-            dayView:(LYSCalendarDayView *)dayView
-            dayDate:(NSDate *)dayDate;
+           monthView:(LYSCalendarMonthView *)monthView
+            weekView:(LYSCalendarWeekView *)weekView
+             dayView:(LYSCalendarDayView *)dayView
+             dayDate:(NSDate *)dayDate;
+
+
+/**
+ 选中的"天"
+ */
+- (void)lys_Calendar:(LYSCalendar *)calendar
+  didSelectMonthView:(LYSCalendarMonthView *)monthView
+            weekView:(LYSCalendarWeekView *)weekView
+             dayView:(LYSCalendarDayView *)dayView
+             dayDate:(NSDate *)dayDate;
 
 
 #pragma mark - lastView
@@ -117,7 +127,7 @@
 
 @property (nonatomic, strong) NSDate *currentMonth; /**< 设置当前月份 */
 
-@property (nonatomic, strong) NSDate *selectDayDate; /**< 选中的日期 */
+@property (nonatomic, strong) NSDate *selectDate; /**< 选中的日期 */
 
 
 - (instancetype)initDelegate:(id)delegate;
@@ -141,9 +151,14 @@
 - (CGFloat)lys_CalendarBodyDayViewHeight;
 
 - (void)lys_CalendarMonthView:(LYSCalendarMonthView *)monthView
-           weekView:(LYSCalendarWeekView *)weekView
-            dayView:(LYSCalendarDayView *)dayView
-            dayDate:(NSDate *)dayDate;
+                     weekView:(LYSCalendarWeekView *)weekView
+                      dayView:(LYSCalendarDayView *)dayView
+                      dayDate:(NSDate *)dayDate;
+
+- (void)lys_CalendarDidSelectMonthView:(LYSCalendarMonthView *)monthView
+                              weekView:(LYSCalendarWeekView *)weekView
+                               dayView:(LYSCalendarDayView *)dayView
+                               dayDate:(NSDate *)dayDate;
 
 - (CGFloat)lys_CalendarLastViewHeight;
 

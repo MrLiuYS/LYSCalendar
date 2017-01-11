@@ -60,9 +60,6 @@
     NSRange rng = [cal rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:self];
     NSUInteger numberOfDaysInMonth = rng.length;
     
-    
-    NSLog(@"%@-%lu",self,(unsigned long)numberOfDaysInMonth);
-    
     return (int)numberOfDaysInMonth;
 }
 
@@ -105,6 +102,34 @@
 - (NSInteger)lys_second {
     
     return [self lys_components].second;
+}
+
+
+- (NSDateComponents *)intervalToDate:(NSDate *)date
+{
+    // 日历对象
+    NSCalendar *calendar = [NSDate lys_Calendar];
+    
+    // 想比较哪些元素
+    NSCalendarUnit unit = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
+    
+    // 比较
+    return [calendar components:unit fromDate:self toDate:date options:0];
+}
+
+- (NSDateComponents *)intervalToNow
+{
+    return [self intervalToDate:[NSDate date]];
+}
+
+- (BOOL)lys_CompartYear_Month_Day:(NSDate *)date {
+    
+    NSDateComponents * compon = [self intervalToDate:date];
+    
+    if (compon.year == 0 && compon.month == 0 && compon.day == 0) {
+        return YES;
+    }
+    return NO;
 }
 
 

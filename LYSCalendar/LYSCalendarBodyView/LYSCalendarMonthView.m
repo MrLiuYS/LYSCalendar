@@ -18,6 +18,26 @@
 
 @implementation LYSCalendarMonthView
 
+
+/**
+ 通过时间找到行数
+ */
+- (LYSCalendarWeekView *)searchWeekViewFromDate:(NSDate *)date {
+    
+    if (!date) {
+        return nil;
+    }
+    
+    for (LYSCalendarWeekView * weekView in self.weekViews) {
+        for (LYSCalendarDayView * dayView in weekView.dayViews) {
+            if ([dayView.dayDate lys_CompartYear_Month_Day:date]) {
+                return weekView;
+            }
+        }
+    }
+    return nil;
+}
+
 - (void)lys_reloadCalendar {
     
     
@@ -116,8 +136,21 @@
     UITouch *touch = [touches anyObject];
     CGPoint touchPoint = [touch locationInView:self];
     
-    //TODO<MrLYS>: 判断点在哪个dayview 里面
-    
+    for (LYSCalendarWeekView * weekView in self.weekViews) {
+        
+        for (LYSCalendarDayView * dayView in weekView.dayViews) {
+            
+            if (CGRectContainsPoint( [weekView convertRect:dayView.frame toView:self], touchPoint)) {
+                
+                [self.calendar lys_CalendarDidSelectMonthView:self
+                                                     weekView:weekView
+                                                      dayView:dayView
+                                                      dayDate:dayView.dayDate];
+                return;
+                
+            }
+        }
+    }
 
 }
 
