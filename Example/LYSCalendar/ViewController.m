@@ -14,6 +14,9 @@
 #import "PanViewController.h"
 
 
+#import "LastViewController.h"
+
+
 @interface ViewController ()
 
 @end
@@ -61,7 +64,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
  
-    [PanViewController pushInViewController:self];
+    if (indexPath.row == 0) {
+        
+        [PanViewController pushInViewController:self];
+        
+    }else {
+        
+        [LastViewController pushInViewController:self];
+    }
+    
+    
     
 }
 

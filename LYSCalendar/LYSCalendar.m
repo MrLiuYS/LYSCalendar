@@ -24,6 +24,9 @@
     
     [self.bodyView updateMonth:self.currentMonth];
     
+    
+    [self.lastView lys_reloadLastView];
+    
 }
 
 /**
@@ -35,7 +38,7 @@
         return [self.delegate lys_CalendarIsAutoRows:self];
     }
     
-    return NO;
+    return YES;
     
 }
 
@@ -222,16 +225,13 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    DLog(@"old: %@", [change objectForKey:NSKeyValueChangeOldKey]);
-    DLog(@"new: %@", [change objectForKey:NSKeyValueChangeNewKey]);
-    DLog(@"context: %@", context);
-    
+//    DLog(@"old: %@", [change objectForKey:NSKeyValueChangeOldKey]);
+//    DLog(@"new: %@", [change objectForKey:NSKeyValueChangeNewKey]);
+
     if ([change objectForKey:NSKeyValueChangeOldKey] != [change objectForKey:NSKeyValueChangeNewKey]) {
         
         [self lys_reloadCalendar];
     }
-    
-    
     
 }
 
@@ -249,6 +249,7 @@
                                                                               action:@selector(panGestureRecognizer:)];
     
     panGest.delegate = self;
+    
     [self addGestureRecognizer:panGest];
     
     

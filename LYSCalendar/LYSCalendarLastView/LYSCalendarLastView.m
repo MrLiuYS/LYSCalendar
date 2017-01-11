@@ -10,6 +10,15 @@
 
 @implementation LYSCalendarLastView
 
+- (void)lys_reloadLastView {
+    
+    
+    [self resetLastView];
+    
+    [self.calendar lys_CalendarLastView:self];
+    
+}
+
 
 - (instancetype)initCalendar:(LYSCalendar *)calendar
 {
@@ -87,6 +96,10 @@
         make.top.mas_equalTo(self.calendar.bodyView.mas_bottom).offset(self.topOffset);
     }];
     
+}
+#pragma mar - 重置
+- (void)resetLastView {
+    [self updateTopOffset:0];
 }
 
 

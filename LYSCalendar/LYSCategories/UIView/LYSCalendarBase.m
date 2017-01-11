@@ -20,10 +20,10 @@
     return self;
 }
 
-- (void)dealloc {
-    
-    DLog(@"释放:%@",[self class]);
-}
+//- (void)dealloc {
+//    
+//    DLog(@"释放:%@",[self class]);
+//}
 
 
 @end
