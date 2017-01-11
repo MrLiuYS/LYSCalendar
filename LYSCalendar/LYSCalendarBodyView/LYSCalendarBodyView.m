@@ -41,7 +41,24 @@
     
     self.nextView.monthDate = [self.currentView.monthDate offsetMonth:1];
     
+    
+    if ([self.calendar lys_CalendarIsAutoRows]&&[self numRows] == 5) {
+        
+        [self.currentView mas_updateConstraints:^(MASConstraintMaker *make){
+            
+            make.bottom.mas_lessThanOrEqualTo([self.calendar lys_CalendarBodyDayViewHeight]).priorityMedium();
+        }];
+        
+    }else {
+        [self.currentView mas_updateConstraints:^(MASConstraintMaker *make){
+            
+            make.bottom.mas_lessThanOrEqualTo(0).priorityMedium();
+        }];
+    }
+    
+    
     [self updateHeight:self.heightMax];
+    
     
 }
 
@@ -67,18 +84,18 @@
     
     self.currentLeftOffset  = 0;
     self.currentTopOffset = 0;
-
+    
     self.clipsToBounds = YES;
     
     self.calendarStatu = LYSCalendarStatu_Month;
     
     self.currentHeight = self.heightMax;
-
+    
 }
 
 - (void)initUI {
     
-
+    
     [self addSubview:self.containerView];
     
     [self.containerView addSubview:self.preView];
@@ -115,7 +132,7 @@
     
     [self resetContainerView];
     
-
+    
 }
 
 
@@ -127,7 +144,7 @@
         
         make.left.mas_equalTo(0);
         make.bottom.mas_lessThanOrEqualTo(0).priorityMedium();
-//        make.centerY.mas_equalTo(self.containerView.mas_centerY);
+        //        make.centerY.mas_equalTo(self.containerView.mas_centerY);
         //TODO<MrLYS>: 月份的高度
         make.height.mas_equalTo([self heightMin] * 6).priorityHigh();
         make.width.mas_equalTo(self.containerView.mas_width);
@@ -177,7 +194,7 @@
 #pragma mark - Private method
 
 -(int)numRows {
-
+    
     if ([self.calendar lys_CalendarIsAutoRows]) {
         float lastBlock = [self.calendar.currentMonth numDaysInMonth]+([self.calendar.currentMonth firstWeekDayInMonth]);
         return ceilf(lastBlock/7);
@@ -232,7 +249,7 @@
 
 /**
  水平滑动
-
+ 
  @param gesture <#gesture description#>
  */
 - (void)slideHorizont:(UIPanGestureRecognizer *)gesture{
@@ -266,7 +283,7 @@
     
     
     //TODO<MrLYS>: 即将滑动到上一个月份
-
+    
     [UIView animateWithDuration:kLYSCalendarAnimateWithDuration
                      animations:^{
                          
@@ -281,7 +298,7 @@
                          
                          
                      } completion:^(BOOL finished) {
-                        
+                         
                          if (finished) {
                              
                              self.currentLeftOffset = 0;
@@ -300,11 +317,6 @@
                              
                              [self updateMonth:self.currentView.monthDate];
                              
-//                             self.preView.monthDate = [self.currentView.monthDate offsetMonth:-1];
-//                             
-//                             self.nextView.monthDate = [self.currentView.monthDate offsetMonth:1];
-//                             
-//                             //TODO<MrLYS>: 已经滑动到上一个月份
                              
                          }
                          
@@ -354,14 +366,14 @@
                      }];
     
     
-
+    
     
 }
 
 
 /**
  竖直滑动
-
+ 
  @param gesture <#gesture description#>
  */
 - (void)slideVertical:(UIPanGestureRecognizer *)gesture {
@@ -421,6 +433,12 @@
                             
                         }];
                         
+                    }else {
+                        [self.currentView mas_updateConstraints:^(MASConstraintMaker *make){
+                            
+                            make.top.mas_greaterThanOrEqualTo(0);
+                            
+                        }];
                     }
                     
                     
@@ -435,7 +453,7 @@
         }
         
     }
-
+    
     
 }
 
@@ -491,15 +509,6 @@
 
 #pragma mark - proprety
 
-//- (UIScrollView *)calendarScrollView {
-//    
-//    if(!_calendarScrollView) {
-//        _calendarScrollView = [[UIScrollView alloc] init];
-//        
-////        _calendarScrollView.pagingEnabled = YES;
-//    }
-//    return _calendarScrollView;
-//}
 - (LYSCalendarBase *)containerView {
     
     if(!_containerView) {
