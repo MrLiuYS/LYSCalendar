@@ -39,17 +39,20 @@
     
 }
 
-/**
- 当前月份是否可以滑动切换
- */
-- (BOOL)lys_CalendarPanGesture {
-    
-    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarPanGesture:)]) {
-        return [self.delegate lys_CalendarPanGesture:self];
+- (BOOL)lys_CalendarPanHorizont{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarPanHorizont:)]) {
+        return [self.delegate lys_CalendarPanHorizont:self];
     }
-    
     return YES;
 }
+- (BOOL)lys_CalendarPanVertical{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarPanVertical:)]) {
+        return [self.delegate lys_CalendarPanVertical:self];
+    }
+    return YES;
+}
+
+
 
 #pragma mark - headerView
 /**
@@ -260,15 +263,6 @@
                                 [self lys_CalendarHeaderWeekViewHeight]);
     }];
     
-    
-    //TODO<MrLYS>: 测试
-    //    [self.bodyView mas_makeConstraints:^(MASConstraintMaker *make){
-    //        make.width.mas_equalTo (100);
-    //        make.centerX.mas_equalTo(self.headerView.mas_centerX);
-    //        make.top.mas_equalTo(self.headerView.mas_bottom);
-    //        make.height.mas_equalTo(self.bodyView.heightMax);
-    //    }];
-    
     [self.bodyView mas_makeConstraints:^(MASConstraintMaker *make){
         make.left.right.mas_equalTo(0);
         make.top.mas_equalTo(self.headerView.mas_bottom);
@@ -282,13 +276,6 @@
     }];
     
 }
-
-//- (void)setCurrentMonth:(NSDate *)currentMonth {
-//
-//    _currentMonth = currentMonth;
-//
-//    [self.bodyView updateMonth:currentMonth];
-//}
 
 - (void)panGestureRecognizer:(UIPanGestureRecognizer *)gesture {
     
@@ -325,13 +312,6 @@
         
     }
     return _lastView;
-}
-- (LYSCalendarDeploy *)calendarDeploy {
-    
-    if(!_calendarDeploy) {
-        _calendarDeploy = [[LYSCalendarDeploy alloc] init];
-    }
-    return _calendarDeploy;
 }
 
 

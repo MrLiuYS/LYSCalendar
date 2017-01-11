@@ -97,9 +97,6 @@
     
 }
 
-
-
-
 - (LYSCalendarHeaderYearView *)yearView {
     
     if(!_yearView) {

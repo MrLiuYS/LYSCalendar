@@ -13,7 +13,7 @@
 
 @class LYSCalendar;
 @class LYSCalendarHeaderView,LYSCalendarHeaderYearView,LYSCalendarHeaderWeekView;
-@class LYSCalendarBodyView,LYSCalendarLastView,LYSCalendarDeploy;
+@class LYSCalendarBodyView,LYSCalendarLastView;
 @class LYSCalendarMonthView,LYSCalendarWeekView,LYSCalendarDayView;
 
 @protocol LYSCalendarDelegate <NSObject>
@@ -22,11 +22,14 @@
 
 
 /**
- 当前月份是否可以滑动切换
- 
- @param calendar 日期控件
+ 是否支持横向滚动,切换月份
  */
-- (BOOL)lys_CalendarPanGesture:(LYSCalendar *)calendar;
+- (BOOL)lys_CalendarPanHorizont:(LYSCalendar *)calendar;
+
+/**
+ 是否支持竖直滑动.切换 周<=>月
+ */
+- (BOOL)lys_CalendarPanVertical:(LYSCalendar *)calendar;
 
 
 /**
@@ -122,7 +125,6 @@
 
 @property (nonatomic, strong) LYSCalendarLastView *lastView; /**< 日历底部控件 */
 
-@property (nonatomic, strong) LYSCalendarDeploy *calendarDeploy; /**< <#explain#> */
 
 
 @property (nonatomic, strong) NSDate *currentMonth; /**< 设置当前月份 */
@@ -134,9 +136,13 @@
 
 
 
+/**
+ 最大行显示
+ */
 - (BOOL)lys_CalendarIsAutoRows;
 
-- (BOOL)lys_CalendarPanGesture;
+- (BOOL)lys_CalendarPanHorizont;
+- (BOOL)lys_CalendarPanVertical;
 
 - (void)lys_CalendarHeaderView:(LYSCalendarHeaderView *)headerView;
 

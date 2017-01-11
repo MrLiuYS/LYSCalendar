@@ -220,8 +220,17 @@
     
     if (gesture.state == UIGestureRecognizerStateBegan) {
         
-        if (absX > absY ) {
-            self.isPanVertical = NO;
+        UIView *piece = gesture.view;
+        CGPoint locationInView = [gesture locationInView:piece];
+        
+        if (CGRectContainsPoint(self.frame, locationInView)) {
+            
+            if (absX > absY ) {
+                self.isPanVertical = NO;
+            }else {
+                self.isPanVertical = YES;
+            }
+            
         }else {
             self.isPanVertical = YES;
         }
@@ -230,10 +239,17 @@
     
     if (self.isPanVertical) {
         
-        [self slideVertical:gesture];
+        if ([self.calendar lys_CalendarPanVertical]) {
+            
+            [self slideVertical:gesture];
+        }
         
     }else {
-        [self slideHorizont:gesture];
+        
+        if ([self.calendar lys_CalendarPanHorizont]) {
+            
+            [self slideHorizont:gesture];
+        }
         
     }
     
