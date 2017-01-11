@@ -53,26 +53,6 @@
     
 }
 
-- (BOOL)lys_CalendarIsAutoRows:(LYSCalendar *)calendar{
-    return YES;
-}
-
-- (CGFloat)lys_CalendarHeaderYearViewHeight:(LYSCalendar *)calendar{
-    return 100;
-}
-
-- (CGFloat)lys_CalendarLastViewHeight:(LYSCalendar *)calendar{
-    
-    return 500;
-}
-
-- (void)lys_Calendar:(LYSCalendar *)calendar didSelectMonthView:(LYSCalendarMonthView *)monthView weekView:(LYSCalendarWeekView *)weekView dayView:(LYSCalendarDayView *)dayView dayDate:(NSDate *)dayDate{
-    
-    dayView.backgroundColor = [UIColor whiteColor];
-    
-}
-
-
 
 - (UILabel *)yearTitleLabel {
     

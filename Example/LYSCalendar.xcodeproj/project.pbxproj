@@ -117,9 +117,9 @@
 		0D2C8D871E1CC9FE00CA51D9 /* LYSCalendar */ = {
 			isa = PBXGroup;
 			children = (
+				0DBB0AF61E1E12850073E607 /* LYSCalendarHeader.h */,
 				0D2C8D881E1CCA1A00CA51D9 /* LYSCalendar.h */,
 				0D2C8D891E1CCA1A00CA51D9 /* LYSCalendar.m */,
-				0DBB0AF61E1E12850073E607 /* LYSCalendarHeader.h */,
 				0DBB0AFA1E1E23200073E607 /* LYSCategories */,
 				0DBB0B041E1E23210073E607 /* LYSCalendarHeaderView */,
 				0DBB0B011E1E23210073E607 /* LYSCalendarBodyView */,

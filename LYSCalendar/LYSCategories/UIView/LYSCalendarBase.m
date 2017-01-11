@@ -14,8 +14,8 @@
 {
     self = [super init];
     if (self) {
-        [self lys_RandomBackgroundColor];
-        
+//        [self lys_RandomBackgroundColor];
+        self.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }
