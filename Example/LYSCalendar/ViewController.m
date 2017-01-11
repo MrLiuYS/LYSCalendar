@@ -27,15 +27,42 @@
     
 
 }
-- (IBAction)touchPushPanCtrl:(id)sender {
-    [PanViewController pushInViewController:self];
+
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    
+    return 1;
 }
 
-- (IBAction)touchPushTestcTRL:(id)sender {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    [TestViewController pushInViewController:self];
+    return 30;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    }
+    
+    if (indexPath.row == 0) {
+        cell.textLabel.text = @"base";
+    }
+    
+    
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+ 
+    [PanViewController pushInViewController:self];
+    
 }
 
 

@@ -21,7 +21,6 @@
 @property (nonatomic, assign) BOOL isPanVertical; /**< 竖直滚动 */
 
 @property (nonatomic, assign) CGFloat currentLeftOffset; /**< 当前月份偏移距离 */
-@property (nonatomic, assign) CGFloat currentTopOffset; /**< <#explain#> */
 
 @property (nonatomic, assign) LYSCalendarWeekView * selectWeekView; /**< 选中的weekView */
 
@@ -62,11 +61,6 @@
     
 }
 
-- (void)lys_reloadBodyView{
-    
-    
-    
-}
 
 - (instancetype)initCalendar:(LYSCalendar *)calendar;
 {
@@ -83,7 +77,6 @@
     
     
     self.currentLeftOffset  = 0;
-    self.currentTopOffset = 0;
     
     self.clipsToBounds = YES;
     
@@ -373,8 +366,6 @@
 
 /**
  竖直滑动
- 
- @param gesture <#gesture description#>
  */
 - (void)slideVertical:(UIPanGestureRecognizer *)gesture {
     
@@ -402,8 +393,6 @@
         if (self.calendar.lastView.topOffset == 0) {
             
             if (gesture.state == UIGestureRecognizerStateEnded) {
-                
-                self.currentTopOffset = 0;
                 
                 if (self.calendar.lastView.topOffset == 0) {
                     

@@ -21,24 +21,22 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDT-Ie-CsF">
-                                <rect key="frame" x="74" y="110" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="pan"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="44d-KC-Rx2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <action selector="touchPushPanCtrl:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8oC-jT-3hl"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="20b-7N-6L7"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="DnI-SZ-IPl"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Odo-Kv-7xq">
-                                <rect key="frame" x="58" y="193" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="touchPushTestcTRL:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Faf-W1-qiW"/>
-                                </connections>
-                            </button>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="44d-KC-Rx2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7cD-fV-bxo"/>
+                            <constraint firstAttribute="trailing" secondItem="44d-KC-Rx2" secondAttribute="trailing" id="Mv6-Fy-DaW"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="44d-KC-Rx2" secondAttribute="bottom" id="kqw-z5-yKa"/>
+                            <constraint firstItem="44d-KC-Rx2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="wol-hv-CQf"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="kco-Jt-jcI"/>
                 </viewController>
@@ -51,7 +49,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WRo-La-vow" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="8lj-Lc-UJW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="8lj-Lc-UJW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

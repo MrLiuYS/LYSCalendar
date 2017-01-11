@@ -16,9 +16,14 @@
     if (self) {
         [self lys_RandomBackgroundColor];
         
-//        self.clipsToBounds = YES;
     }
     return self;
 }
+
+- (void)dealloc {
+    
+    DLog(@"释放:%@",[self class]);
+}
+
 
 @end

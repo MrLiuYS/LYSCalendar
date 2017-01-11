@@ -11,6 +11,13 @@
 
 @implementation LYSCalendar
 
+- (void)dealloc {
+
+    [self removeObserver:self
+              forKeyPath:@"currentMonth"];
+    
+}
+
 - (void)lys_reloadCalendar {
     
     [self.headerView lys_reloadHeaderView];

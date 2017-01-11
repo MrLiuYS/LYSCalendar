@@ -30,7 +30,7 @@
 
 @property (nonatomic, strong) NSMutableArray *weekViews; /**< <#explain#> */
 
-@property (nonatomic, strong) LYSCalendar *calendar; /**< <#explain#> */
+@property (nonatomic, unsafe_unretained) LYSCalendar *calendar; /**< <#explain#> */
 
 
 - (instancetype)initCalendar:(LYSCalendar *)calendar;

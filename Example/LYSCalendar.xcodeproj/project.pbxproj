@@ -122,9 +122,9 @@
 				0D5DF1921E1CF59C003026A1 /* LYSCalendarDeploy.h */,
 				0D5DF1931E1CF59C003026A1 /* LYSCalendarDeploy.m */,
 				0DBB0AFA1E1E23200073E607 /* LYSCategories */,
-				0DBB0AFE1E1E23210073E607 /* LYSCalendarLastView */,
-				0DBB0B011E1E23210073E607 /* LYSCalendarBodyView */,
 				0DBB0B041E1E23210073E607 /* LYSCalendarHeaderView */,
+				0DBB0B011E1E23210073E607 /* LYSCalendarBodyView */,
+				0DBB0AFE1E1E23210073E607 /* LYSCalendarLastView */,
 			);
 			name = LYSCalendar;
 			path = ../../LYSCalendar;

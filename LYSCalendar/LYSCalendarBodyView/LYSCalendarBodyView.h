@@ -21,7 +21,7 @@ LYSCalendarStatu;
 
 @interface LYSCalendarBodyView : LYSCalendarBase
 
-@property (nonatomic, strong) LYSCalendar * calendar;
+@property (nonatomic, unsafe_unretained) LYSCalendar * calendar;
 
 @property (nonatomic, assign) CGFloat currentHeight; /**< 当前高度 */
 
@@ -33,7 +33,6 @@ LYSCalendarStatu;
 
 - (instancetype)initCalendar:(LYSCalendar *)calendar;
 
-- (void)lys_reloadBodyView;
 
 
 
