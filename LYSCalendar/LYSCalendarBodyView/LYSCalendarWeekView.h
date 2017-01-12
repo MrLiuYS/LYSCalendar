@@ -11,7 +11,7 @@
 @interface LYSCalendarWeekView : LYSCalendarBase
 
 
-@property (nonatomic, strong) NSMutableArray *dayViews; /**< <#explain#> */
+@property (nonatomic, strong) NSMutableArray <LYSCalendarDayView *> *dayViews; /**< <#explain#> */
 
 
 

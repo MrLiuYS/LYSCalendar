@@ -28,7 +28,7 @@
 
 @property (nonatomic, strong) NSDate *monthDate; /**< <#explain#> */
 
-@property (nonatomic, strong) NSMutableArray *weekViews; /**< <#explain#> */
+@property (nonatomic, strong) NSMutableArray<LYSCalendarWeekView *> *weekViews; /**< <#explain#> */
 
 @property (nonatomic, unsafe_unretained) LYSCalendar *calendar; /**< <#explain#> */
 
