@@ -10,6 +10,8 @@
 
 @class LYSCalendar;
 
+@class LYSCalendarDayView;
+
 typedef enum
 {
     LYSCalendarStatu_Month = 0,
