@@ -28,15 +28,37 @@
         return nil;
     }
     
+    NSString * searchStr = [date lys_year_month_day];
+    
     for (LYSCalendarWeekView * weekView in self.weekViews) {
         for (LYSCalendarDayView * dayView in weekView.dayViews) {
-            if ([dayView.dayDate lys_CompartYear_Month_Day:date]) {
+            if ([searchStr isEqualToString:dayView.yearMonthDayTag]) {
                 return weekView;
             }
         }
     }
     return nil;
 }
+
+- (LYSCalendarDayView *)searchDayViewFromDate:(NSDate *)date {
+    
+    if (!date) {
+        return nil;
+    }
+    
+    NSString * searchStr = [date lys_year_month_day];
+    
+    for (LYSCalendarWeekView * weekView in self.weekViews) {
+        for (LYSCalendarDayView * dayView in weekView.dayViews) {
+            if ([searchStr isEqualToString:dayView.yearMonthDayTag]) {
+                return dayView;
+            }
+        }
+    }
+    return nil;
+}
+
+
 
 - (void)lys_reloadCalendar {
     
@@ -87,7 +109,7 @@
     
     int prevMonthNumDays = [preMonth numDaysInMonth];
     
-    
+    LYSCalendarMonthStatu monthStatu;
     for (int i=0; i<numBlocks; i++) {
         
         LYSCalendarWeekView * weekView = (LYSCalendarWeekView*)self.weekViews[i/7];
@@ -101,7 +123,9 @@
             //上个月份
             targetDate = (prevMonthNumDays-firstWeekDay)+(i+1);
             
-            dayView.dayDate = [preMonth lys_DateResetDayInt:targetDate];
+            dayView.currentDate = [preMonth lys_DateResetDayInt:targetDate];
+            
+            monthStatu = LYSCalendarMonthStatu_Before;
             
             
         } else if (i>=(firstWeekDay+currentMonthNumDays)) { //next month
@@ -109,21 +133,25 @@
             //下个月份
             targetDate = (i+1) - (firstWeekDay+currentMonthNumDays);
             
-            dayView.dayDate = [nextMonth lys_DateResetDayInt:targetDate];
+            dayView.currentDate = [nextMonth lys_DateResetDayInt:targetDate];
+            
+            monthStatu = LYSCalendarMonthStatu_Future;
             
         } else {
             
             //当前月份
             targetDate = (i-firstWeekDay)+1;
             
-            dayView.dayDate = [self.monthDate lys_DateResetDayInt:targetDate];
+            dayView.currentDate = [self.monthDate lys_DateResetDayInt:targetDate];
+            
+            monthStatu = LYSCalendarMonthStatu_Now;
             
         }
         
         [self.calendar lys_CalendarMonthView:self
                                     weekView:weekView
                                      dayView:dayView
-                                     dayDate:dayView.dayDate];
+                                  monthStatu:monthStatu];
         
         
     }
@@ -144,8 +172,7 @@
                 
                 [self.calendar lys_CalendarDidSelectMonthView:self
                                                      weekView:weekView
-                                                      dayView:dayView
-                                                      dayDate:dayView.dayDate];
+                                                      dayView:dayView];
                 return;
                 
             }
@@ -182,7 +209,8 @@
         
         for (int row = 1; row <= 7; row++) {
             
-            LYSCalendarDayView * rowView = [[LYSCalendarDayView alloc]init];
+            LYSCalendarDayView * rowView = [self.calendar lys_CalendarPreloadingDayView];
+            
             
             [weekView.dayViews addObject:rowView];
             

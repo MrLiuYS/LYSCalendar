@@ -82,6 +82,13 @@
     return components;
 }
 
+- (NSString *)lys_year_month_day{
+    
+    NSDateComponents * com = [self lys_components];
+    return [NSString stringWithFormat:@"%d_%d_%d",com.year,com.month,com.day];
+    
+}
+
 - (NSInteger)lys_year {
     
     return [self lys_components].year;

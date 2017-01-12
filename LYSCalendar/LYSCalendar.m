@@ -12,7 +12,7 @@
 @implementation LYSCalendar
 
 - (void)dealloc {
-
+    
     [self removeObserver:self
               forKeyPath:@"currentMonth"];
     
@@ -73,7 +73,7 @@
  */
 - (CGFloat)lys_CalendarHeaderYearViewHeight{
     if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarHeaderYearViewHeight:)]) {
-        return [self.delegate lys_CalendarHeaderYearViewHeight:self];
+        return ceil([self.delegate lys_CalendarHeaderYearViewHeight:self]);
     }
     
     return 40;
@@ -99,7 +99,7 @@
 - (CGFloat)lys_CalendarHeaderWeekViewHeight{
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarHeaderWeekViewHeight:)]) {
-        return [self.delegate lys_CalendarHeaderWeekViewHeight:self];
+        return ceil([self.delegate lys_CalendarHeaderWeekViewHeight:self]);
     }
     
     return 20;
@@ -119,15 +119,66 @@
 
 #pragma mark - bodyView
 
+- (CGFloat)lys_CalendarBodyHeaderViewHeight{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarBodyHeaderViewHeight:)]) {
+        return ceil([self.delegate lys_CalendarBodyHeaderViewHeight:self]);
+    }
+    return 5;
+}
+- (UIView *)lys_CalendarBodyHeaderView{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarBodyHeaderView:)]) {
+        return [self.delegate lys_CalendarBodyHeaderView:self];
+    }
+    
+    UIView * view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor whiteColor];
+    return view;
+}
+
+- (CGFloat)lys_CalendarBodyFooterViewHeight{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarBodyFooterViewHeight:)]) {
+        return ceil([self.delegate lys_CalendarBodyFooterViewHeight:self]);
+    }
+    return 5;
+}
+- (UIView *)lys_CalendarBodyFooterView{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarBodyFooterView:)]) {
+        return [self.delegate lys_CalendarBodyFooterView:self];
+    }
+    
+    UIView * view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor whiteColor];
+    return view;
+}
+
+- (void)lys_CalendarCurrentPageDidChange {
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarCurrentPageDidChange:)]) {
+        return [self.delegate lys_CalendarCurrentPageDidChange:self];
+    }
+}
+
 /**
  "天" 高度:默认:50
  */
 - (CGFloat)lys_CalendarBodyDayViewHeight{
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarBodyDayViewHeight:)]) {
-        return [self.delegate lys_CalendarBodyDayViewHeight:self];
+        return ceil([self.delegate lys_CalendarBodyDayViewHeight:self]);
     }
     return 50;
+}
+
+- (LYSCalendarDayView *)lys_CalendarPreloadingDayView {
+    
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarPreloadingDayView:)]) {
+        return [self.delegate lys_CalendarPreloadingDayView:self];
+    }
+    
+    LYSCalendarDayView * dayView = [[LYSCalendarDayView alloc] init];
+    return dayView;
+    
 }
 
 /**
@@ -136,42 +187,59 @@
 - (void)lys_CalendarMonthView:(LYSCalendarMonthView *)monthView
                      weekView:(LYSCalendarWeekView *)weekView
                       dayView:(LYSCalendarDayView *)dayView
-                      dayDate:(NSDate *)dayDate{
+                   monthStatu:(LYSCalendarMonthStatu)monthStatu{
     
-    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_Calendar:monthView:weekView:dayView:dayDate:)]) {
+    
+    dayView.dayLabel.text = [NSString stringWithFormat:@"%ld",(long)[dayView.currentDate lys_day]];
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_Calendar:monthView:weekView:dayView:monthStatu:)]) {
         return [self.delegate lys_Calendar:self
                                  monthView:monthView
                                   weekView:weekView
                                    dayView:dayView
-                                   dayDate:dayDate];
+                                monthStatu:monthStatu];
     }
     //TODO<MrLYS>:  遍历日历控件的 月 , 周, 天
     
-    dayView.dayLabel.text = [NSString stringWithFormat:@"%ld",(long)[dayDate lys_day]];
 }
 
 - (void)lys_CalendarDidSelectMonthView:(LYSCalendarMonthView *)monthView
-            weekView:(LYSCalendarWeekView *)weekView
-             dayView:(LYSCalendarDayView *)dayView
-             dayDate:(NSDate *)dayDate {
+                              weekView:(LYSCalendarWeekView *)weekView
+                               dayView:(LYSCalendarDayView *)dayView {
     
-    self.selectDate = dayDate;
+    [self lys_CalendarBeforeSelect];
     
+    self.selectDate = dayView.currentDate;
     
-    [monthView searchWeekViewFromDate:dayDate];
-    
-    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_Calendar:didSelectMonthView:weekView:dayView:dayDate:)]) {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_Calendar:didSelectMonthView:weekView:dayView:)]) {
         return [self.delegate lys_Calendar:self
                         didSelectMonthView:monthView
                                   weekView:weekView
-                                   dayView:dayView
-                                   dayDate:dayDate];
+                                   dayView:dayView];
     }
     //TODO<MrLYS>:  选中的天数
-    
-    
-    
 }
+
+
+
+- (void)lys_CalendarBeforeSelect{
+    
+    if (!self.selectDate) {
+        return;
+    }
+    
+    LYSCalendarDayView * dayView = [self.bodyView searchDayViewFromDate:self.selectDate];
+    
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(lys_Calendar:beforeSelectMonthView:weekView:dayView:)]) {
+        return [self.delegate lys_Calendar:self
+                     beforeSelectMonthView:(LYSCalendarMonthView *)dayView.superview.superview
+                                  weekView:(LYSCalendarWeekView *)dayView.superview
+                                   dayView:dayView];
+    }
+}
+
+
 
 
 #pragma mark - lastView
@@ -183,7 +251,7 @@
 - (CGFloat)lys_CalendarLastViewHeight{
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(lys_CalendarLastViewHeight:)]) {
-        return [self.delegate lys_CalendarLastViewHeight:self];
+        return ceil([self.delegate lys_CalendarLastViewHeight:self]);
     }
     return 0;
     
@@ -219,15 +287,13 @@
            forKeyPath:@"currentMonth"
               options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld)
               context:@"currentMonth"];
-    
-    
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-//    DLog(@"old: %@", [change objectForKey:NSKeyValueChangeOldKey]);
-//    DLog(@"new: %@", [change objectForKey:NSKeyValueChangeNewKey]);
-
+    //    DLog(@"old: %@", [change objectForKey:NSKeyValueChangeOldKey]);
+    //    DLog(@"new: %@", [change objectForKey:NSKeyValueChangeNewKey]);
+    
     if ([change objectForKey:NSKeyValueChangeOldKey] != [change objectForKey:NSKeyValueChangeNewKey]) {
         
         [self lys_reloadCalendar];

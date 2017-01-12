@@ -37,8 +37,6 @@
 
 #import "LYSCalendarBase.h"
 
-#define kLYSCalendarBodyCellHeight 30
-#define kLYSCalendarLastHeight 50
 
 #define kLYSCalendarCellRows 6
 

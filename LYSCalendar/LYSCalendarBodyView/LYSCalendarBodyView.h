@@ -44,4 +44,7 @@ LYSCalendarStatu;
 - (void)panGestureRecognizer:(UIPanGestureRecognizer *)gesture;
 
 
+- (LYSCalendarDayView *)searchDayViewFromDate:(NSDate *)date;
+
+
 @end

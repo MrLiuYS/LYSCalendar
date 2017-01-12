@@ -46,6 +46,7 @@
 
 
 - (LYSCalendarWeekView *)searchWeekViewFromDate:(NSDate *)date;
+- (LYSCalendarDayView *)searchDayViewFromDate:(NSDate *)date;
 
 
 @end

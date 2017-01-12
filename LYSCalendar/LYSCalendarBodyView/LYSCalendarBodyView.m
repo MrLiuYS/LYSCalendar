@@ -12,6 +12,9 @@
 
 //@property (nonatomic, strong) UIScrollView *calendarScrollView; /**< <#explain#> */
 
+@property (nonatomic, strong) UIView *headerView; /**< <#explain#> */
+@property (nonatomic, strong) UIView *footerView; /**< <#explain#> */
+
 @property (nonatomic, strong) LYSCalendarBase *containerView; /**< <#explain#> */
 
 @property (nonatomic, strong) LYSCalendarMonthView *preView; /**< <#explain#> */
@@ -29,6 +32,19 @@
 
 
 @implementation LYSCalendarBodyView
+
+- (LYSCalendarDayView *)searchDayViewFromDate:(NSDate *)date {
+    
+    LYSCalendarDayView * dayView = [self.currentView searchDayViewFromDate:date];
+    if (!dayView) {
+        dayView = [self.preView searchDayViewFromDate:date];
+    }
+    if (!dayView) {
+        dayView = [self.nextView searchDayViewFromDate:date];
+    }
+    return dayView;
+    
+}
 
 - (void)updateMonth:(NSDate *)month {
     
@@ -75,7 +91,6 @@
 
 - (void)initData {
     
-    
     self.currentLeftOffset  = 0;
     
     self.clipsToBounds = YES;
@@ -83,6 +98,29 @@
     self.calendarStatu = LYSCalendarStatu_Month;
     
     self.currentHeight = self.heightMax;
+    
+    
+    
+    
+    
+}
+
+- (UIView *)headerView {
+    
+    if (!_headerView) {
+        _headerView = [self.calendar lys_CalendarBodyHeaderView];
+    }
+    
+    return _headerView;
+    
+}
+- (UIView *)footerView {
+    
+    if (!_footerView) {
+        _footerView = [self.calendar lys_CalendarBodyFooterView];
+    }
+    
+    return _footerView;
     
 }
 
@@ -95,6 +133,9 @@
     [self.containerView addSubview:self.nextView];
     
     [self.containerView addSubview:self.currentView];
+    
+    [self addSubview:self.headerView];
+    [self addSubview:self.footerView];
     
     [self makeConstraints];
     
@@ -120,8 +161,23 @@
 - (void)makeConstraints {
     
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.left.top.right.bottom.mas_equalTo(0);
+        make.left.right.mas_equalTo(0);
+        make.top.mas_equalTo(self).offset([self.calendar lys_CalendarBodyHeaderViewHeight]);
+        make.bottom.mas_equalTo(self).offset(-[self.calendar lys_CalendarBodyFooterViewHeight]);
     }];
+    
+    [self.headerView mas_makeConstraints:^(MASConstraintMaker *make){
+        
+        make.left.right.top.mas_equalTo(0);
+        make.height.mas_equalTo([self.calendar lys_CalendarBodyHeaderViewHeight]);
+    }];
+    
+    [self.footerView mas_makeConstraints:^(MASConstraintMaker *make){
+        
+        make.left.right.bottom.mas_equalTo(0);
+        make.height.mas_equalTo([self.calendar lys_CalendarBodyFooterViewHeight]);
+    }];
+    
     
     [self resetContainerView];
     
@@ -137,9 +193,7 @@
         
         make.left.mas_equalTo(0);
         make.bottom.mas_lessThanOrEqualTo(0).priorityMedium();
-        //        make.centerY.mas_equalTo(self.containerView.mas_centerY);
-        //TODO<MrLYS>: 月份的高度
-        make.height.mas_equalTo([self heightMin] * 6).priorityHigh();
+        make.height.mas_equalTo([self dayViewHeight] * 6).priorityHigh();
         make.width.mas_equalTo(self.containerView.mas_width);
     }];
     
@@ -192,15 +246,22 @@
         float lastBlock = [self.calendar.currentMonth numDaysInMonth]+([self.calendar.currentMonth firstWeekDayInMonth] -1);
         return ceilf(lastBlock/7);
     }
-    //TODO<MrLYS>: 自动调整行数
     return 6;
     
 }
 
 - (CGFloat)heightMax {
-    return [self heightMin] * [self numRows];
+    return [self dayViewHeight] * [self numRows] +
+    [self.calendar lys_CalendarBodyFooterViewHeight]+
+    [self.calendar lys_CalendarBodyHeaderViewHeight];
 }
 - (CGFloat)heightMin {
+    return [self dayViewHeight] +
+    [self.calendar lys_CalendarBodyFooterViewHeight]+
+    [self.calendar lys_CalendarBodyHeaderViewHeight];
+}
+
+- (CGFloat)dayViewHeight {
     return [self.calendar lys_CalendarBodyDayViewHeight];
 }
 
@@ -322,11 +383,9 @@
                              
                              [self resetContainerView];
                              
-                             
-                             
                              [self updateMonth:self.currentView.monthDate];
                              
-                             
+                             [self.calendar lys_CalendarCurrentPageDidChange];
                          }
                          
                      }];
@@ -370,6 +429,8 @@
                              [self resetContainerView];
                              
                              [self updateMonth:self.currentView.monthDate];
+                             
+                             [self.calendar lys_CalendarCurrentPageDidChange];
                          }
                          
                      }];

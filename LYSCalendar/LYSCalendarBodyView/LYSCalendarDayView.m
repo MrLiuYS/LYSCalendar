@@ -10,40 +10,32 @@
 
 @implementation LYSCalendarDayView
 
+- (void)setCurrentDate:(NSDate *)currentDate {
+    
+    _currentDate = currentDate;
+    
+    _yearMonthDayTag = [currentDate lys_year_month_day];
+    
+}
+
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        [self initData];
-        [self initUI];
+        
+        [self addSubview:self.dayLabel];
+        
+        [self.dayLabel mas_makeConstraints:^(MASConstraintMaker *make){
+            
+            make.centerX.mas_equalTo(self.mas_centerX);
+            make.centerY.mas_equalTo(self.mas_centerY);
+            
+        }];
         
     }
     return self;
 }
 
-- (void)initData {
-    
-}
-- (void)initUI {
-    
-    [self addSubview:self.dayLabel];
-    
-    [self makeConstraints];
-    
-}
-- (void)makeConstraints {
-    
-//    self.dayLabel.frame = CGRectMake(0, 0, 50, 50);
-    
-    [self.dayLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        
-//        make.left.top.right.bottom.mas_equalTo(0);
-        make.centerX.mas_equalTo(self.mas_centerX);
-        make.centerY.mas_equalTo(self.mas_centerY);
-        
-    }];
-    
-}
 
 - (UILabel *)dayLabel {
     

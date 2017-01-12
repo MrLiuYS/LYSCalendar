@@ -29,7 +29,7 @@
 
 - (NSDateComponents *)intervalToDate:(NSDate *)date;
 
-
+- (NSString *)lys_year_month_day;
 - (NSInteger)lys_year;
 - (NSInteger)lys_month;
 - (NSInteger)lys_day;

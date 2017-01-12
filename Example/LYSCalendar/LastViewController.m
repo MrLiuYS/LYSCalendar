@@ -56,6 +56,27 @@
     
 }
 
+- (void)lys_Calendar:(LYSCalendar *)calendar beforeSelectMonthView:(LYSCalendarMonthView *)monthView weekView:(LYSCalendarWeekView *)weekView dayView:(LYSCalendarDayView *)dayView{
+    
+    dayView.backgroundColor = [UIColor lightTextColor];
+    weekView.backgroundColor = [UIColor lightGrayColor];
+    monthView.backgroundColor = [UIColor yellowColor];
+    
+}
+
+- (void)lys_Calendar:(LYSCalendar *)calendar didSelectMonthView:(LYSCalendarMonthView *)monthView weekView:(LYSCalendarWeekView *)weekView dayView:(LYSCalendarDayView *)dayView{
+    
+    
+    dayView.backgroundColor = [UIColor greenColor];
+    
+}
+
+- (void)lys_CalendarCurrentPageDidChange:(LYSCalendar *)calendar {
+    
+    NSLog(@"%@",calendar.currentMonth);
+    
+}
+
 - (CGFloat)lys_CalendarLastViewHeight:(LYSCalendar *)calendar {
     
     return 30 * 40;
@@ -96,6 +117,9 @@
     
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        
+        
+        cell.backgroundColor = [UIColor redColor];
     }
     
     cell.textLabel.text = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
@@ -118,6 +142,7 @@
         _lastTableView.delegate = self;
         _lastTableView.dataSource = self;
         _lastTableView.scrollEnabled = NO;
+        
     }
     return _lastTableView;
 }

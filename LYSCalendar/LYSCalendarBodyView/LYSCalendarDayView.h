@@ -14,9 +14,9 @@
 
 
 
-@property (nonatomic, strong) NSDate *dayDate; /**< 当前日期 */
+@property (nonatomic, strong) NSDate *currentDate; /**< 当前日期 */
 
-
+@property (nonatomic, copy) NSString * yearMonthDayTag; /**< 标签 */
 
 
 @end

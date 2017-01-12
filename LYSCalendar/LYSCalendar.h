@@ -11,6 +11,17 @@
 
 #import "LYSCalendarHeader.h"
 
+typedef enum
+{
+    LYSCalendarMonthStatu_Before = 0,
+    LYSCalendarMonthStatu_Now,
+    LYSCalendarMonthStatu_Future,
+    
+}
+LYSCalendarMonthStatu;
+
+
+
 @class LYSCalendar;
 @class LYSCalendarHeaderView,LYSCalendarHeaderYearView,LYSCalendarHeaderWeekView;
 @class LYSCalendarBodyView,LYSCalendarLastView;
@@ -70,11 +81,23 @@
 
 #pragma mark - bodyView
 
+- (CGFloat)lys_CalendarBodyHeaderViewHeight:(LYSCalendar *)calendar;
+- (UIView *)lys_CalendarBodyHeaderView:(LYSCalendar *)calendar;
+
+- (CGFloat)lys_CalendarBodyFooterViewHeight:(LYSCalendar *)calendar;
+- (UIView *)lys_CalendarBodyFooterView:(LYSCalendar *)calendar;
+
+
 /**
  "天" 高度:默认:50
  */
 - (CGFloat)lys_CalendarBodyDayViewHeight:(LYSCalendar *)calendar;
 
+
+/**
+ 预加载'天'
+ */
+- (LYSCalendarDayView *)lys_CalendarPreloadingDayView:(LYSCalendar *)calendar;
 /**
  遍历日历控件的 月 , 周, 天
  */
@@ -82,17 +105,25 @@
            monthView:(LYSCalendarMonthView *)monthView
             weekView:(LYSCalendarWeekView *)weekView
              dayView:(LYSCalendarDayView *)dayView
-             dayDate:(NSDate *)dayDate;
+          monthStatu:(LYSCalendarMonthStatu)monthStatu;
+
+- (void)lys_CalendarCurrentPageDidChange:(LYSCalendar *)calendar;
 
 
+/**
+ 之前选中的'天'
+ */
+- (void)lys_Calendar:(LYSCalendar *)calendar
+  beforeSelectMonthView:(LYSCalendarMonthView *)monthView
+            weekView:(LYSCalendarWeekView *)weekView
+             dayView:(LYSCalendarDayView *)dayView;
 /**
  选中的"天"
  */
 - (void)lys_Calendar:(LYSCalendar *)calendar
   didSelectMonthView:(LYSCalendarMonthView *)monthView
             weekView:(LYSCalendarWeekView *)weekView
-             dayView:(LYSCalendarDayView *)dayView
-             dayDate:(NSDate *)dayDate;
+             dayView:(LYSCalendarDayView *)dayView;
 
 
 #pragma mark - lastView
@@ -125,8 +156,6 @@
 
 @property (nonatomic, strong) LYSCalendarLastView *lastView; /**< 日历底部控件 */
 
-
-
 @property (nonatomic, strong) NSDate *currentMonth; /**< 设置当前月份 */
 
 @property (nonatomic, strong) NSDate *selectDate; /**< 选中的日期 */
@@ -156,15 +185,28 @@
 
 - (CGFloat)lys_CalendarBodyDayViewHeight;
 
+- (LYSCalendarDayView *)lys_CalendarPreloadingDayView;
+
+
+- (CGFloat)lys_CalendarBodyHeaderViewHeight;
+- (UIView *)lys_CalendarBodyHeaderView;
+
+- (CGFloat)lys_CalendarBodyFooterViewHeight;
+- (UIView *)lys_CalendarBodyFooterView;
+
+- (void)lys_CalendarCurrentPageDidChange;
+
 - (void)lys_CalendarMonthView:(LYSCalendarMonthView *)monthView
                      weekView:(LYSCalendarWeekView *)weekView
                       dayView:(LYSCalendarDayView *)dayView
-                      dayDate:(NSDate *)dayDate;
+                   monthStatu:(LYSCalendarMonthStatu)monthStatu;
+
+- (void)lys_CalendarBeforeSelect;
+
 
 - (void)lys_CalendarDidSelectMonthView:(LYSCalendarMonthView *)monthView
                               weekView:(LYSCalendarWeekView *)weekView
-                               dayView:(LYSCalendarDayView *)dayView
-                               dayDate:(NSDate *)dayDate;
+                               dayView:(LYSCalendarDayView *)dayView;
 
 - (CGFloat)lys_CalendarLastViewHeight;
 
