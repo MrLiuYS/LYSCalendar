@@ -189,7 +189,7 @@
 -(int)numRows {
     
     if ([self.calendar lys_CalendarIsAutoRows]) {
-        float lastBlock = [self.calendar.currentMonth numDaysInMonth]+([self.calendar.currentMonth firstWeekDayInMonth]);
+        float lastBlock = [self.calendar.currentMonth numDaysInMonth]+([self.calendar.currentMonth firstWeekDayInMonth] -1);
         return ceilf(lastBlock/7);
     }
     //TODO<MrLYS>: 自动调整行数
