@@ -57,11 +57,11 @@
     self.nextView.monthDate = [self.currentView.monthDate offsetMonth:1];
     
     
-    if ([self.calendar lys_CalendarIsAutoRows]&&[self numRows] == 5) {
+    if ([self.calendar lys_CalendarIsAutoRows]) {
         
         [self.currentView mas_updateConstraints:^(MASConstraintMaker *make){
             
-            make.bottom.mas_lessThanOrEqualTo([self.calendar lys_CalendarBodyDayViewHeight]).priorityMedium();
+            make.bottom.mas_lessThanOrEqualTo([self dayViewHeight] * (6-[self numRows])).priorityMedium();
         }];
         
     }else {
@@ -141,23 +141,6 @@
     
 }
 
-
-
-- (void)clickPreMonthBtn:(UIButton *)sender {
-    
-    self.calendar.currentMonth = [self.calendar.currentMonth offsetMonth:-1];
-    
-    [self updateMonth:self.calendar.currentMonth];
-    
-}
-- (void)clickNextMonthBtn:(UIButton *)sender {
-    
-    self.calendar.currentMonth = [self.calendar.currentMonth offsetMonth:1];
-    
-    [self updateMonth:self.calendar.currentMonth];
-    
-}
-
 - (void)makeConstraints {
     
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make){
@@ -192,7 +175,7 @@
     [self.currentView mas_remakeConstraints:^(MASConstraintMaker *make){
         
         make.left.mas_equalTo(0);
-        make.bottom.mas_lessThanOrEqualTo(0).priorityMedium();
+        make.bottom.mas_lessThanOrEqualTo([self dayViewHeight] * ([self numRows]-6)).priorityMedium();
         make.height.mas_equalTo([self dayViewHeight] * 6).priorityHigh();
         make.width.mas_equalTo(self.containerView.mas_width);
     }];
@@ -216,21 +199,6 @@
     if (_calendarStatu != calendarStatu) {
         
         _calendarStatu = calendarStatu;
-        
-        [self updateBodyView];
-    }
-    
-}
-
-- (void)updateBodyView {
-    
-    if (self.calendarStatu == LYSCalendarStatu_Month) {
-        
-        //TODO<MrLYS>: 月份
-        
-    }else {
-        
-        //TODO<MrLYS>: 周
         
     }
     
@@ -284,12 +252,17 @@
         UIView *piece = gesture.view;
         CGPoint locationInView = [gesture locationInView:piece];
         
-        if (CGRectContainsPoint(self.frame, locationInView)) {
-            
-            if (absX > absY ) {
-                self.isPanVertical = NO;
-            }else {
+        
+        DLog(@"locationInView:%@",NSStringFromCGPoint(locationInView));
+        DLog(@"frame:%@",NSStringFromCGRect(self.frame));
+        
+        if (CGRectContainsPoint([self.currentView convertRect:self.currentView.frame toView:self],
+                                locationInView)) {
+        
+            if (absX < absY ) {
                 self.isPanVertical = YES;
+            }else {
+                self.isPanVertical = NO;
             }
             
         }else {
@@ -351,9 +324,6 @@
 
 - (void)slidePreMonth {
     
-    
-    //TODO<MrLYS>: 即将滑动到上一个月份
-    
     [UIView animateWithDuration:kLYSCalendarAnimateWithDuration
                      animations:^{
                          
@@ -397,8 +367,6 @@
 
 
 - (void)slideNextMonth {
-    
-    //TODO<MrLYS>: 即将滑动到下一个月份
     
     [UIView animateWithDuration:kLYSCalendarAnimateWithDuration
                      animations:^{
@@ -486,7 +454,7 @@
             }else {
                 
                 if (gesture.state == UIGestureRecognizerStateBegan) {
-                    DLog(@"UIGestureRecognizerStateBegan");
+                    
                     
                     self.selectWeekView = [self.currentView searchWeekViewFromDate:self.calendar.selectDate];
                     

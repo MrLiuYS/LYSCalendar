@@ -159,6 +159,10 @@ LYSCalendarMonthStatu;
 @property (nonatomic, strong) NSDate *currentMonth; /**< 设置当前月份 */
 
 @property (nonatomic, strong) NSDate *selectDate; /**< 选中的日期 */
+@property (nonatomic, copy,readonly) NSString *selectDateTag;
+
+@property (nonatomic, strong) NSDate *todayDate; /**< 今天 */
+@property (nonatomic, copy,readonly) NSString *todayDateTag;
 
 
 - (instancetype)initDelegate:(id)delegate;
@@ -213,8 +217,11 @@ LYSCalendarMonthStatu;
 - (void)lys_CalendarLastView:(LYSCalendarLastView *)lastView;
 
 
+- (void)lys_CalendarSelectDate:(NSDate *)date scrollToDate:(BOOL)isScrollToDate;
+
 
 - (void)lys_reloadCalendar;
+
 
 
 @end

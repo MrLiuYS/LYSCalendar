@@ -36,11 +36,6 @@ LYSCalendarStatu;
 - (instancetype)initCalendar:(LYSCalendar *)calendar;
 
 
-
-
-- (void)clickPreMonthBtn:(UIButton *)sender;
-- (void)clickNextMonthBtn:(UIButton *)sender;
-
 - (void)updateMonth:(NSDate *)month;
 
 - (void)panGestureRecognizer:(UIPanGestureRecognizer *)gesture;

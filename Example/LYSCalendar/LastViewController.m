@@ -73,7 +73,7 @@
 
 - (void)lys_CalendarCurrentPageDidChange:(LYSCalendar *)calendar {
     
-    NSLog(@"%@",calendar.currentMonth);
+    NSLog(@"切换月份%@",calendar.currentMonth);
     
 }
 

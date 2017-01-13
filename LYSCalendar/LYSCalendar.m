@@ -29,6 +29,20 @@
     
 }
 
+- (void)lys_CalendarSelectDate:(NSDate *)date scrollToDate:(BOOL)isScrollToDate {
+    
+    self.selectDate = date;
+    
+    if (isScrollToDate) {
+        self.currentMonth = date;
+    }else {
+        [self lys_reloadCalendar];
+    }
+    
+    
+}
+
+
 /**
  是否开启动态行数.默认:YES
  */
@@ -87,7 +101,6 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(lys_Calendar:headerYearView:date:)]) {
         return [self.delegate lys_Calendar:self headerYearView:yearView date:self.currentMonth];
     }
-    //TODO<MrLYS>: 自定义头部年份数据
     
     [yearView lys_CalendarHeaderYearView:yearView date:self.currentMonth];
     
@@ -112,7 +125,6 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(lys_Calendar:headerWeekView:date:)]) {
         return [self.delegate lys_Calendar:self headerWeekView:weekView date:self.currentMonth];
     }
-    //TODO<MrLYS>: 自定义头部周的视图
     [weekView updateWeekTitleArray:@[@"日",@"一",@"二",@"三",@"四",@"五",@"六"]];
 }
 
@@ -199,7 +211,6 @@
                                    dayView:dayView
                                 monthStatu:monthStatu];
     }
-    //TODO<MrLYS>:  遍历日历控件的 月 , 周, 天
     
 }
 
@@ -219,8 +230,14 @@
     }
     //TODO<MrLYS>:  选中的天数
 }
-
-
+- (void)setSelectDate:(NSDate *)selectDate{
+    _selectDate = selectDate;
+    _selectDateTag = [selectDate lys_year_month_day];
+}
+- (void)setTodayDate:(NSDate *)todayDate{
+    _todayDate = todayDate;
+    _todayDateTag = [todayDate lys_year_month_day];
+}
 
 - (void)lys_CalendarBeforeSelect{
     
@@ -265,7 +282,6 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(lys_Calendar:lastView:)]) {
         return [self.delegate lys_Calendar:self lastView:lastView];
     }
-    //TODO<MrLYS>: 自定义底部视图
     
 }
 
@@ -291,10 +307,11 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    //    DLog(@"old: %@", [change objectForKey:NSKeyValueChangeOldKey]);
-    //    DLog(@"new: %@", [change objectForKey:NSKeyValueChangeNewKey]);
-    
+
     if ([change objectForKey:NSKeyValueChangeOldKey] != [change objectForKey:NSKeyValueChangeNewKey]) {
+        
+        DLog(@"old: %@", [change objectForKey:NSKeyValueChangeOldKey]);
+        DLog(@"new: %@", [change objectForKey:NSKeyValueChangeNewKey]);
         
         [self lys_reloadCalendar];
     }
@@ -323,7 +340,6 @@
 }
 
 - (void)makeConstraints {
-    //TODO<MrLYS>: 布局
     [self.headerView mas_makeConstraints:^(MASConstraintMaker *make){
         make.left.top.right.mas_equalTo(0);
         make.height.mas_equalTo([self lys_CalendarHeaderYearViewHeight] +

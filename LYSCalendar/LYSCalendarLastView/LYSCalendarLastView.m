@@ -100,6 +100,13 @@
 #pragma mar - 重置
 - (void)resetLastView {
     [self updateTopOffset:0];
+    
+    [self mas_updateConstraints:^(MASConstraintMaker *make){
+        
+        make.height.mas_equalTo([self.calendar lys_CalendarLastViewHeight]);
+        
+    }];
+    
 }
 
 
