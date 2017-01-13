@@ -7,59 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D02FEBD1E21BCAA0077B067 /* PanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D02FEBC1E21BCAA0077B067 /* PanViewController.m */; };
 		0D02FEC21E21BDF10077B067 /* LYSBaseCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D02FEC11E21BDF10077B067 /* LYSBaseCtrl.m */; };
 		0D02FEC51E21C1360077B067 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D02FEC41E21C1360077B067 /* TestViewController.m */; };
-		0D14209E1E1F820200EDA7CC /* LYSCalendarMonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D14209D1E1F820200EDA7CC /* LYSCalendarMonthView.m */; };
-		0D1420A11E1F82C700EDA7CC /* UIView+LYS.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1420A01E1F82C700EDA7CC /* UIView+LYS.m */; };
-		0D1420A41E1F869C00EDA7CC /* LYSCalendarDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1420A31E1F869C00EDA7CC /* LYSCalendarDayView.m */; };
-		0D2C8D8A1E1CCA1A00CA51D9 /* LYSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C8D891E1CCA1A00CA51D9 /* LYSCalendar.m */; };
 		0D4251571E28A8AF0057D7BE /* DrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4251561E28A8AF0057D7BE /* DrawViewController.m */; };
-		0D5667E41E261F4700866213 /* LastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5667E31E261F4700866213 /* LastViewController.m */; };
-		0DA00B141E1FD23300D1247B /* NSDate+LYS.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA00B131E1FD23300D1247B /* NSDate+LYS.m */; };
-		0DA00B171E20B9DE00D1247B /* LYSCalendarBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA00B161E20B9DE00D1247B /* LYSCalendarBase.m */; };
-		0DA00B1A1E20D9CE00D1247B /* LYSCalendarWeekView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA00B191E20D9CE00D1247B /* LYSCalendarWeekView.m */; };
+		0D4251641E28BD380057D7BE /* LYSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4251631E28BD380057D7BE /* LYSCalendar.m */; };
+		0D4251691E28BED80057D7BE /* LYSCalendarHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4251681E28BED80057D7BE /* LYSCalendarHeaderView.m */; };
+		0D42516C1E28C0270057D7BE /* LYSCalendarFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D42516B1E28C0270057D7BE /* LYSCalendarFooterView.m */; };
+		0D42516F1E28C1720057D7BE /* LYSCalendarPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D42516E1E28C1720057D7BE /* LYSCalendarPageView.m */; };
+		0D4251721E28C18E0057D7BE /* LYSCalendarPageStartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4251711E28C18E0057D7BE /* LYSCalendarPageStartView.m */; };
+		0D4251751E28C1A30057D7BE /* LYSCalendarPageEndView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4251741E28C1A30057D7BE /* LYSCalendarPageEndView.m */; };
+		0D4251781E28CF370057D7BE /* LYSCalendarDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4251771E28CF370057D7BE /* LYSCalendarDayView.m */; };
 		0DB2B2F51E1CA0E700AD6B75 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2B2F41E1CA0E700AD6B75 /* main.m */; };
 		0DB2B2F81E1CA0E700AD6B75 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2B2F71E1CA0E700AD6B75 /* AppDelegate.m */; };
 		0DB2B2FB1E1CA0E700AD6B75 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2B2FA1E1CA0E700AD6B75 /* ViewController.m */; };
 		0DB2B2FE1E1CA0E700AD6B75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DB2B2FC1E1CA0E700AD6B75 /* Main.storyboard */; };
 		0DB2B3001E1CA0E700AD6B75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DB2B2FF1E1CA0E700AD6B75 /* Assets.xcassets */; };
 		0DB2B3031E1CA0E700AD6B75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DB2B3011E1CA0E700AD6B75 /* LaunchScreen.storyboard */; };
-		0DBB0B0B1E1E23210073E607 /* UIView+LYSAliquots.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DBB0AFD1E1E23210073E607 /* UIView+LYSAliquots.m */; };
-		0DBB0B0C1E1E23210073E607 /* LYSCalendarLastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DBB0B001E1E23210073E607 /* LYSCalendarLastView.m */; };
-		0DBB0B0D1E1E23210073E607 /* LYSCalendarBodyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DBB0B031E1E23210073E607 /* LYSCalendarBodyView.m */; };
-		0DBB0B0E1E1E23210073E607 /* LYSCalendarHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DBB0B061E1E23210073E607 /* LYSCalendarHeaderView.m */; };
-		0DBB0B0F1E1E23210073E607 /* LYSCalendarHeaderWeekView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DBB0B081E1E23210073E607 /* LYSCalendarHeaderWeekView.m */; };
-		0DBB0B101E1E23210073E607 /* LYSCalendarHeaderYearView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DBB0B0A1E1E23210073E607 /* LYSCalendarHeaderYearView.m */; };
 		22072BEFA2BD60105E67217F /* libPods-LYSCalendar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD01218A3944642B1B7A56C9 /* libPods-LYSCalendar.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0D02FEBB1E21BCAA0077B067 /* PanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanViewController.h; sourceTree = "<group>"; };
-		0D02FEBC1E21BCAA0077B067 /* PanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanViewController.m; sourceTree = "<group>"; };
 		0D02FEC01E21BDF10077B067 /* LYSBaseCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSBaseCtrl.h; sourceTree = "<group>"; };
 		0D02FEC11E21BDF10077B067 /* LYSBaseCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSBaseCtrl.m; sourceTree = "<group>"; };
 		0D02FEC31E21C1360077B067 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		0D02FEC41E21C1360077B067 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
-		0D14209C1E1F820200EDA7CC /* LYSCalendarMonthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSCalendarMonthView.h; sourceTree = "<group>"; };
-		0D14209D1E1F820200EDA7CC /* LYSCalendarMonthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSCalendarMonthView.m; sourceTree = "<group>"; };
-		0D14209F1E1F82C700EDA7CC /* UIView+LYS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LYS.h"; sourceTree = "<group>"; };
-		0D1420A01E1F82C700EDA7CC /* UIView+LYS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LYS.m"; sourceTree = "<group>"; };
-		0D1420A21E1F869C00EDA7CC /* LYSCalendarDayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSCalendarDayView.h; sourceTree = "<group>"; };
-		0D1420A31E1F869C00EDA7CC /* LYSCalendarDayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSCalendarDayView.m; sourceTree = "<group>"; };
-		0D2C8D881E1CCA1A00CA51D9 /* LYSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSCalendar.h; sourceTree = "<group>"; };
-		0D2C8D891E1CCA1A00CA51D9 /* LYSCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSCalendar.m; sourceTree = "<group>"; };
 		0D4251551E28A8AF0057D7BE /* DrawViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawViewController.h; sourceTree = "<group>"; };
 		0D4251561E28A8AF0057D7BE /* DrawViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawViewController.m; sourceTree = "<group>"; };
-		0D42515B1E28B1270057D7BE /* LYSCalendarDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYSCalendarDelegate.h; sourceTree = "<group>"; };
-		0D5667E21E261F4700866213 /* LastViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LastViewController.h; sourceTree = "<group>"; };
-		0D5667E31E261F4700866213 /* LastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LastViewController.m; sourceTree = "<group>"; };
-		0DA00B121E1FD23300D1247B /* NSDate+LYS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+LYS.h"; sourceTree = "<group>"; };
-		0DA00B131E1FD23300D1247B /* NSDate+LYS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LYS.m"; sourceTree = "<group>"; };
-		0DA00B151E20B9DE00D1247B /* LYSCalendarBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSCalendarBase.h; sourceTree = "<group>"; };
-		0DA00B161E20B9DE00D1247B /* LYSCalendarBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSCalendarBase.m; sourceTree = "<group>"; };
-		0DA00B181E20D9CE00D1247B /* LYSCalendarWeekView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSCalendarWeekView.h; sourceTree = "<group>"; };
-		0DA00B191E20D9CE00D1247B /* LYSCalendarWeekView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSCalendarWeekView.m; sourceTree = "<group>"; };
+		0D42515D1E28B6460057D7BE /* LYSCalendarDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSCalendarDelegate.h; sourceTree = "<group>"; };
+		0D4251621E28BD380057D7BE /* LYSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSCalendar.h; sourceTree = "<group>"; };
+		0D4251631E28BD380057D7BE /* LYSCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSCalendar.m; sourceTree = "<group>"; };
+		0D4251651E28BD4E0057D7BE /* LYSCalendarHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYSCalendarHeader.h; sourceTree = "<group>"; };
+		0D4251671E28BED80057D7BE /* LYSCalendarHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSCalendarHeaderView.h; sourceTree = "<group>"; };
+		0D4251681E28BED80057D7BE /* LYSCalendarHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSCalendarHeaderView.m; sourceTree = "<group>"; };
+		0D42516A1E28C0270057D7BE /* LYSCalendarFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSCalendarFooterView.h; sourceTree = "<group>"; };
+		0D42516B1E28C0270057D7BE /* LYSCalendarFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSCalendarFooterView.m; sourceTree = "<group>"; };
+		0D42516D1E28C1720057D7BE /* LYSCalendarPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSCalendarPageView.h; sourceTree = "<group>"; };
+		0D42516E1E28C1720057D7BE /* LYSCalendarPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSCalendarPageView.m; sourceTree = "<group>"; };
+		0D4251701E28C18E0057D7BE /* LYSCalendarPageStartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSCalendarPageStartView.h; sourceTree = "<group>"; };
+		0D4251711E28C18E0057D7BE /* LYSCalendarPageStartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSCalendarPageStartView.m; sourceTree = "<group>"; };
+		0D4251731E28C1A30057D7BE /* LYSCalendarPageEndView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSCalendarPageEndView.h; sourceTree = "<group>"; };
+		0D4251741E28C1A30057D7BE /* LYSCalendarPageEndView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSCalendarPageEndView.m; sourceTree = "<group>"; };
+		0D4251761E28CF370057D7BE /* LYSCalendarDayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSCalendarDayView.h; sourceTree = "<group>"; };
+		0D4251771E28CF370057D7BE /* LYSCalendarDayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSCalendarDayView.m; sourceTree = "<group>"; };
 		0DB2B2F01E1CA0E700AD6B75 /* LYSCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LYSCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DB2B2F41E1CA0E700AD6B75 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0DB2B2F61E1CA0E700AD6B75 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -70,19 +59,6 @@
 		0DB2B2FF1E1CA0E700AD6B75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0DB2B3021E1CA0E700AD6B75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0DB2B3041E1CA0E700AD6B75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0DBB0AF61E1E12850073E607 /* LYSCalendarHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYSCalendarHeader.h; sourceTree = "<group>"; };
-		0DBB0AFC1E1E23210073E607 /* UIView+LYSAliquots.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LYSAliquots.h"; sourceTree = "<group>"; };
-		0DBB0AFD1E1E23210073E607 /* UIView+LYSAliquots.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LYSAliquots.m"; sourceTree = "<group>"; };
-		0DBB0AFF1E1E23210073E607 /* LYSCalendarLastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSCalendarLastView.h; sourceTree = "<group>"; };
-		0DBB0B001E1E23210073E607 /* LYSCalendarLastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSCalendarLastView.m; sourceTree = "<group>"; };
-		0DBB0B021E1E23210073E607 /* LYSCalendarBodyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSCalendarBodyView.h; sourceTree = "<group>"; };
-		0DBB0B031E1E23210073E607 /* LYSCalendarBodyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSCalendarBodyView.m; sourceTree = "<group>"; };
-		0DBB0B051E1E23210073E607 /* LYSCalendarHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSCalendarHeaderView.h; sourceTree = "<group>"; };
-		0DBB0B061E1E23210073E607 /* LYSCalendarHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSCalendarHeaderView.m; sourceTree = "<group>"; };
-		0DBB0B071E1E23210073E607 /* LYSCalendarHeaderWeekView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSCalendarHeaderWeekView.h; sourceTree = "<group>"; };
-		0DBB0B081E1E23210073E607 /* LYSCalendarHeaderWeekView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSCalendarHeaderWeekView.m; sourceTree = "<group>"; };
-		0DBB0B091E1E23210073E607 /* LYSCalendarHeaderYearView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSCalendarHeaderYearView.h; sourceTree = "<group>"; };
-		0DBB0B0A1E1E23210073E607 /* LYSCalendarHeaderYearView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSCalendarHeaderYearView.m; sourceTree = "<group>"; };
 		3666FA5256DC72718AC53524 /* Pods-LYSCalendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LYSCalendar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LYSCalendar/Pods-LYSCalendar.debug.xcconfig"; sourceTree = "<group>"; };
 		7D2B2D6610DBB0E872628DC5 /* Pods-LYSCalendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LYSCalendar.release.xcconfig"; path = "Pods/Target Support Files/Pods-LYSCalendar/Pods-LYSCalendar.release.xcconfig"; sourceTree = "<group>"; };
 		CD01218A3944642B1B7A56C9 /* libPods-LYSCalendar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LYSCalendar.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,15 +76,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0D02FEBE1E21BD7A0077B067 /* Pan */ = {
-			isa = PBXGroup;
-			children = (
-				0D02FEBB1E21BCAA0077B067 /* PanViewController.h */,
-				0D02FEBC1E21BCAA0077B067 /* PanViewController.m */,
-			);
-			name = Pan;
-			sourceTree = "<group>";
-		};
 		0D02FEBF1E21BDDC0077B067 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,22 +83,6 @@
 				0D02FEC11E21BDF10077B067 /* LYSBaseCtrl.m */,
 			);
 			name = Base;
-			sourceTree = "<group>";
-		};
-		0D2C8D871E1CC9FE00CA51D9 /* LYSCalendar */ = {
-			isa = PBXGroup;
-			children = (
-				0DBB0AF61E1E12850073E607 /* LYSCalendarHeader.h */,
-				0D2C8D881E1CCA1A00CA51D9 /* LYSCalendar.h */,
-				0D2C8D891E1CCA1A00CA51D9 /* LYSCalendar.m */,
-				0DBB0AFA1E1E23200073E607 /* LYSCategories */,
-				0DBB0B041E1E23210073E607 /* LYSCalendarHeaderView */,
-				0DBB0B011E1E23210073E607 /* LYSCalendarBodyView */,
-				0DBB0AFE1E1E23210073E607 /* LYSCalendarLastView */,
-				0D42515B1E28B1270057D7BE /* LYSCalendarDelegate.h */,
-			);
-			name = LYSCalendar;
-			path = ../../LYSCalendar;
 			sourceTree = "<group>";
 		};
 		0D4251541E28A8880057D7BE /* New */ = {
@@ -143,22 +94,27 @@
 			name = New;
 			sourceTree = "<group>";
 		};
-		0D5667E11E261F3600866213 /* Last */ = {
+		0D42515C1E28B6080057D7BE /* LYSCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				0D5667E21E261F4700866213 /* LastViewController.h */,
-				0D5667E31E261F4700866213 /* LastViewController.m */,
+				0D42515D1E28B6460057D7BE /* LYSCalendarDelegate.h */,
+				0D4251651E28BD4E0057D7BE /* LYSCalendarHeader.h */,
+				0D4251621E28BD380057D7BE /* LYSCalendar.h */,
+				0D4251631E28BD380057D7BE /* LYSCalendar.m */,
+				0D4251671E28BED80057D7BE /* LYSCalendarHeaderView.h */,
+				0D4251681E28BED80057D7BE /* LYSCalendarHeaderView.m */,
+				0D42516A1E28C0270057D7BE /* LYSCalendarFooterView.h */,
+				0D42516B1E28C0270057D7BE /* LYSCalendarFooterView.m */,
+				0D42516D1E28C1720057D7BE /* LYSCalendarPageView.h */,
+				0D42516E1E28C1720057D7BE /* LYSCalendarPageView.m */,
+				0D4251701E28C18E0057D7BE /* LYSCalendarPageStartView.h */,
+				0D4251711E28C18E0057D7BE /* LYSCalendarPageStartView.m */,
+				0D4251731E28C1A30057D7BE /* LYSCalendarPageEndView.h */,
+				0D4251741E28C1A30057D7BE /* LYSCalendarPageEndView.m */,
+				0D4251761E28CF370057D7BE /* LYSCalendarDayView.h */,
+				0D4251771E28CF370057D7BE /* LYSCalendarDayView.m */,
 			);
-			name = Last;
-			sourceTree = "<group>";
-		};
-		0DA00B0B1E1FD1D300D1247B /* NSDate */ = {
-			isa = PBXGroup;
-			children = (
-				0DA00B121E1FD23300D1247B /* NSDate+LYS.h */,
-				0DA00B131E1FD23300D1247B /* NSDate+LYS.m */,
-			);
-			path = NSDate;
+			path = LYSCalendar;
 			sourceTree = "<group>";
 		};
 		0DB2B2E71E1CA0E700AD6B75 = {
@@ -182,15 +138,13 @@
 		0DB2B2F21E1CA0E700AD6B75 /* LYSCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				0D2C8D871E1CC9FE00CA51D9 /* LYSCalendar */,
 				0DB2B2F61E1CA0E700AD6B75 /* AppDelegate.h */,
 				0DB2B2F71E1CA0E700AD6B75 /* AppDelegate.m */,
 				0DB2B2F91E1CA0E700AD6B75 /* ViewController.h */,
 				0DB2B2FA1E1CA0E700AD6B75 /* ViewController.m */,
+				0D42515C1E28B6080057D7BE /* LYSCalendar */,
 				0D4251541E28A8880057D7BE /* New */,
-				0D5667E11E261F3600866213 /* Last */,
 				0D02FEBF1E21BDDC0077B067 /* Base */,
-				0D02FEBE1E21BD7A0077B067 /* Pan */,
 				0D02FEC31E21C1360077B067 /* TestViewController.h */,
 				0D02FEC41E21C1360077B067 /* TestViewController.m */,
 				0DB2B2FC1E1CA0E700AD6B75 /* Main.storyboard */,
@@ -208,65 +162,6 @@
 				0DB2B2F41E1CA0E700AD6B75 /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		0DBB0AFA1E1E23200073E607 /* LYSCategories */ = {
-			isa = PBXGroup;
-			children = (
-				0DA00B0B1E1FD1D300D1247B /* NSDate */,
-				0DBB0AFB1E1E23210073E607 /* UIView */,
-			);
-			path = LYSCategories;
-			sourceTree = "<group>";
-		};
-		0DBB0AFB1E1E23210073E607 /* UIView */ = {
-			isa = PBXGroup;
-			children = (
-				0DBB0AFC1E1E23210073E607 /* UIView+LYSAliquots.h */,
-				0DBB0AFD1E1E23210073E607 /* UIView+LYSAliquots.m */,
-				0D14209F1E1F82C700EDA7CC /* UIView+LYS.h */,
-				0D1420A01E1F82C700EDA7CC /* UIView+LYS.m */,
-				0DA00B151E20B9DE00D1247B /* LYSCalendarBase.h */,
-				0DA00B161E20B9DE00D1247B /* LYSCalendarBase.m */,
-			);
-			path = UIView;
-			sourceTree = "<group>";
-		};
-		0DBB0AFE1E1E23210073E607 /* LYSCalendarLastView */ = {
-			isa = PBXGroup;
-			children = (
-				0DBB0AFF1E1E23210073E607 /* LYSCalendarLastView.h */,
-				0DBB0B001E1E23210073E607 /* LYSCalendarLastView.m */,
-			);
-			path = LYSCalendarLastView;
-			sourceTree = "<group>";
-		};
-		0DBB0B011E1E23210073E607 /* LYSCalendarBodyView */ = {
-			isa = PBXGroup;
-			children = (
-				0DBB0B021E1E23210073E607 /* LYSCalendarBodyView.h */,
-				0DBB0B031E1E23210073E607 /* LYSCalendarBodyView.m */,
-				0D14209C1E1F820200EDA7CC /* LYSCalendarMonthView.h */,
-				0D14209D1E1F820200EDA7CC /* LYSCalendarMonthView.m */,
-				0DA00B181E20D9CE00D1247B /* LYSCalendarWeekView.h */,
-				0DA00B191E20D9CE00D1247B /* LYSCalendarWeekView.m */,
-				0D1420A21E1F869C00EDA7CC /* LYSCalendarDayView.h */,
-				0D1420A31E1F869C00EDA7CC /* LYSCalendarDayView.m */,
-			);
-			path = LYSCalendarBodyView;
-			sourceTree = "<group>";
-		};
-		0DBB0B041E1E23210073E607 /* LYSCalendarHeaderView */ = {
-			isa = PBXGroup;
-			children = (
-				0DBB0B051E1E23210073E607 /* LYSCalendarHeaderView.h */,
-				0DBB0B061E1E23210073E607 /* LYSCalendarHeaderView.m */,
-				0DBB0B091E1E23210073E607 /* LYSCalendarHeaderYearView.h */,
-				0DBB0B0A1E1E23210073E607 /* LYSCalendarHeaderYearView.m */,
-				0DBB0B071E1E23210073E607 /* LYSCalendarHeaderWeekView.h */,
-				0DBB0B081E1E23210073E607 /* LYSCalendarHeaderWeekView.m */,
-			);
-			path = LYSCalendarHeaderView;
 			sourceTree = "<group>";
 		};
 		2966B9F7CB82FB20C2EBEDB0 /* Pods */ = {
@@ -423,27 +318,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DBB0B0F1E1E23210073E607 /* LYSCalendarHeaderWeekView.m in Sources */,
+				0D42516F1E28C1720057D7BE /* LYSCalendarPageView.m in Sources */,
+				0D4251781E28CF370057D7BE /* LYSCalendarDayView.m in Sources */,
+				0D4251691E28BED80057D7BE /* LYSCalendarHeaderView.m in Sources */,
 				0DB2B2FB1E1CA0E700AD6B75 /* ViewController.m in Sources */,
-				0D1420A41E1F869C00EDA7CC /* LYSCalendarDayView.m in Sources */,
-				0DBB0B101E1E23210073E607 /* LYSCalendarHeaderYearView.m in Sources */,
-				0D2C8D8A1E1CCA1A00CA51D9 /* LYSCalendar.m in Sources */,
-				0D14209E1E1F820200EDA7CC /* LYSCalendarMonthView.m in Sources */,
-				0D02FEBD1E21BCAA0077B067 /* PanViewController.m in Sources */,
+				0D4251721E28C18E0057D7BE /* LYSCalendarPageStartView.m in Sources */,
+				0D4251751E28C1A30057D7BE /* LYSCalendarPageEndView.m in Sources */,
+				0D4251641E28BD380057D7BE /* LYSCalendar.m in Sources */,
+				0D42516C1E28C0270057D7BE /* LYSCalendarFooterView.m in Sources */,
 				0DB2B2F81E1CA0E700AD6B75 /* AppDelegate.m in Sources */,
-				0DBB0B0D1E1E23210073E607 /* LYSCalendarBodyView.m in Sources */,
 				0D4251571E28A8AF0057D7BE /* DrawViewController.m in Sources */,
 				0D02FEC21E21BDF10077B067 /* LYSBaseCtrl.m in Sources */,
-				0DBB0B0E1E1E23210073E607 /* LYSCalendarHeaderView.m in Sources */,
-				0DA00B1A1E20D9CE00D1247B /* LYSCalendarWeekView.m in Sources */,
-				0DA00B171E20B9DE00D1247B /* LYSCalendarBase.m in Sources */,
-				0D1420A11E1F82C700EDA7CC /* UIView+LYS.m in Sources */,
 				0D02FEC51E21C1360077B067 /* TestViewController.m in Sources */,
-				0DA00B141E1FD23300D1247B /* NSDate+LYS.m in Sources */,
-				0DBB0B0B1E1E23210073E607 /* UIView+LYSAliquots.m in Sources */,
 				0DB2B2F51E1CA0E700AD6B75 /* main.m in Sources */,
-				0D5667E41E261F4700866213 /* LastViewController.m in Sources */,
-				0DBB0B0C1E1E23210073E607 /* LYSCalendarLastView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
