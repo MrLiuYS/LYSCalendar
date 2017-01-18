@@ -21,13 +21,17 @@
 #import "LYSCalendarDayView.h"
 
 
-@interface LYSCalendar : NSObject
+@interface LYSCalendar : UIView
 
 @property (nonatomic, unsafe_unretained) id<LYSCalendarDelegate> delegate;
 
 //TODO<MrLYS>: today . selectDate
 //
-//@property (nonatomic, strong) <#type#> *<#name#>; /**< <#explain#> */
+@property (nonatomic, strong) NSDate *todayDate; /**< <#explain#> */
+@property (nonatomic, strong) NSDate *selectDate; /**< <#explain#> */
+
+
+- (instancetype)initDelegate:(id)delegate;
 
 
 
@@ -44,7 +48,7 @@
 /**
  头部视图
  */
-- (UIView *)lysCalendarHeaderView;
+- (LYSCalendarHeaderView *)lysCalendarHeaderView;
 
 /**
  底部视图高度

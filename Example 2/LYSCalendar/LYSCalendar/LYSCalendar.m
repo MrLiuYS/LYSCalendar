@@ -8,6 +8,15 @@
 
 #import "LYSCalendar.h"
 
+@interface LYSCalendar ()
+
+
+@property (nonatomic, strong) LYSCalendarHeaderView *headerView; /**< <#explain#> */
+@property (nonatomic, strong) LYSCalendarPageView *pageView; /**< <#explain#> */
+
+@end
+
+
 
 
 @implementation LYSCalendar
@@ -36,7 +45,7 @@
 /**
  头部视图
  */
-- (UIView *)lysCalendarHeaderView{
+- (LYSCalendarHeaderView *)lysCalendarHeaderView{
     if (_delegate && [_delegate respondsToSelector:@selector(lysCalendarHeaderView:)]) {
         return [_delegate lysCalendarHeaderView:self];
     }
@@ -137,6 +146,52 @@
         return [_delegate lysCalendar:self pageViewDidSelectRowAtDate:date];
     }
 }
+
+
+- (instancetype)initDelegate:(id)delegate
+{
+    self = [super init];
+    if (self) {
+        _delegate = delegate;
+        [self initData];
+        [self initUI];
+    }
+    return self;
+}
+
+- (void)initData {
+    
+}
+- (void)initUI {
+    
+    
+    [self makeConstraints];
+    
+}
+- (void)makeConstraints {
+    
+}
+
+
+#pragma mark - proprety
+
+- (LYSCalendarHeaderView *)headerView {
+    
+    if(!_headerView) {
+        _headerView = [self lysCalendarHeaderView];
+    }
+    return _headerView;
+}
+- (LYSCalendarPageView *)pageView {
+    
+    if(!_pageView) {
+        _pageView = [self lysCalendarPageEndView];
+    }
+    return _pageView;
+}
+
+
+
 
 
 @end

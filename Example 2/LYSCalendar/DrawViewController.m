@@ -38,7 +38,7 @@
 /**
  头部视图
  */
-- (UIView *)lysCalendarHeaderView:(LYSCalendar *)calendar{
+- (LYSCalendarHeaderView *)lysCalendarHeaderView:(LYSCalendar *)calendar{
     
     UIView * view = [[UIView alloc]init];
     

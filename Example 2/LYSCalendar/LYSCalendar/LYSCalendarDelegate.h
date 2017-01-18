@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class LYSCalendar;
+@class LYSCalendarHeaderView;
 
 @protocol LYSCalendarDelegate <NSObject>
 
@@ -27,7 +28,7 @@
 /**
  头部视图
  */
-- (UIView *)lysCalendarHeaderView:(LYSCalendar *)calendar;
+- (LYSCalendarHeaderView *)lysCalendarHeaderView:(LYSCalendar *)calendar;
 
 /**
  底部视图高度

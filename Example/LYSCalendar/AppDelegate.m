@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 
-#import <PLeakSniffer/PLeakSniffer.h>
+//#import <PLeakSniffer/PLeakSniffer.h>
 
 
 @interface AppDelegate ()
@@ -23,7 +23,7 @@
     // Override point for customization after application launch.
     
     
-    [[PLeakSniffer sharedInstance] installLeakSniffer];
+//    [[PLeakSniffer sharedInstance] installLeakSniffer];
     
     return YES;
 }
