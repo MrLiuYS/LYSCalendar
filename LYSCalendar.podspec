@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name = 'LYSCalendar'
-  s.version = '0.1.1.3'
+  s.version = '0.1.1.5'
   s.license = 'MIT'
   s.summary = '日历控件'
 
@@ -19,5 +19,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   
   s.dependency 'Masonry', '~> 1.0.1'
+  s.dependency 'pop', '~> 1.0.9'
 
 end
