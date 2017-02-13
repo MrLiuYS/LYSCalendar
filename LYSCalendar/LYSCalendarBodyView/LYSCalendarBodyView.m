@@ -249,6 +249,8 @@
     
     if (gesture.state == UIGestureRecognizerStateBegan) {
         
+        [self.calendar.lastView pop_removeAnimationForKey:@"decelerate"];
+        
         UIView *piece = gesture.view;
         CGPoint locationInView = [gesture locationInView:piece];
         
