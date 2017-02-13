@@ -7,6 +7,8 @@
 //
 
 #import "LYSCalendarHeader.h"
+#import <pop/POP.h>
+
 
 @interface LYSCalendarLastView ()
 
@@ -101,7 +103,7 @@
         
         POPDecayAnimation *decayAnimation = [POPDecayAnimation animation];
         
-        POPAnimatableProperty *prop = [POPAnimatableProperty propertyWithName:@"com.rounak.bounds.origin" initializer:^(POPMutableAnimatableProperty *prop) {
+        POPAnimatableProperty *prop = [POPAnimatableProperty propertyWithName:@"calendar.lastView.bounds.origin" initializer:^(POPMutableAnimatableProperty *prop) {
     
             prop.readBlock = ^(id obj, CGFloat values[]) {
                 
@@ -125,7 +127,7 @@
         }];
         decayAnimation.property = prop;
         decayAnimation.velocity = [NSValue valueWithCGPoint:velocity];
-        [self pop_addAnimation:decayAnimation forKey:@"decelerate"];
+        [self pop_addAnimation:decayAnimation forKey:@"calendar.lastView.decelerate"];
     }else {
         
         

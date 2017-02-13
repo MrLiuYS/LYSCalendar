@@ -8,6 +8,8 @@
 
 #import "LYSCalendarHeader.h"
 
+#import <pop/POP.h>
+
 @interface LYSCalendarBodyView ()
 
 //@property (nonatomic, strong) UIScrollView *calendarScrollView; /**< <#explain#> */
@@ -249,7 +251,7 @@
     
     if (gesture.state == UIGestureRecognizerStateBegan) {
         
-        [self.calendar.lastView pop_removeAnimationForKey:@"decelerate"];
+        [self.calendar.lastView pop_removeAnimationForKey:@"calendar.lastView.decelerate"];
         
         UIView *piece = gesture.view;
         CGPoint locationInView = [gesture locationInView:piece];
