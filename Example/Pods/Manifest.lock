@@ -1,10 +1,12 @@
 PODS:
   - Masonry (1.0.2)
   - PLeakSniffer (0.1.0)
+  - pop (1.0.9)
 
 DEPENDENCIES:
   - Masonry (~> 1.0.1)
   - PLeakSniffer (from `https://github.com/music4kid/PLeakSniffer.git`, tag `0.1.0`)
+  - pop (~> 1.0.9)
 
 EXTERNAL SOURCES:
   PLeakSniffer:
@@ -19,7 +21,8 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   PLeakSniffer: f7eb13cd3a36150e0a2fd5fe8a33ca83bd2646d4
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
 
-PODFILE CHECKSUM: dd94bed354df34ee4e02bbd3c3fd628f18a65020
+PODFILE CHECKSUM: cb364b0c397f0217cbc47e30f145f3158948d0fd
 
 COCOAPODS: 1.1.1
