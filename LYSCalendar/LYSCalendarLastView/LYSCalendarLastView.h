@@ -12,7 +12,7 @@
 
 @property (nonatomic, assign) CGFloat topOffset; /**< 顶部偏移量 */
 
-@property (nonatomic, unsafe_unretained) LYSCalendar * calendar;
+@property (nonatomic, strong) LYSCalendar * calendar;
 
 @property (nonatomic, assign) CGFloat topOffsetMax; /**< <#explain#> */
 @property (nonatomic, assign) CGFloat topOffsetMin; /**< <#explain#> */

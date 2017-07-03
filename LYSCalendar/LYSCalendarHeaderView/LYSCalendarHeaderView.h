@@ -22,7 +22,7 @@
 @property (nonatomic, strong) LYSCalendarHeaderYearView *yearView; /**< 年份 */
 @property (nonatomic, strong) LYSCalendarHeaderWeekView *weekView; /**< 周标题 */
 
-@property (nonatomic, unsafe_unretained) LYSCalendar * calendar;
+@property (nonatomic, strong) LYSCalendar * calendar;
 
 
 - (instancetype)initCalendar:(LYSCalendar *)calendar;
